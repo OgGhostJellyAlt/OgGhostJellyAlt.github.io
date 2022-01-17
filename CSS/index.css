@@ -19,7 +19,7 @@ a:hover {
 
 a:visited {
   color: darkred;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 img {
