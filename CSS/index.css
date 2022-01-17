@@ -8,17 +8,17 @@ margin-right: 20%;
 }
 
 a {
-  color: powderblue;
-  text-decoration: 
+  color: red;
+  text-decoration: none;
 }
 
 a:hover {
-  color: darkblue;
+  color: darkred;
   text-decoration: underline;
 }
 
 a:visited {
-  color: red;
+  color: darkred;
   text-decoration: underline;
 }
 
