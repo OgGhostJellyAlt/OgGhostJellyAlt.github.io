@@ -1,12 +1,7 @@
-@font-face {
-  font-family: fontname;
-  src: url("font.otf");
-}
-
 html {
 color: white;
 background-color: black;
-font-family: "fontname";
+font-family: "pixel";
 font-size: 22px;
 margin-left: 20%;
 margin-right: 20%;
