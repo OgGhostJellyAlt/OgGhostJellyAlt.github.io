@@ -17,11 +17,6 @@ a:hover {
   text-decoration: underline;
 }
 
-a:visited {
-  color: darkred;
-  text-decoration: none;
-}
-
 img {
   height: 50%;
   width: 50%;
