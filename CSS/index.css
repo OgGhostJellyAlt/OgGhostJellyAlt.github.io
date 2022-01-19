@@ -10,11 +10,12 @@ margin-right: 20%;
 a {
   color: red;
   text-decoration: none;
+  border-bottom: none;
 }
 
 a:hover {
   color: darkred;
-  text-decoration: underline;
+  border-bottom: 2px solid currentColor;
 }
 
 img {
