@@ -1,0 +1,33 @@
+html {
+color: white;
+background-image: repeating-linear-gradient(to right,
+      darkred,
+      darkred 20px,
+      red 20px,
+      red 40px); 
+background-image: repeating-linear-gradient(to right,
+      darkred 0 20px,
+      red 20px 40px);
+font-family: "pixel";
+font-size: 22px;
+margin-left: 20%;
+margin-right: 20%;
+}
+    
+a.link {
+  color: red;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+a.link:hover {
+  color: darkred;
+  border-bottom: 2px solid currentColor;
+}
+
+img {
+  height: 50%;
+  width: 50%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
