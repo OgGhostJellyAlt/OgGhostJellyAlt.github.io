@@ -1,17 +1,10 @@
 html {
-color: white;
-background-image: repeating-linear-gradient(to right,
-      darkred,
-      darkred 20px,
-      red 20px,
-      red 40px); 
-background-image: repeating-linear-gradient(to right,
-      darkred 0 20px,
-      red 20px 40px);
-font-family: "pixel";
-font-size: 22px;
-margin-left: 20%;
-margin-right: 20%;
+  color: white;
+  background: repeating-linear-gradient(90deg,darkred 0%, red 3%, red 3%, darkred 5%);
+  font-family: "pixel";
+  font-size: 22px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
     
 a.link {
