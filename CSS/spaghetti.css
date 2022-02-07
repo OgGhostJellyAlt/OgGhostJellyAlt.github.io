@@ -3,8 +3,7 @@ html {
   background: repeating-linear-gradient(90deg,darkred 0%, red 3%, red 3%, darkred 5%);
   font-family: "pixel";
   font-size: 22px;
-  margin-left: 20%;
-  margin-right: 20%;
+  text-align: center;
 }
     
 a.link {
@@ -20,7 +19,33 @@ a.link:hover {
 
 img {
   height: 50%;
-  width: 50%;
-  margin-left: 20%;
-  margin-right: 20%;
+  width: 80%;
 }
+
+const submit = document.getElementById('submit');
+let answer = document.getElementById('answer');
+const target = 2;
+
+function log(value, mode) {
+  console.clear();
+  
+  if(mode)
+    console.log(`Information: ${value}`);
+  else
+    console.log(`Input: ${value}`);
+}
+
+answer.addEventListener('input', function(event) {
+  log(this.value, true);
+  
+  if(parseInt(this.value) == target) {
+    submit.disabled = false;
+  }
+  else {
+    submit.disabled = true; 
+  }
+});
+
+submit.addEventListener('click', function(event) {
+  log("Button fired.", false);
+});
