@@ -1,6 +1,6 @@
 const submit = document.getElementById('submit');
 let answer = document.getElementById('answer');
-const target = 2;
+const target = 669694204420;
 
 function log(value, mode) {
   console.clear();
