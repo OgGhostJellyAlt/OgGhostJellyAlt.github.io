@@ -8,13 +8,13 @@ html {
     }
     
     a.link {
-      color: red;
+      color: darkred;
       text-decoration: none;
       border-bottom: none;
     }
     
     a.link:hover {
-      color: darkred;
+      color: rgb(77, 0, 0);
       border-bottom: 2px solid currentColor;
     }
     
