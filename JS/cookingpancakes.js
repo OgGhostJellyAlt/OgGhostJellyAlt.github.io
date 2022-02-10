@@ -8,11 +8,17 @@ function mult() {
       var oil = document.getElementById('oil')
       var salt = document.getElementById('salt')
 
-      flour.innerHTML = userinput * 100
-      egg.innerHTML = userinput * 2
-      milk.innerHTML = userinput * 300
-      oil.innerHTML = userinput * 1
-      salt.innerHTML = userinput * 1
+      var flouramount = flour.innerHTML
+      var eggamount = egg.innerHTML
+      var milkamount = milk.innerHTML
+      var oilamount = oil.innerHTML
+      var saltamount = salt.innerHTML
+
+      flour.innerHTML = userinput * flouramount
+      egg.innerHTML = userinput * eggamount
+      milk.innerHTML = userinput * milkamount
+      oil.innerHTML = userinput * oilamount
+      salt.innerHTML = userinput * saltamount
     }
     return {submit};
   }
