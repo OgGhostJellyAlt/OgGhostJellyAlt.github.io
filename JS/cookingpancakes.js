@@ -1,18 +1,22 @@
+var ingredients = [
+  "flour","100",
+  "egg","2",
+  "milk","300",
+  "oil", "1",
+  "salt","1",
+];
+
 function mult() {
   
     function submit() {
       var userinput = document.getElementById('input').value;
-      var flour = document.getElementById('flour')
-      var egg = document.getElementById('egg')
-      var milk = document.getElementById('milk')
-      var oil = document.getElementById('oil')
-      var salt = document.getElementById('salt')
+      var i = 0;
 
-      flour.innerHTML = userinput * 100
-      egg.innerHTML = userinput * 2
-      milk.innerHTML = userinput * 300
-      oil.innerHTML = userinput * 1
-      salt.innerHTML = userinput * 1
+      do {
+      document.getElementById(ingredients[i]).innerHTML = userinput * ingredients[i + 1];
+
+      i = i + 2;
+      } while (i < ingredients.length);
     }
     return {submit};
   }
