@@ -26,3 +26,33 @@ html {
     .footer {
       font-size: 18px;
     }
+
+    @keyframes drop {
+      0%   {left:0px; top:-1200px;}
+      1%   {left:0px; top:-1200px;}
+      100% {left:0px; top:0px; visibility: visible;}
+    }
+
+    .one {
+      position: relative;
+      animation-name: drop;
+      animation-duration: 1s;
+      visibility: hidden;
+      animation-fill-mode: forwards;
+    }
+    .two {
+      position: relative;
+      animation-name: drop;
+      animation-duration: 1s;
+      animation-delay: 0.5s;
+      visibility: hidden;
+      animation-fill-mode: forwards;
+    }
+    .three {
+      position: relative;
+      animation-name: drop;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      visibility: hidden;
+      animation-fill-mode: forwards;
+    }

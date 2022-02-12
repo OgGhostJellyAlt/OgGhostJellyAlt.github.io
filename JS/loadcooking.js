@@ -11,21 +11,25 @@ document.querySelector('head').appendChild(favicon);
 //load img
 let image = document.createElement('img');
 image.setAttribute('src',"/IMG/" + img);
+image.setAttribute('class','one');
 document.getElementById("img").appendChild(image);
 //load recipe
 var i = 0
 do {
 let name = document.createElement('r');
 name.innerHTML = ingredients[i].name + " - "
+name.setAttribute('class','two')
 document.getElementById("recipe").appendChild(name);
 
 let quantity = document.createElement('r');
 quantity.setAttribute('id', ingredients[i].name)
 quantity.innerHTML = ingredients[i].quantity
+quantity.setAttribute('class','two')
 document.getElementById("recipe").appendChild(quantity);
 
 let unit = document.createElement('r');
 unit.innerHTML = ingredients[i].unit
+unit.setAttribute('class','two')
 document.getElementById("recipe").appendChild(unit);
 
 document.getElementById("recipe").appendChild(document.createElement('br'));
@@ -43,6 +47,7 @@ if ( direction.getAttribute('class') == "footer" ) {
   direction.innerHTML = diri + ". " + dir[i].disc;
   diri = diri + 1
 }
+direction.setAttribute('class','three')
 document.getElementById('dir').appendChild(direction)
 i = i + 1;
 } while (i < dir.length);

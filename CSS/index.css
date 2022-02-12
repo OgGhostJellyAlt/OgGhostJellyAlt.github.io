@@ -5,6 +5,9 @@ font-family: "pixel";
 font-size: 28px;
 margin-left: 20%;
 margin-right: 20%;
+position: relative;
+animation-name: drop;
+animation-duration: 1s;
 }
 
 a.link {
@@ -40,3 +43,7 @@ img {
   display: none;
 }
 
+@keyframes drop {
+  0%   {left:0px; top:-700px;}
+  100%  {left:0px; top:0px;}
+}
