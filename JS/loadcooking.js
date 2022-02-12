@@ -33,9 +33,16 @@ i = i + 1
 } while (i < ingredients.length)
 //load dir
 var i = 0;
+var diri = 1;
 do {
 let direction = document.createElement("p");
-direction.innerHTML = i + 1 + ". " + dir[i];
+direction.setAttribute('class',dir[i].detail)
+if ( direction.getAttribute('class') == "footer" ) {
+  direction.innerHTML = dir[i].disc;
+} else {
+  direction.innerHTML = diri + ". " + dir[i].disc;
+  diri = diri + 1
+}
 document.getElementById('dir').appendChild(direction)
 i = i + 1;
 } while (i < dir.length);
