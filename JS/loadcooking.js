@@ -1,30 +1,8 @@
-var ingredients = [
-    "Butter", "100", "g",
-    "Sugar","40", "g",
-    "Flour","150", "g",
-    "Corn Starch","1", "tsp",
-    "Baking Powder","0.25", "tsp"
-];
-
 function load() {
-//set template
-var title = "Shortbread";
-var disc = "another english dessert. very very crumbly, but still delicious.";
-var img = "shortbread.jpg";
-var dir = [
-    "Pour Ingredients Into A Bowl",
-    "Mix Until Smooth",
-    "Put In A Pan",
-    "Cook For 40mins At 160 °C",
-    "Wait To Cool"
-];
-
-
-
-
 //load template
 document.getElementById("title").innerHTML = title;
 document.getElementById("disc").innerHTML = disc;
+document.getElementById("size").innerHTML = "1 Batch = " + size + " " + title + " " + sizeunit;
 //load favicon
 let favicon = document.createElement('link');
 favicon.setAttribute('rel','shortcut icon');
@@ -38,20 +16,20 @@ document.getElementById("img").appendChild(image);
 var i = 0
 do {
 let name = document.createElement('r');
-name.innerHTML = ingredients[i] + " - "
+name.innerHTML = ingredients[i].name + " - "
 document.getElementById("recipe").appendChild(name);
 
 let quantity = document.createElement('r');
-quantity.setAttribute('id', ingredients[i])
-quantity.innerHTML = ingredients[i + 1]
+quantity.setAttribute('id', ingredients[i].name)
+quantity.innerHTML = ingredients[i].quantity
 document.getElementById("recipe").appendChild(quantity);
 
 let unit = document.createElement('r');
-unit.innerHTML = ingredients[i + 2]
+unit.innerHTML = ingredients[i].unit
 document.getElementById("recipe").appendChild(unit);
 
 document.getElementById("recipe").appendChild(document.createElement('br'));
-i = i + 3
+i = i + 1
 } while (i < ingredients.length)
 //load dir
 var i = 0;
@@ -69,12 +47,13 @@ function mult() {
     
     function submit() {
       var userinput = document.getElementById('input').value;
+      document.getElementById("size").innerHTML = userinput + " Batch = " + size * userinput + " " + title + " " + sizeunit;
       var i = 0;
 
       do {
-      document.getElementById(ingredients[i]).innerHTML = userinput * ingredients[i + 1];
+      document.getElementById(ingredients[i].name).innerHTML = userinput * ingredients[i].quantity;
 
-      i = i + 3;
+      i = i + 1;
       } while (i < ingredients.length);
     }
     return {submit};
