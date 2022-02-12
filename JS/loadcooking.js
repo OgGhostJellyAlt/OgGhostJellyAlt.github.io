@@ -43,11 +43,12 @@ let direction = document.createElement("p");
 direction.setAttribute('class',dir[i].detail)
 if ( direction.getAttribute('class') == "footer" ) {
   direction.innerHTML = dir[i].disc;
+  direction.setAttribute('class','three footer')
 } else {
   direction.innerHTML = diri + ". " + dir[i].disc;
+  direction.setAttribute('class','three')
   diri = diri + 1
 }
-direction.setAttribute('class','three')
 document.getElementById('dir').appendChild(direction)
 i = i + 1;
 } while (i < dir.length);
