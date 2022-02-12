@@ -2,38 +2,13 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-
 <script>
-var size = "NaN"
-var sizeunit = ""
-var sizeunitb = ""
-var title = "Chocolate Cookies";
-var disc = "cookies... I mean.. doesn't really need an explanation, everyone's had one of these.";
-var img = "chococookies.jpg";
-
-var ingredients = [
-  { name: "Butter" , quantity: "100", unit: "g" },
-  { name: "White Sugar", quantity: "100", unit: "g" },
-  { name: "Brown Sugar", quantity: "100", unit: "g" },
-  { name: "Eggs", quantity: "1", unit: "" },
-  { name: "Vanilla (extract)", quantity: "1", unit: "tsp"},
-  { name: "Baking Soda", quantity: "0.5", unit: "tsp" },
-  { name: "Water", quantity: "1", unit: "tsp" },
-  { name: "Salt", quantity: "0.25", unit: "tsp" },
-  { name: "Flour", quantity: "200", unit: "g" },
-  { name: "Chocolate Chips", quantity: "200", unit: "g" }
-];
-
-var dir = [
-  { disc: "Pour Ingredients Into A Bowl", detail: "text" },
-  { disc: "Mix Until Smooth", detail: "text" },
-  { disc: "Mold Circles On A Pan", detail: "text" },
-  { disc: "Cook For 10min At 175 °C", detail: "text" },
-  { disc: "Cause The Grandma-pocalapse", detail: "text" }
-];
+recipe = {};
+fetch("/JS/JSON/cooking/chococookies.json")
+  .then(response => response.json())
+  .then(json => { recipe = json ; load(recipe) } );
 </script>
 <script src="/JS/loadcooking.js"></script>
-
 <title>
 Cooking With GhostJelly
 </title>
@@ -46,12 +21,12 @@ font-family: pixel
 </style>
 </head>
 
-<body onload="load()">
+<body>
 <h1 class ="one">
 Cooking <t id="title"></t> With GhostJelly
 </h1>
 
-<p id="disc" class="one"></p>
+<p id="desc" class="one"></p>
 
 <div id="img"></div><br>
 
@@ -59,7 +34,7 @@ Cooking <t id="title"></t> With GhostJelly
 <h2 class="two">Recipe</h2>
 <hr class="two">
 <input id="input" placeholder="Batch Size" class="two"></input>
-<button onclick="mult().submit()" class="two">Update Batch Size</button><br><br>
+<button onclick="mult(recipe).submit(recipe)" class="two">Update Batch Size</button><br><br>
 
 <div id="recipe">
 </div>
