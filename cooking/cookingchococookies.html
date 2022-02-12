@@ -2,7 +2,37 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-<link rel="shortcut icon" href="/IMG/chococookies.jpg" type="image/x-icon">
+
+<script>
+var size = "NaN"
+var sizeunit = ""
+var sizeunitb = ""
+var title = "Chocolate Cookies";
+var disc = "cookies... I mean.. doesn't really need an explanation, everyone's had one of these.";
+var img = "chococookies.jpg";
+
+var ingredients = [
+  { name: "Butter" , quantity: "100", unit: "g" },
+  { name: "White Sugar", quantity: "100", unit: "g" },
+  { name: "Brown Sugar", quantity: "100", unit: "g" },
+  { name: "Eggs", quantity: "1", unit: "" },
+  { name: "Vanilla (extract)", quantity: "1", unit: "tsp"},
+  { name: "Baking Soda", quantity: "0.5", unit: "tsp" },
+  { name: "Water", quantity: "1", unit: "tsp" },
+  { name: "Salt", quantity: "0.25", unit: "tsp" },
+  { name: "Flour", quantity: "200", unit: "g" },
+  { name: "Chocolate Chips", quantity: "200", unit: "g" }
+];
+
+var dir = [
+  { disc: "Pour Ingredients Into A Bowl", detail: "text" },
+  { disc: "Mix Until Smooth", detail: "text" },
+  { disc: "Mold Circles On A Pan", detail: "text" },
+  { disc: "Cook For 10min At 175 °C", detail: "text" },
+  { disc: "Cause The Grandma-pocalapse", detail: "text" }
+];
+</script>
+<script src="/JS/loadcooking.js"></script>
 
 <title>
 Cooking With GhostJelly
@@ -16,46 +46,35 @@ font-family: pixel
 </style>
 </head>
 
-<body>
-<h1>
-Cooking Pancakes With GhostJelly
+<body onload="load()">
+<h1 class ="one">
+Cooking <t id="title"></t> With GhostJelly
 </h1>
 
-<p>
-    cookies... I mean.. doesn't really need an explanation, everyone's had one of these.
-</p>
+<p id="disc" class="one"></p>
 
-<img src="/IMG/chococookies.jpg"><br><br>
-
-<r>
-<h2>Recipe</h2>
-<hr>
-<script src="/JS/cookingchococookies.js"></script>
-<input id="input" placeholder="Batch Size"></input>
-<button onclick="mult().submit()">Update Batch Size</button><br><br>
+<div id="img"></div><br>
 
 <div>
-<r>Butter - </r><r id="butter">100</r><r>g</r><br>
-<r>White Sugar - </r><r id="wsugar">100</r><r>g</r><br>
-<r>Brown Sugar - </r><r id="bsugar">100</r><r>g</r><br>
-<r>Egg - </r><r id="egg">1</r><br>
-<r>vanilla - </r><r id="vanilla">1</r><r>tsp</r><br>
-<r>Baking Soda - </r><r id="soda">0.5</r><r>tsp</r><br>
-<r>Water - </r><r id="water">1</r><r>tsp</r><br>
-<r>Salt - </r><r id="salt">0.25</r><r>tsp</r><br>
-<r>Flour - </r><r id="flour">200</r><r>g</r><br>
-<r>Chocolate Chips - </r><r id="chocochip">200</r><r>g</r><br>
+<h2 class="two">Recipe</h2>
+<hr class="two">
+<input id="input" placeholder="Batch Size" class="two"></input>
+<button onclick="mult().submit()" class="two">Update Batch Size</button><br><br>
+
+<div id="recipe">
+</div>
+</div><br>
+
+<div>
+    <h2 class="two">Batch Size</h2>
+    <hr class="two">
+    <r id="size" class="two"></r>
 </div>
 </r><br>
 
-<d>
-<h2>Directions</h2>
-<hr>
-<p>1. Pour Ingredients Into A Bowl</p>
-<p>2. Mix Until Smooth</p>
-<p>3. Mold Circles On A Pan</p>
-<p>4. Cook For 10min At 175 °C</p>
-<p>5. Cause The Grandma-pocalapse</p>
+<d id="dir">
+<h2 class="three">Directions</h2>
+<hr class="three">
 </d>
-<body>
+</body>
 </html>

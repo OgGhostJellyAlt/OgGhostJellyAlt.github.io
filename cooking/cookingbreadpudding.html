@@ -2,7 +2,34 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-<link rel="shortcut icon" href="/IMG/breadpudding.jpeg" type="image/x-icon">
+
+<script>
+var size = "NaN"
+var sizeunit = ""
+var sizeunitb = ""
+var title = "Bread Pudding";
+var disc = 'bread + pudding. kinda wierd combination but still pretty good.<br>got stale bread? BREAD PUDDING! ';
+var img = "breadpudding.jpeg";
+
+var ingredients = [
+  { name: "Bread" , quantity: "275", unit: "g" },
+  { name: "Butter", quantity: "30", unit: "g" },
+  { name: "Milk", quantity: "400", unit: "g" },
+  { name: "Sugar", quantity: "100", unit: "g" },
+  { name: "Raisins", quantity: "80", unit: "g"},
+  { name: "Eggs", quantity: "3", unit: "" },
+  { name: "Cinnamon", quantity: "0.5", unit: "tsp" },
+  { name: "Vanilla (extract)", quantity: "0.5", unit: "tsp" }
+];
+
+var dir = [
+  { disc: "Pour Ingredients Into A Bowl", detail: "text" },
+  { disc: "Mix Thouroughly", detail: "text" },
+  { disc: "Pour Into Pan", detail: "text" },
+  { disc: "Cook For 45min At 175 °C", detail: "text" },
+];
+</script>
+<script src="/JS/loadcooking.js"></script>
 
 <title>
 Cooking With GhostJelly
@@ -16,43 +43,35 @@ font-family: pixel
 </style>
 </head>
 
-<body>
-<h1>
-Cooking Bread Pudding With GhostJelly
+<body onload="load()">
+<h1 class ="one">
+Cooking <t id="title"></t> With GhostJelly
 </h1>
 
-<p>
-    bread + pudding. kinda wierd combination but still pretty good.<br> got stale bread? BREAD PUDDING!
-</p>
+<p id="disc" class="one"></p>
 
-<img src="/IMG/breadpudding.jpeg"><br><br>
-
-<r>
-<h2>Recipe</h2>
-<hr>
-<script src="/JS/cookingbreadpudding.js"></script>
-<input id="input" placeholder="Batch Size"></input>
-<button onclick="mult().submit()">Update Batch Size</button><br><br>
+<div id="img"></div><br>
 
 <div>
-<r>Bread - </r><r id="bread">275</r><r>g</r><br>
-<r>Butter - </r><r id="butter">30</r><r>g</r><br>
-<r>Milk - </r><r id="milk">400</r><r>g</r><br>
-<r>Sugar - </r><r id="sugar">100</r><r>g</r><br>
-<r>Raisins - </r><r id="raisin">80</r><r>g</r><br>
-<r>Eggs - </r><r id="egg">3</r><br>
-<r>Cinnamon - </r><r id="cinnamon">0.5</r><r>tsp</r><br>
-<r>Vanilla (extract) - </r><r id="vanilla">0.5</r><r>tsp</r><br>
+<h2 class="two">Recipe</h2>
+<hr class="two">
+<input id="input" placeholder="Batch Size" class="two"></input>
+<button onclick="mult().submit()" class="two">Update Batch Size</button><br><br>
+
+<div id="recipe">
+</div>
+</div><br>
+
+<div>
+    <h2 class="two">Batch Size</h2>
+    <hr class="two">
+    <r id="size" class="two"></r>
 </div>
 </r><br>
 
-<d>
-<h2>Directions</h2>
-<hr>
-<p>1. Pour Ingredients Into A Bowl</p>
-<p>2. Mix Thouroughly</p>
-<p>3. Pour Into Pan</p>
-<p>4. Cook For 45min At 175 °C</p>
+<d id="dir">
+<h2 class="three">Directions</h2>
+<hr class="three">
 </d>
 </body>
 </html>

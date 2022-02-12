@@ -2,7 +2,32 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-<link rel="shortcut icon" href="/IMG/shortbread.jpg" type="image/x-icon">
+
+<script>
+var size = "NaN"
+var sizeunit = "Pieces"
+var sizeunitb = ""
+var title = "Shortbread";
+var disc = "another english dessert. very very crumbly, but still delicious.";
+var img = "shortbread.jpg";
+
+var ingredients = [
+  { name: "Butter" , quantity: "100", unit: "g" },
+  { name: "Sugar", quantity: "40", unit: "g" },
+  { name: "Flour", quantity: "150", unit: "g" },
+  { name: "Corn Starch", quantity: "1", unit: "tsp" },
+  { name: "Baking Powder", quantity: "0.25", unit: "tsp"}
+];
+
+var dir = [
+  { disc: "Pour Ingredients Into A Bowl", detail: "text" },
+  { disc: "Mix Until Smooth", detail: "text" },
+  { disc: "Put In A Pan", detail: "text" },
+  { disc: "Cook For 40mins At 160 °C", detail: "text" },
+  { disc: "Wait To Cool", detail: "text" }
+];
+</script>
+<script src="/JS/loadcooking.js"></script>
 
 <title>
 Cooking With GhostJelly
@@ -16,41 +41,35 @@ font-family: pixel
 </style>
 </head>
 
-<body>
-<h1>
-Cooking Shortbread With GhostJelly
+<body onload="load()">
+<h1 class ="one">
+Cooking <t id="title"></t> With GhostJelly
 </h1>
 
-<p>
-    another english dessert. very very crumbly, but still delicious.
-</p>
+<p id="disc" class="one"></p>
 
-<img src="/IMG/shortbread.jpg"><br><br>
-
-<r>
-<h2>Recipe</h2>
-<hr>
-<script src="/JS/cookingshortbread.js"></script>
-<input id="input" placeholder="Batch Size"></input>
-<button onclick="mult().submit()">Update Batch Size</button><br><br>
+<div id="img"></div><br>
 
 <div>
-<r>Butter - </r><r id="butter">100</r><r>g</r><br>
-<r>Sugar - </r><r id="sugar">40</r><r>g</r><br>
-<r>Flour - </r><r id="flour">150</r><r>g</r><br>
-<r>Corn Starch - </r><r id="starch">1</r><r>tsp</r><br>
-<r>Baking Powder - </r><r id="powder">0.25</r><r>tsp</r><br>
+<h2 class="two">Recipe</h2>
+<hr class="two">
+<input id="input" placeholder="Batch Size" class="two"></input>
+<button onclick="mult().submit()" class="two">Update Batch Size</button><br><br>
+
+<div id="recipe">
+</div>
+</div><br>
+
+<div>
+    <h2 class="two">Batch Size</h2>
+    <hr class="two">
+    <r id="size" class="two"></r>
 </div>
 </r><br>
 
-<d>
-<h2>Directions</h2>
-<hr>
-<p>1. Pour Ingredients Into A Bowl</p>
-<p>2. Mix Until Smooth</p>
-<p>3. Put In A Pan</p>
-<p>4. Cook For 40mins At 160 °C</p>
-<p>5. Wait To Cool</p>
+<d id="dir">
+<h2 class="three">Directions</h2>
+<hr class="three">
 </d>
-<body>
+</body>
 </html>

@@ -5,26 +5,31 @@
 
 <script>
 var size = "NaN"
-var sizeunit = "Pieces"
-var title = "Shortbread";
-var disc = "another english dessert. very very crumbly, but still delicious.";
-var img = "shortbread.jpg";
+var sizeunit = ""
+var sizeunitb = ""
+var title = "Chocolate Cookies";
+var disc = "cookies... I mean.. doesn't really need an explanation, everyone's had one of these.";
+var img = "chococookies.jpg";
 
 var ingredients = [
   { name: "Butter" , quantity: "100", unit: "g" },
-  { name: "Sugar", quantity: "40", unit: "g" },
-  { name: "Flour", quantity: "150", unit: "g" },
-  { name: "Corn Starch", quantity: "1", unit: "tsp" },
-  { name: "Baking Powder", quantity: "0.25", unit: "tsp"}
+  { name: "White Sugar", quantity: "100", unit: "g" },
+  { name: "Brown Sugar", quantity: "100", unit: "g" },
+  { name: "Eggs", quantity: "1", unit: "" },
+  { name: "Vanilla (extract)", quantity: "1", unit: "tsp"},
+  { name: "Baking Soda", quantity: "0.5", unit: "tsp" },
+  { name: "Water", quantity: "1", unit: "tsp" },
+  { name: "Salt", quantity: "0.25", unit: "tsp" },
+  { name: "Flour", quantity: "200", unit: "g" },
+  { name: "Chocolate Chips", quantity: "200", unit: "g" }
 ];
 
 var dir = [
   { disc: "Pour Ingredients Into A Bowl", detail: "text" },
-  { disc: "Make Sure You Do Something Something", detail: "footer" },
   { disc: "Mix Until Smooth", detail: "text" },
-  { disc: "Put In A Pan", detail: "text" },
-  { disc: "Cook For 40mins At 160 °C", detail: "text" },
-  { disc: "Wait To Cool", detail: "text" }
+  { disc: "Mold Circles On A Pan", detail: "text" },
+  { disc: "Cook For 10min At 175 °C", detail: "text" },
+  { disc: "Cause The Grandma-pocalapse", detail: "text" }
 ];
 </script>
 <script src="/JS/loadcooking.js"></script>
@@ -48,7 +53,7 @@ Cooking <t id="title"></t> With GhostJelly
 
 <p id="disc" class="one"></p>
 
-<div id="img"></div><br><br>
+<div id="img"></div><br>
 
 <div>
 <h2 class="two">Recipe</h2>

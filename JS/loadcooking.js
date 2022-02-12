@@ -2,7 +2,7 @@ function load() {
 //load template
 document.getElementById("title").innerHTML = title;
 document.getElementById("disc").innerHTML = disc;
-document.getElementById("size").innerHTML = "1 Batch = " + size + " " + title + " " + sizeunit;
+document.getElementById("size").innerHTML = "1 Batch = " + size + " " + sizeunitb + " " + title + " " + sizeunit;
 //load favicon
 let favicon = document.createElement('link');
 favicon.setAttribute('rel','shortcut icon');
@@ -60,7 +60,7 @@ function mult() {
     
     function submit() {
       var userinput = document.getElementById('input').value;
-      document.getElementById("size").innerHTML = userinput + " Batch = " + size * userinput + " " + title + " " + sizeunit;
+      document.getElementById("size").innerHTML = userinput + " Batch = " + size * userinput + " " + sizeunitb + " " + title + " " + sizeunit;
       var i = 0;
 
       do {
