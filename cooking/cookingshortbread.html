@@ -2,33 +2,13 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-
 <script>
-var size = "NaN"
-var sizeunit = "Pieces"
-var sizeunitb = ""
-var title = "Shortbread";
-var disc = "another english dessert. very very crumbly, but still delicious.";
-var img = "shortbread.jpg";
-
-var ingredients = [
-  { name: "Butter" , quantity: "100", unit: "g" },
-  { name: "Sugar", quantity: "40", unit: "g" },
-  { name: "Flour", quantity: "150", unit: "g" },
-  { name: "Corn Starch", quantity: "1", unit: "tsp" },
-  { name: "Baking Powder", quantity: "0.25", unit: "tsp"}
-];
-
-var dir = [
-  { disc: "Pour Ingredients Into A Bowl", detail: "text" },
-  { disc: "Mix Until Smooth", detail: "text" },
-  { disc: "Put In A Pan", detail: "text" },
-  { disc: "Cook For 40mins At 160 °C", detail: "text" },
-  { disc: "Wait To Cool", detail: "text" }
-];
+recipe = {};
+fetch("/JS/JSON/cooking/shortbread.json")
+  .then(response => response.json())
+  .then(json => { recipe = json ; load(recipe) } );
 </script>
 <script src="/JS/loadcooking.js"></script>
-
 <title>
 Cooking With GhostJelly
 </title>
@@ -41,12 +21,12 @@ font-family: pixel
 </style>
 </head>
 
-<body onload="load()">
+<body>
 <h1 class ="one">
 Cooking <t id="title"></t> With GhostJelly
 </h1>
 
-<p id="disc" class="one"></p>
+<p id="desc" class="one"></p>
 
 <div id="img"></div><br>
 
@@ -54,7 +34,7 @@ Cooking <t id="title"></t> With GhostJelly
 <h2 class="two">Recipe</h2>
 <hr class="two">
 <input id="input" placeholder="Batch Size" class="two"></input>
-<button onclick="mult().submit()" class="two">Update Batch Size</button><br><br>
+<button onclick="mult(recipe).submit(recipe)" class="two">Update Batch Size</button><br><br>
 
 <div id="recipe">
 </div>
