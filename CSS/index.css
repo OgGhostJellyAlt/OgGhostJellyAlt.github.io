@@ -3,8 +3,8 @@ color: white;
 background-color: black;
 font-family: "pixel";
 font-size: 28px;
-margin-left: 20%;
-margin-right: 20%;
+margin-left: 18%;
+margin-right: 14%;
 position: relative;
 animation-name: drop;
 animation-duration: 1s;
@@ -51,4 +51,9 @@ img {
 @keyframes drop {
   0%   {left:0px; top:-700px; opacity: 0;}
   100%  {left:0px; top:0px; opacity: 1;}
+}
+
+iframe {
+  margin-right: 10%;
+  margin-top: 2%;
 }
