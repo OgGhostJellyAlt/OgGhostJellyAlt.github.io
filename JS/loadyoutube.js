@@ -1,9 +1,8 @@
-//load stats
-function loadstat(stat) {
-    //do {
-        console.log(videos)
-    //} while ()
-}
+var videos = {}
+
+fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
+  .then(response => response.json())
+  .then(json => { videos = json ; loadvid(videos) } );
 
 //load videos
 function loadvid (videos) {

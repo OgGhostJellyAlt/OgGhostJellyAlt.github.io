@@ -4,16 +4,6 @@
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <link rel="shortcut icon" href="IMG/pfp.png" type="image/x-icon">
 
-<script>
-var videos = {}
-
-fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
-  .then(response => response.json())
-  .then(json => { videos = json ; loadvid(videos) } );
-fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
-  .then(response => response.json())
-  .then(json => { stat = json ; loadstat(stat) } );
-</script>
 <script src="/JS/loadyoutube.js"></script>
 
 <title>
