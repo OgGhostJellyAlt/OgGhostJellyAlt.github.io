@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/index.css">
+<link rel="shortcut icon" href="IMG/pfp.png" type="image/x-icon">
+
+<script>
+var videos = {}
+
+fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
+  .then(response => response.json())
+  .then(json => { videos = json ; load(videos) } );
+</script>
+<script src="/JS/loadyoutube.js"></script>
+
+<title>
+GhostJelly Hangout
+</title>
+
+<style>
+@font-face { font-family: pixel; src: url('FONT/pixel.otf'); } 
+html {
+font-family: pixel
+}
+</style>
+</head>
+
+<body>
+<h1>
+Youtube
+</h1>
+<l id="videos">
+</l><br><br>
+<body>
+</html>
