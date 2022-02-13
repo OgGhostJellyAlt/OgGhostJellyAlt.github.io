@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/blog.css">
+<link rel="shortcut icon" href="IMG/rickroll.gif" type="image/x-icon">
+
+<script>
+    fetch("/JSON/blog.json")
+        .then(response => response.json())
+        .then(json => { blog = json ; load(blog) } );
+</script>
+<script src="/JS/loadblog.js"></script>
+
+<title>
+test
+</title>
+
+<style>
+@font-face { font-family: pixel; src: url("FONT/pixel.otf"); }
+html {
+font-family: pixel
+}
+</style>
+</head>
+
+<body>
+<h1>GhostJelly Blog</h1>
+<l id="post">
+</l>
+<body>
+</html>

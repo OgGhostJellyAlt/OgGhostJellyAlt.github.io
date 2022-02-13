@@ -10,7 +10,7 @@ fetch("/JSON/cooking/" + params.get("recipe") + ".json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } );
 </script>
-<script src="/JS/loadcooking.js"></script>
+<script src="/JS/cooking/loadcooking.js"></script>
 <title>
 Cooking With GhostJelly
 </title>
