@@ -21,6 +21,10 @@ a.link:hover {
   border-bottom: 2px solid currentColor;
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   height: 100px;
   width: 100px;
