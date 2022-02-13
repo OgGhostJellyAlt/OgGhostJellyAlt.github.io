@@ -4,7 +4,9 @@
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
 <script>
 recipe = {};
-fetch("/JS/JSON/cooking/shortbread.json")
+
+const params = new URLSearchParams(document.location.search);
+fetch("/JS/JSON/cooking/" + params.get("recipe") + ".json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } );
 </script>
