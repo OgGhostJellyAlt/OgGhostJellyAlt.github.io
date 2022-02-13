@@ -9,7 +9,10 @@ var videos = {}
 
 fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
   .then(response => response.json())
-  .then(json => { videos = json ; load(videos) } );
+  .then(json => { videos = json ; loadvid(videos) } );
+fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=20")
+  .then(response => response.json())
+  .then(json => { stat = json ; loadstat(stat) } );
 </script>
 <script src="/JS/loadyoutube.js"></script>
 
@@ -24,12 +27,16 @@ font-family: pixel
 }
 </style>
 </head>
-
 <body>
-<h1>
-Youtube
-</h1>
+<h3>Warning: Sometimes Might not Work Because Google Limits Data Usage</h3>
+<l id="stats">
+    <h1>Stats</h1>
+    <hr>
+</l>
+
 <l id="videos">
+    <h1>Videos</h1>
+    <hr>
 </l><br><br>
 <body>
 </html>

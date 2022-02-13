@@ -1,4 +1,12 @@
-function load (videos) {
+//load stats
+function loadstat(stat) {
+    //do {
+        console.log(videos)
+    //} while ()
+}
+
+//load videos
+function loadvid (videos) {
     var i = 0
     do {
         //div
@@ -13,7 +21,7 @@ function load (videos) {
         var iframe = document.createElement('iframe')
         iframe.setAttribute('width','280')
         iframe.setAttribute('height','157')
-        iframe.setAttribute('src','https://www.youtube.com/embed/' + videos.items[i].id.videoId + "?controls=0&amp")
+        iframe.setAttribute('src','https://www.youtube.com/embed/' + videos.items[i].id.videoId)
         iframe.setAttribute('title','YouTube video player')
         iframe.setAttribute('frameborder','0')
         iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
