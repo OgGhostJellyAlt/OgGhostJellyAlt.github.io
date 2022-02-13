@@ -28,9 +28,8 @@ html {
     }
 
     @keyframes drop {
-      0%   {left:0px; top:-1200px;}
-      1%   {left:0px; top:-1200px;}
-      100% {left:0px; top:0px; visibility: visible;}
+      0%   {left:-1200px; top:0px; opacity: 0;}
+      100% {left:0px; top:0px; opacity: 1; visibility: visible;}
     }
 
     .one {

@@ -5,7 +5,7 @@
 <link rel="shortcut icon" href="IMG/cooking.jpg" type="image/x-icon">
 
 <script>
-fetch("/JS/JSON/cooking/recipe.json")
+fetch("/JSON/cooking/recipe.json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } );
 </script>

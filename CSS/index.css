@@ -21,6 +21,10 @@ a.link:hover {
   border-bottom: 2px solid currentColor;
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   height: 100px;
   width: 100px;
@@ -45,8 +49,8 @@ img {
 }
 
 @keyframes drop {
-  0%   {left:0px; top:-700px;}
-  100%  {left:0px; top:0px;}
+  0%   {left:0px; top:-700px; opacity: 0;}
+  100%  {left:0px; top:0px; opacity: 1;}
 }
 
 iframe {
