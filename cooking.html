@@ -4,6 +4,13 @@
 <link rel="stylesheet" type="text/css" href="CSS/recipe.css">
 <link rel="shortcut icon" href="IMG/cooking.jpg" type="image/x-icon">
 
+<script>
+fetch("/JS/JSON/cooking/recipe.json")
+  .then(response => response.json())
+  .then(json => { recipe = json ; load(recipe) } );
+</script>
+<script src="/JS/loadcookingindex.js"></script>
+
 <title>
 Cooking With GhostJelly
 </title>
@@ -23,16 +30,12 @@ Cooking With GhostJelly
 
 <p class="footer one">BATCH SIZES VARY, A BATCH SIZE/SERVING SIZE DISPLAY COMING SOON...</p>
 
-<l class="two">
+<l class="two" id="dessert">
 <h2>Dessert</h2><hr>
-<a href="recipe?recipe=pancakes" class="link">Pancakes!</a><br>
-<a href="recipe?recipe=shortbread" class="link">Shortbread</a><br>
-<a href="recipe?recipe=breadpudding" class="link">Bread Pudding</a><f class="footer"> (sounds wierd but trust me)<f><br>
 </l>
 
-<l class="three">
+<l class="three" id="experimental">
 <h2>Experimental <f class="footer"> these recipes are going to have some changes</f></h2><hr>
-<a href="recipe?recipe=chococookies" class="link">Chocolate Chip Cookies</a><br>
 </l>
 <br>
 <body>
