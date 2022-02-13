@@ -4,6 +4,10 @@ html {
   font-family: "pixel";
   font-size: 22px;
   text-align: center;
+  position: relative;
+  animation-name: drop;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
 }
     
 a.link {
@@ -26,7 +30,15 @@ img {
   animation-iteration-count: infinite;
   }
   
- @keyframes vibrate {
-  0%   {left:-5px; top:0px;}
-  25%  {left:5px; top:0px;}
+  @keyframes vibrate {
+    0%   {left:-5px; top:0px;}
+    25%  {left:5px; top:0px;}
+  }
+  @keyframes drop {
+    0%   {left:1300px; top:0px;}
+    25%  {left:-1300px; top:0px;}
+    30%  {left:-1300px; top:0px;}
+    55%  {left:-0px; top:0px;}
+    80%   {left:1300px; top:0px;}
+    100%  {left:-1300px; top:0px;}
   }
