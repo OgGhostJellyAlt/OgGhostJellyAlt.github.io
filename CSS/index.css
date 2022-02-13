@@ -22,6 +22,7 @@ a.link:hover {
 }
 
 a {
+  color: white;
   text-decoration: none;
 }
 
@@ -56,4 +57,18 @@ img {
 iframe {
   margin-right: 10%;
   margin-top: 2%;
+}
+
+post {
+  font-family: "pixel";
+  background-color: darkred;
+  border-radius: 10px;
+  padding: 35px 27px;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+}
+
+post {
+  border-bottom: 2px solid darkred;
 }
