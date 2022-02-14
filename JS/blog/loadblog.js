@@ -1,4 +1,6 @@
 function load(blog) {
+    blog.post.reverse();
+
     var i = 0
     do {
         var post = document.createElement('post')
