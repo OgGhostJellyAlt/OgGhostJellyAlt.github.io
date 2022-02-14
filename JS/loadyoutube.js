@@ -11,7 +11,6 @@ fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id
 
 //load videos
 function loadvid (videos) {
-    console.log(videos)
     var i = 0
     do {
         //div

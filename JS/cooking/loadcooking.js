@@ -52,7 +52,6 @@ function load(recipe) {
   document.getElementById('dir').appendChild(direction)
   i = i + 1;
   } while (i < recipe.dir.length);
-  console.log("load finished successfully");
 }
 
 //update batch size
