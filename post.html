@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head id="head">
+<link rel="stylesheet" type="text/css" href="CSS/blog.css">
+
+<script>
+const params = new URLSearchParams(document.location.search);
+fetch("/JSON/blog/post/post" + params.get("post") + ".json")
+    .then(response => response.json())
+    .then(json => { post = json ; load(post) } );
+</script>
+<script src="/JS/blog/loadpost.js"></script>
+
+<title id="title"></title>
+
+<style>
+@font-face { font-family: pixel; src: url("FONT/pixel.otf"); }
+html {
+font-family: pixel
+}
+</style>
+</head>
+
+<body>
+<h1 id="header"></h1>
+<div id="post">
+</div>
+<body>
+</html>

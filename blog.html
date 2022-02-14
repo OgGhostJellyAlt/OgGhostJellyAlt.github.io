@@ -5,11 +5,11 @@
 <link rel="shortcut icon" href="IMG/rickroll.gif" type="image/x-icon">
 
 <script>
-    fetch("/JSON/blog.json")
+    fetch("/JSON/blog/blog.json")
         .then(response => response.json())
         .then(json => { blog = json ; load(blog) } );
 </script>
-<script src="/JS/loadblog.js"></script>
+<script src="/JS/blog/loadblog.js"></script>
 
 <title>
 test

@@ -1,0 +1,10 @@
+{
+    "title": "hello",
+    "img": "rickroll.gif",
+
+    "post": [
+        { "text": "BRBRBRBR\"BRB\"RBRBRBR" , "detail": "" },
+        { "text": "" },
+        { "text": "LOLOLOLOLLOLOLLO" , "detail": "footer" }
+    ]
+}

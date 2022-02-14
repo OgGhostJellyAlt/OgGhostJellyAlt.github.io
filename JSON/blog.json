@@ -1,6 +1,0 @@
-{
-    "post": [
-        { "title": "this is a linked post" , "link": "404" , "post": "and this is the post description" },
-        { "title": "Hello!" , "link": "" , "post": "This is A Test Post" }
-    ]
-}
