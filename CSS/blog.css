@@ -46,3 +46,16 @@ post {
 .footer {
     font-size: 18px;
 }
+
+.button {
+    font-family: "pixel";
+    background-color: black;
+    border-radius: 25px;
+    border-color: darkred;
+    color: red;
+    padding: 10px 27px;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
