@@ -39,6 +39,8 @@ function loadvid (videos) {
 function loadchan (channel) {
   //load title
   document.getElementById('title').innerHTML = channel.items[0].snippet.title
+  //load desc
+  document.getElementById('desc').innerHTML = channel.items[0].snippet.description
   //load profile
   var stat = document.createElement('img')
   stat.setAttribute('src',channel.items[0].snippet.thumbnails.default.url)
@@ -59,4 +61,6 @@ function loadchan (channel) {
   var stat = document.createElement('h3')
   stat.innerHTML = 'IRL Stats: NaN'
   document.getElementById('stats').appendChild(stat);
+  //load date
+  document.getElementById('date').innerHTML = 'Channel Creation: ' + channel.items[0].snippet.publishedAt
 }
