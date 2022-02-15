@@ -6,6 +6,7 @@ fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E
   .then(json => { videos = json ; loadvid(videos) } )
   .catch(error => {
     alert('Failed to load, Error Message: ' + error)
+    document.getElementById('title').innerHTML = "Data Failed To Load :("
   });
 
 fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCD1IYOrmoXBFBArQ4lSxUYQ&key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE")
@@ -13,6 +14,7 @@ fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id
   .then(json => { channel = json ; loadchan(channel) } )
   .catch(error => {
     alert('Failed to load, Error Message: ' + error)
+    document.getElementById('title').innerHTML = "Data Failed To Load :("
   });
 
 //load videos
