@@ -6,12 +6,13 @@ function load(post) {
     document.getElementById('head').appendChild(fav);
     //load title
     document.getElementById('title').innerHTML = post.title
+    //load header
     document.getElementById('header').innerHTML = post.title
     //load post
     var i = 0
     do {
         if (!!post.post[i].text) {
-            var msg = document.createElement('t')
+            var msg = document.createElement(post.post[i].tag)
             msg.setAttribute('class',post.post[i].detail)
             msg.innerHTML = post.post[i].text
             document.getElementById('post').appendChild(msg);
@@ -22,5 +23,3 @@ function load(post) {
         i = i + 1
         } while ( i < post.post.length )
 };
-
-//<link rel="shortcut icon" href="IMG/rickroll.gif" type="image/x-icon">

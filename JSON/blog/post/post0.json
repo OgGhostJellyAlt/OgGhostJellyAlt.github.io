@@ -3,8 +3,8 @@
     "img": "blog.png",
 
     "post": [
-        { "text": "She's " , "detail": "" },
-        { "text": "annoying, stupid, ugly, big mouthed, large headed, obsessed with things periodically and then suddenly losing intrest in said topic, poo <br>" , "detail": "" },
-        { "text": "<a href='https://juliessilhouette.github.io'>check out her website here</a>" , "detail": "" }
+        { "text": "She's " , "detail": "" , "tag": "t" },
+        { "text": "annoying, stupid, ugly, big mouthed, large headed, obsessed with things periodically and then suddenly losing intrest in said topic, poo <br>" , "detail": "" , "tag": "t" },
+        { "text": "<a href='https://juliessilhouette.github.io'>check out her website here</a>" , "detail": "" , "tag": "t" }
     ]
 }
