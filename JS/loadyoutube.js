@@ -3,11 +3,17 @@ var channel = {}
 
 fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=3")
   .then(response => response.json())
-  .then(json => { videos = json ; loadvid(videos) } );
+  .then(json => { videos = json ; loadvid(videos) } )
+  .catch(error => {
+    alert('Failed to load, Error Message: ' + error)
+  });
 
 fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCD1IYOrmoXBFBArQ4lSxUYQ&key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE")
   .then(response => response.json())
-  .then(json => { channel = json ; loadchan(channel) } );
+  .then(json => { channel = json ; loadchan(channel) } )
+  .catch(error => {
+    alert('Failed to load, Error Message: ' + error)
+  });
 
 //load videos
 function loadvid (videos) {
