@@ -1,2 +1,26 @@
-# OgGhostJelly.github.io
-good website 10/10 so good it make me wana explode 10/10 so great ghostjelly is handsome and smart and amazing and so ccool
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/index.css">
+<link rel="shortcut icon" href="IMG/pfp.png" type="image/x-icon">
+
+<script src="JS/indexbutton.js"></script>
+
+<title>
+GhostJelly Hangout
+</title>
+
+<style>
+@font-face { font-family: pixel; src: url('FONT/pixel.otf'); } 
+html {
+font-family: pixel
+}
+</style>
+</head>
+
+<body>
+<h1>
+My Website :)
+</h1>
+<body>
+</html>
