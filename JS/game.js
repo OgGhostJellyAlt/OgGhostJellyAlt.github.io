@@ -2,6 +2,11 @@ console.log('supa secret msg for gamrs')
 
 var interval = setInterval(game, 20);
 
+var canvas = {
+    width: 450,
+    height: 450
+}
+
 var player = {
     X: 200,
     Y: 200,
@@ -23,8 +28,8 @@ var bullet = {
 function game() {
     if (document.getElementById('game').getContext('2d')) {
 
-            draw()
-            keypress()
+            draw(bullet, player, canvas)
+            keypress(bullet, player)
 
     } else {
         //alert game unsupported
@@ -34,8 +39,9 @@ function game() {
 }
 //game.fillRect(right, down, size right, size up)
 
-function draw() {
+function draw(bullet, player) {
     var game = document.getElementById('game').getContext('2d');
+        game.clearRect(0, 0, canvas.width, canvas.height)
         game.fillStyle = player.color;
         game.fillRect(player.X, player.Y, player.Xs, player.Ys);
 
@@ -48,17 +54,19 @@ function draw() {
         document.getElementById('score').innerHTML = 'Score: ' + player.score
 }
 
-function keypress() {
-    document.onkeyup = function (space) {
-        space = space || window.event;
-        shoot()
+function keypress(bullet, player) {
+    document.onkeyup = function (e) {
+        e = e || window.event;
+        shoot(bullet, player)
     };
 }
 
-function shoot() {
+function shoot(bullet) {
+    console.log('shoot')
     bullet.exist = true
-    bullet.X = 500
-    bullet.Y = 500
+    bullet.X = bullet.X + 10
+    bullet.Y =  bullet.Y + 10
+    console.log('bullet shmoovin')
 
     player.score = player.score + 1
 }
