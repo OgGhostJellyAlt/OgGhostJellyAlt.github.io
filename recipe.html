@@ -8,7 +8,12 @@ recipe = {};
 const params = new URLSearchParams(document.location.search);
 fetch("/JSON/cooking/" + params.get("recipe") + ".json")
   .then(response => response.json())
-  .then(json => { recipe = json ; load(recipe) } );
+  .then(json => { recipe = json ; load(recipe) } )
+  .catch(error => {
+    alert('Failed to load, Error Message:\n' + error)
+    document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
+    document.getElementById('desc').innerHTML = "check your internet connection, and try again."
+  });
 </script>
 <script src="/JS/cooking/loadcooking.js"></script>
 <title>
@@ -24,7 +29,7 @@ font-family: pixel
 </head>
 
 <body>
-<h1 class ="one">
+<h1 class ="one" id="h1">
 Cooking <t id="title"></t> With GhostJelly
 </h1>
 
