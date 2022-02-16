@@ -6,13 +6,12 @@
 recipe = {};
 
 const params = new URLSearchParams(document.location.search);
-fetch("/JSON/cooking/" + params.get("recipe") + ".json")
+fetch("/JSON/cooking/" + params.get("recie") + ".json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } )
   .catch(error => {
-    alert('Failed to load, Error Message:\n' + error)
+    alert('Failed to load, Error Message:\n' + error + '\n\nTry Reloading...')
     document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
-    document.getElementById('desc').innerHTML = "check your internet connection, and try again."
   });
 </script>
 <script src="/JS/cooking/loadcooking.js"></script>
