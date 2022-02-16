@@ -2,7 +2,7 @@
 <html lang ="en">
 <head>
 <link rel="stylesheet" type="text/css" href="/CSS/recipe.css">
-<script src="/JS/cooking/loadcooking.js"></script>
+
 <script>
 recipe = {};
 
@@ -15,6 +15,8 @@ fetch("/JSON/cooking/" + params.get("recie") + ".json")
     document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
   });
 </script>
+<script src="/JS/cooking/loadcooking.js"></script>
+
 <title>
 Cooking With GhostJelly
 </title>
