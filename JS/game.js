@@ -17,12 +17,19 @@ var player = {
 }
 
 var bullet = {
-    X: 200,
-    Y: 200,
-    Xs: 25,
-    Ys: 25,
-    color: 'white',
-    exist: false
+    X: 100,
+    Y: 100,
+    Xs: 10,
+    Ys: 10,
+    speed: 1,
+    color: 'red',
+    exist: false,
+    dir: 0.5
+}
+
+var mouse = {
+    X: 100,
+    Y: 100
 }
 
 function game() {
@@ -45,10 +52,13 @@ function draw(bullet, player) {
         game.fillStyle = player.color;
         game.fillRect(player.X, player.Y, player.Xs, player.Ys);
 
-        if (bullet.exist = true) {
-            var bullet = document.getElementById('game').getContext('2d');
+        if (bullet.exist == true) {
+            console.log('bfore: ' + bullet.X + ', ' + bullet.Y)
             game.fillStyle = bullet.color;
             game.fillRect(bullet.X, bullet.Y, bullet.Xs, bullet.Ys);
+            bullet.X = bullet.X + (bullet.speed * Math.cos( bullet.dir ));
+            bullet.Y =  bullet.Y + (bullet.speed * Math.sin( bullet.dir ));
+            console.log('aftr: ' + bullet.X + ', ' + bullet.Y)
         }
 
         document.getElementById('score').innerHTML = 'Score: ' + player.score
@@ -62,11 +72,9 @@ function keypress(bullet, player) {
 }
 
 function shoot(bullet) {
-    console.log('shoot')
+    //bullet.dir = Math.atan((mouse.Y - bullet.Y)/(mouse.X - bullet.X))
     bullet.exist = true
-    bullet.X = bullet.X + 10
-    bullet.Y =  bullet.Y + 10
-    console.log('bullet shmoovin')
+    console.log('shoot')
 
     player.score = player.score + 1
 }
