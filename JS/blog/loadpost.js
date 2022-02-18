@@ -1,3 +1,8 @@
+const params = new URLSearchParams(document.location.search);
+fetch("/JSON/blog/post/post" + params.get("post") + ".json")
+    .then(response => response.json())
+    .then(json => { post = json ; load(post) } );
+
 function load(post) {
     //load favicon
     var fav = document.createElement('link')

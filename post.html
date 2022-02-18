@@ -4,12 +4,6 @@
 <link rel="stylesheet" type="text/css" href="CSS/blog.css">
 <link rel="shortcut icon" href="IMG/blog.png" type="image/x-icon">
 
-<script>
-const params = new URLSearchParams(document.location.search);
-fetch("/JSON/blog/post/post" + params.get("post") + ".json")
-    .then(response => response.json())
-    .then(json => { post = json ; load(post) } );
-</script>
 <script src="/JS/blog/loadpost.js"></script>
 
 <title id="title"></title>

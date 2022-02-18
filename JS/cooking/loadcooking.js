@@ -1,3 +1,14 @@
+recipe = {};
+
+const params = new URLSearchParams(document.location.search);
+fetch("/JSON/cooking/" + params.get("recipe") + ".json")
+  .then(response => response.json())
+  .then(json => { recipe = json ; load(recipe) } )
+  .catch(error => {
+    alert('Failed to load, Error Message:\n' + error + '\n\nTry Reloading...')
+    document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
+});
+
 function load(recipe) {
   //load template
   document.getElementById("title").innerHTML = recipe.title;

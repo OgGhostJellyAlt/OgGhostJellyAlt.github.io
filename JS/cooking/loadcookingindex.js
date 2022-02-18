@@ -1,3 +1,7 @@
+fetch("/JSON/cooking/recipe.json")
+  .then(response => response.json())
+  .then(json => { recipe = json ; load(recipe) } );
+
 function load(recipe) {
     var i = 0
     do {

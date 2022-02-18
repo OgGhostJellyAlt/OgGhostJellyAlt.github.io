@@ -1,3 +1,7 @@
+fetch("/JSON/blog/blog.json")
+    .then(response => response.json())
+    .then(json => { blog = json ; load(blog) } );
+
 function load(blog) {
     blog.post.reverse();
 
