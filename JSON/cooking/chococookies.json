@@ -20,10 +20,10 @@
       ],
 
     "dir": [
-    { "desc": "Pour Ingredients Into A Bowl", "detail": "text" },
-    { "desc": "Mix Until Smooth", "detail": "text" },
-    { "desc": "Mold Circles On A Pan", "detail": "text" },
-    { "desc": "Cook For 10min At 175 °C", "detail": "text" },
-    { "desc": "Cause The Grandma-pocalapse", "detail": "text" }
+    { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
+    { "desc": "Mix Until Smooth", "footer":"" },
+    { "desc": "Mold Circles On A Pan", "footer":"" },
+    { "desc": "Cook For 10min At 175 °C", "footer":"" },
+    { "desc": "Cause The Grandma-pocalapse", "footer":"" }
     ]
 }

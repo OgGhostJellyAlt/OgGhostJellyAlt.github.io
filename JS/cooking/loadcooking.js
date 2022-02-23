@@ -48,19 +48,19 @@ function load(recipe) {
   } while (i < recipe.ingredients.length)
   //load dir
   var i = 0;
-  var diri = 1;
   do {
     let direction = document.createElement("p");
-    direction.setAttribute('class',recipe.dir[i].detail)
-    if ( direction.getAttribute('class') == "footer" ) {
-      direction.innerHTML = recipe.dir[i].desc;
-      direction.setAttribute('class','three footer')
-    } else {
-      direction.innerHTML = diri + ". " + recipe.dir[i].desc;
-      direction.setAttribute('class','three')
-      diri = diri + 1
-    }
+    direction.setAttribute('class','three text');
+    let footer = document.createElement("p");
+    footer.setAttribute('class','three footer');
+
+    direction.innerHTML = i + 1 + '. ' + recipe.dir[i].desc
     document.getElementById('dir').appendChild(direction)
+
+    if (!!recipe.dir[i].footer) {
+      footer.innerHTML = recipe.dir[i].footer
+      document.getElementById('dir').appendChild(footer)
+    }
     i = i + 1;
   } while (i < recipe.dir.length);
 }
