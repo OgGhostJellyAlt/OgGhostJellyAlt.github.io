@@ -27,56 +27,56 @@ function load(recipe) {
   //load recipe
   var i = 0
   do {
-  let name = document.createElement('r');
-  name.innerHTML = recipe.ingredients[i].name + " - "
-  name.setAttribute('class','two')
-  document.getElementById("recipe").appendChild(name);
+    let name = document.createElement('r');
+    name.innerHTML = recipe.ingredients[i].name + " - "
+    name.setAttribute('class','two')
+    document.getElementById("recipe").appendChild(name);
 
-  let quantity = document.createElement('r');
-  quantity.setAttribute('id', recipe.ingredients[i].name)
-  quantity.innerHTML = recipe.ingredients[i].quantity
-  quantity.setAttribute('class','two')
-  document.getElementById("recipe").appendChild(quantity);
+    let quantity = document.createElement('r');
+    quantity.setAttribute('id', recipe.ingredients[i].name)
+    quantity.innerHTML = recipe.ingredients[i].quantity
+    quantity.setAttribute('class','two')
+    document.getElementById("recipe").appendChild(quantity);
 
-  let unit = document.createElement('r');
-  unit.innerHTML = recipe.ingredients[i].unit
-  unit.setAttribute('class','two')
-  document.getElementById("recipe").appendChild(unit);
+    let unit = document.createElement('r');
+    unit.innerHTML = recipe.ingredients[i].unit
+    unit.setAttribute('class','two')
+    document.getElementById("recipe").appendChild(unit);
 
-  document.getElementById("recipe").appendChild(document.createElement('br'));
-  i = i + 1
+    document.getElementById("recipe").appendChild(document.createElement('br'));
+    i = i + 1
   } while (i < recipe.ingredients.length)
   //load dir
   var i = 0;
   var diri = 1;
   do {
-  let direction = document.createElement("p");
-  direction.setAttribute('class',recipe.dir[i].detail)
-  if ( direction.getAttribute('class') == "footer" ) {
-    direction.innerHTML = recipe.dir[i].desc;
-    direction.setAttribute('class','three footer')
-  } else {
-    direction.innerHTML = diri + ". " + recipe.dir[i].desc;
-    direction.setAttribute('class','three')
-    diri = diri + 1
-  }
-  document.getElementById('dir').appendChild(direction)
-  i = i + 1;
+    let direction = document.createElement("p");
+    direction.setAttribute('class',recipe.dir[i].detail)
+    if ( direction.getAttribute('class') == "footer" ) {
+      direction.innerHTML = recipe.dir[i].desc;
+      direction.setAttribute('class','three footer')
+    } else {
+      direction.innerHTML = diri + ". " + recipe.dir[i].desc;
+      direction.setAttribute('class','three')
+      diri = diri + 1
+    }
+    document.getElementById('dir').appendChild(direction)
+    i = i + 1;
   } while (i < recipe.dir.length);
 }
-
 //update batch size
 function mult(recipe) {
     
     function submit(recipe) {
+      console.log('Update Batch')
       var userinput = document.getElementById('input').value;
       document.getElementById("size").innerHTML = userinput + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
       var i = 0;
 
       do {
-      document.getElementById(recipe.ingredients[i].name).innerHTML = userinput * recipe.ingredients[i].quantity;
+        document.getElementById(recipe.ingredients[i].name).innerHTML = userinput * recipe.ingredients[i].quantity;
 
-      i = i + 1;
+        i = i + 1;
       } while (i < recipe.ingredients.length);
     }
     return {submit};
