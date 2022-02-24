@@ -43,6 +43,17 @@ function load(recipe) {
     unit.setAttribute('class','two')
     document.getElementById("recipe").appendChild(unit);
 
+    var seli = 0
+    document.getElementById("recipe").appendChild(document.createElement('select').setAttribute('id',i));
+    do {
+      console.log(recipe.ingredients[i].select[seli].name)
+      var options = document.createElement('option')
+      options.innerHTML = recipe.ingredients[i].select[seli].name
+      document.getElementById(i).appendChild(options);
+
+      seli = seli + 1
+    } while ( seli < recipe.ingredients[i].select.length )
+
     document.getElementById("recipe").appendChild(document.createElement('br'));
     i = i + 1
   } while (i < recipe.ingredients.length)
