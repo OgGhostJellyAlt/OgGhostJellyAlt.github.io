@@ -43,16 +43,28 @@ function load(recipe) {
     unit.setAttribute('class','two')
     document.getElementById("recipe").appendChild(unit);
 
-    var seli = 0
-    document.getElementById("recipe").appendChild(document.createElement('select').setAttribute('id',i));
-    do {
-      console.log(recipe.ingredients[i].select[seli].name)
-      var options = document.createElement('option')
-      options.innerHTML = recipe.ingredients[i].select[seli].name
-      document.getElementById(i).appendChild(options);
+    if ( !!recipe.ingredients[i].select ) {
+      var whitespace = document.createElement('whitespace')
+      whitespace.innerHTML = '&nbsp&nbsp&nbsp&nbsp'
+      document.getElementById("recipe").appendChild(whitespace);
+      var select = document.createElement('select')
+      select.setAttribute('id','select' + i)
+      select.setAttribute('class','two')
+      select.setAttribute('selected','Medium')
+      document.getElementById("recipe").appendChild(select);
+      //loop
+      var seli = 0
+      do {
+        var options = document.createElement('option')
+        options.innerHTML = recipe.ingredients[i].select[seli].name
+        if ( recipe.ingredients[i].select[seli].default == 'true' ) {
+          options.setAttribute('selected','')
+        }
+        document.getElementById('select' + i).appendChild(options);
 
-      seli = seli + 1
-    } while ( seli < recipe.ingredients[i].select.length )
+        seli = seli + 1
+      } while ( seli < recipe.ingredients[i].select.length )
+    }
 
     document.getElementById("recipe").appendChild(document.createElement('br'));
     i = i + 1
