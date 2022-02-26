@@ -4,10 +4,10 @@ html {
   font-family: "pixel";
   font-size: 22px;
   text-align: center;
-  position: relative;
-  animation-name: drop;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
+  animation-name: spin;
+  animation-duration: 5s;
+  animation-delay: 0ms;
+  animation-iteration-count: infinite;
 }
     
 a.link {
@@ -41,4 +41,10 @@ img {
     55%  {left:-0px; top:0px;}
     80%   {left:1300px; top:0px;}
     100%  {left:-1300px; top:0px;}
+  }
+
+  @keyframes spin {
+    0% {rotate: 0deg;}
+    50% {rotate: 360deg;}
+    100% {rotate: 720deg;}
   }
