@@ -7,12 +7,7 @@
   "img": "pancakes.jpeg",
 
   "ingredients": [
-    { "name": "Flour" , "quantity": "100", "unit": "g", 
-      "select": [
-          { "name": "Low", "change": "0.5" },
-          { "name": "Medium", "change": "1", "default": "true" },
-          { "name": "High", "change": "2" }
-      ] },
+    { "name": "Flour" , "quantity": "100", "unit": "g" },
     { "name": "Eggs", "quantity": "2", "unit": "" },
     { "name": "Milk", "quantity": "300", "unit": "g" },
    { "name": "Oil", "quantity": "1", "unit": "tbsp" },
