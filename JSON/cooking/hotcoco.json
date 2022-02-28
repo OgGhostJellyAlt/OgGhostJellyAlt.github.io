@@ -1,0 +1,24 @@
+{
+    "size": "1",
+    "sizeunit": "",
+    "sizeunitb": "Cup of",
+    "title": "Hot Cocoa",
+    "desc": "Hot Chocolate.. but with cocoa powder",
+    "img": "hotcoco.jpeg",
+  
+    "ingredients": [
+      { "name": "Milk" , "quantity": "270", "unit": "g" },
+      { "name": "Vanilla (extract)", "quantity": "0.125", "unit": "tsp (1/8)" },
+      { "name": "Cocoa", "quantity": "2", "unit": "tsp" },
+      { "name": "Creamer", "quantity": "1", "unit": "tsp" },
+      { "name": "Sugar", "quantity": "1.25", "unit": "tsp"},
+      { "name": "Corn Starch", "quantity": "0.25", "unit": "tsp"},
+      { "name": "Salt", "quantity": "1", "unit": " pinch"}
+    ],
+  
+    "dir": [
+     { "desc": "Mix Ingredients Together", "footer":"" },
+     { "desc": "Microwave for 30 Seconds", "footer":"" },
+     { "desc": "Then Continue Mixing and Microwaving until its Hot Enough", "footer":"" }
+    ]
+  }
