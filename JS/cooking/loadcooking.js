@@ -13,6 +13,7 @@ function load(recipe) {
   //load template
   document.getElementById("title").innerHTML = recipe.title;
   document.getElementById("desc").innerHTML = recipe.desc;
+  document.getElementById("input").value = "1";
   document.getElementById("size").innerHTML = "1 Batch = " + recipe.size + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
   //load favicon
   let favicon = document.createElement('link');
@@ -43,41 +44,66 @@ function load(recipe) {
     unit.setAttribute('class','two')
     document.getElementById("recipe").appendChild(unit);
 
+    if ( !!recipe.ingredients[i].select ) {
+      var whitespace = document.createElement('whitespace')
+      whitespace.innerHTML = '&nbsp&nbsp&nbsp&nbsp'
+      document.getElementById("recipe").appendChild(whitespace);
+      var select = document.createElement('select')
+      select.setAttribute('id','select' + i)
+      select.setAttribute('class','two')
+      select.setAttribute('selected','Medium')
+      document.getElementById("recipe").appendChild(select);
+      //loop
+      var seli = 0
+      do {
+        var options = document.createElement('option')
+        options.innerHTML = recipe.ingredients[i].select[seli].name
+        if ( recipe.ingredients[i].select[seli].default == 'true' ) {
+          options.setAttribute('selected','')
+        }
+        document.getElementById('select' + i).appendChild(options);
+
+        seli = seli + 1
+      } while ( seli < recipe.ingredients[i].select.length )
+    }
+
     document.getElementById("recipe").appendChild(document.createElement('br'));
     i = i + 1
   } while (i < recipe.ingredients.length)
   //load dir
   var i = 0;
-  var diri = 1;
   do {
     let direction = document.createElement("p");
-    direction.setAttribute('class',recipe.dir[i].detail)
-    if ( direction.getAttribute('class') == "footer" ) {
-      direction.innerHTML = recipe.dir[i].desc;
-      direction.setAttribute('class','three footer')
-    } else {
-      direction.innerHTML = diri + ". " + recipe.dir[i].desc;
-      direction.setAttribute('class','three')
-      diri = diri + 1
-    }
+    direction.setAttribute('class','three text');
+    let footer = document.createElement("p");
+    footer.setAttribute('class','three footer');
+
+    direction.innerHTML = i + 1 + '. ' + recipe.dir[i].desc
     document.getElementById('dir').appendChild(direction)
+
+    if (!!recipe.dir[i].footer) {
+      footer.innerHTML = recipe.dir[i].footer
+      document.getElementById('dir').appendChild(footer)
+    }
     i = i + 1;
   } while (i < recipe.dir.length);
+  //start loop
+  window.requestAnimationFrame(loop);
 }
-//update batch size
-function mult(recipe) {
-    
-    function submit(recipe) {
-      console.log('Update Batch')
-      var userinput = document.getElementById('input').value;
-      document.getElementById("size").innerHTML = userinput + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
-      var i = 0;
-
-      do {
-        document.getElementById(recipe.ingredients[i].name).innerHTML = userinput * recipe.ingredients[i].quantity;
-
-        i = i + 1;
-      } while (i < recipe.ingredients.length);
+//update loop
+function loop() {
+  var userinput = document.getElementById('input').value;
+  document.getElementById("size").innerHTML = userinput + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
+  
+  var i = 0;
+  do {
+    var select = 1
+    if (!!recipe.ingredients[i].select) {
+      select = recipe.ingredients[i].select[document.getElementById('select' + i).selectedIndex].change
     }
-    return {submit};
-  }
+    document.getElementById(recipe.ingredients[i].name).innerHTML = (userinput * recipe.ingredients[i].quantity) * select;
+
+    i = i + 1;
+  } while (i < recipe.ingredients.length);
+  window.requestAnimationFrame(loop);
+}

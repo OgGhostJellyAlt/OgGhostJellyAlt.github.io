@@ -15,10 +15,10 @@
   ],
 
    "dir": [
-   { "desc": "Pour Ingredients Into A Bowl", "detail": "text" },
-   { "desc": "Mix Until Smooth", "detail": "text" },
-   { "desc": "Put In A Pan", "detail": "text" },
-   { "desc": "Cook For 40mins at 160 °C", "detail": "text" },
-  { "desc": "Wait To Cool", "detail": "text" }
+   { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
+   { "desc": "Mix Until Smooth", "footer":"" },
+   { "desc": "Put In A Pan", "footer":"" },
+   { "desc": "Cook For 40mins at 160 °C", "footer":"" },
+  { "desc": "Wait To Cool", "footer":"" }
  ]
 }

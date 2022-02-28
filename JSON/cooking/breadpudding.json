@@ -18,9 +18,9 @@
       ],
 
     "dir": [
-    { "desc": "Pour Ingredients Into A Bowl", "detail": "text" },
-    { "desc": "Mix Thouroughly", "detail": "text" },
-    { "desc": "Pour Into Pan", "detail": "text" },
-    { "desc": "Cook For 45min At 175 °C", "detail": "text" }
+    { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
+    { "desc": "Mix Thouroughly", "footer":"" },
+    { "desc": "Pour Into Pan", "footer":"" },
+    { "desc": "Cook For 45min At 175 °C", "footer":"" }
     ]
 }

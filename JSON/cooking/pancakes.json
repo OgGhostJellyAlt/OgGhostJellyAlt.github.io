@@ -15,10 +15,9 @@
   ],
 
   "dir": [
-   { "desc": "Pour Ingredients Into A Bowl", "detail": "text" },
-   { "desc": "Mix Until Smooth", "detail": "text" },
-   { "desc": "*if its not smooth after mixing, leave it for 10min", "detail": "footer" },
-   { "desc": "Cook For 1min 30sec on Each Side", "detail": "text" },
-   { "desc": "Cook For The Entire World And End World Hunger", "detail": "text" }
+   { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
+   { "desc": "Mix Until Smooth", "footer":"*if its not smooth after mixing, leave it for 10min" },
+   { "desc": "Cook For 1min 30sec on Each Side", "footer":"" },
+   { "desc": "Cook For The Entire World And End World Hunger", "footer":"" }
   ]
 }
