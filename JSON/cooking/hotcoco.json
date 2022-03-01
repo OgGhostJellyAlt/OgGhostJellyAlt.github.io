@@ -11,7 +11,13 @@
       { "name": "Vanilla (extract)", "quantity": "0.125", "unit": "tsp (1/8)" },
       { "name": "Cocoa", "quantity": "2", "unit": "tsp" },
       { "name": "Creamer", "quantity": "1", "unit": "tsp" },
-      { "name": "Sugar", "quantity": "1.25", "unit": "tsp"},
+      { "name": "Sugar", "quantity": "1.25", "unit": "tsp", "select": [
+        { "name":"Low", "change":"0.5" },
+        { "name":"Medium", "change":"1", "default":"true" },
+        { "name":"High", "change":"1.5" },
+        { "name":"TOO HIGH!", "change":"2" }
+      ]
+    },
       { "name": "Corn Starch", "quantity": "0.25", "unit": "tsp"},
       { "name": "Salt", "quantity": "1", "unit": " pinch"}
     ],
