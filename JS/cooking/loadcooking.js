@@ -89,13 +89,7 @@ function load(recipe) {
     i = i + 1;
   } while (i < recipe.dir.length);
   //start loop
-  fetch("/JSON/cooking/measure.json")
-  .then(response => response.json())
-  .then(json => { measure = json ; loop(measure) } )
-  .catch(error => {
-    alert('Failed to load measure, Error Message:\n' + error + '\n\nTry Reloading...')
-    document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
-  });
+  window.requestAnimationFrame(loop);
 }
 //update loop
 function loop() {
