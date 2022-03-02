@@ -1,11 +1,12 @@
 recipe = {};
+measure = {};
 
 const params = new URLSearchParams(document.location.search);
 fetch("/JSON/cooking/" + params.get("recipe") + ".json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } )
   .catch(error => {
-    alert('Failed to load, Error Message:\n' + error + '\n\nTry Reloading...')
+    alert('Failed to load recipe, Error Message:\n' + error + '\n\nTry Reloading...')
     document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
 });
 
@@ -88,12 +89,18 @@ function load(recipe) {
     i = i + 1;
   } while (i < recipe.dir.length);
   //start loop
-  window.requestAnimationFrame(loop);
+  fetch("/JSON/cooking/measure.json")
+  .then(response => response.json())
+  .then(json => { measure = json ; loop(measure) } )
+  .catch(error => {
+    alert('Failed to load measure, Error Message:\n' + error + '\n\nTry Reloading...')
+    document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
+  });
 }
 //update loop
 function loop() {
   var userinput = document.getElementById('input').value;
-  document.getElementById("size").innerHTML = userinput + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
+  document.getElementById("size").innerHTML = (userinput * 1) + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
   
   var i = 0;
   do {
@@ -101,7 +108,46 @@ function loop() {
     if (!!recipe.ingredients[i].select) {
       select = recipe.ingredients[i].select[document.getElementById('select' + i).selectedIndex].change
     }
-    document.getElementById(recipe.ingredients[i].name).innerHTML = (userinput * recipe.ingredients[i].quantity) * select;
+    var displaytext = (userinput * recipe.ingredients[i].quantity) * select
+    /*
+    //measure converter
+    var mi = 0;
+    do {
+      scroll through measure list
+      stop when touching value greater than displaytext
+
+      mi = mi + 1
+    } while ( i < length of ingredient measure list )
+    displaytext = displaytext / measurelist[mi]
+    */
+    //fraction converter
+    if ( !!(displaytext % 1) ) {
+      var decimal = Math.round((displaytext % 1)*1000)/1000
+      displaytext = displaytext - decimal
+      switch ( decimal ) {
+        case 0.75:
+          decimal = '3/4'
+          break;
+        case 0.5:
+          decimal = '1/2'
+          break;
+        case 0.25:
+          decimal = '1/4'
+          break;
+        case 0.33:
+          decimal = '1/3'
+          break;
+        case 0.125:
+          decimal = '1/8'
+          break;
+      }
+      if ( !!displaytext ) {
+        displaytext = displaytext + ' ' + decimal
+      } else {
+        displaytext = decimal
+      }
+    }
+    document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
 
     i = i + 1;
   } while (i < recipe.ingredients.length);
