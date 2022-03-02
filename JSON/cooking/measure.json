@@ -1,0 +1,12 @@
+{
+    "volume":[
+        { "name":"cup", "amount": 48, "change": 12 },
+        { "name":"tbsp", "amount": 3, "change": 3 },
+        { "name":"tsp", "amount": 1, "change": 0.25 },
+        { "name":" pinch", "amount": 0.125, "change": 0.125 }
+    ],
+
+    "weight":[
+        { "name":"g", "amount": 1, "change": 0 }
+    ]
+}

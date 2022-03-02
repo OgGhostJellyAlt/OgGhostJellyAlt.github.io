@@ -1,11 +1,12 @@
 recipe = {};
+measure = {};
 
 const params = new URLSearchParams(document.location.search);
 fetch("/JSON/cooking/" + params.get("recipe") + ".json")
   .then(response => response.json())
   .then(json => { recipe = json ; load(recipe) } )
   .catch(error => {
-    alert('Failed to load, Error Message:\n' + error + '\n\nTry Reloading...')
+    alert('Failed to load recipe, Error Message:\n' + error + '\n\nTry Reloading...')
     document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
 });
 
@@ -88,7 +89,13 @@ function load(recipe) {
     i = i + 1;
   } while (i < recipe.dir.length);
   //start loop
-  window.requestAnimationFrame(loop);
+  fetch("/JSON/cooking/measure.json")
+  .then(response => response.json())
+  .then(json => { measure = json ; loop(measure) } )
+  .catch(error => {
+    alert('Failed to load measure, Error Message:\n' + error + '\n\nTry Reloading...')
+    document.getElementById('h1').innerHTML = "Data Failed To Load :(<br>"
+  });
 }
 //update loop
 function loop() {
@@ -101,7 +108,24 @@ function loop() {
     if (!!recipe.ingredients[i].select) {
       select = recipe.ingredients[i].select[document.getElementById('select' + i).selectedIndex].change
     }
-    document.getElementById(recipe.ingredients[i].name).innerHTML = (userinput * recipe.ingredients[i].quantity) * select;
+    var displaytext = (userinput * recipe.ingredients[i].quantity) * select
+    /*
+    //measure converter
+    var mi = 0;
+    do {
+      scroll through measure list
+      stop when touching value greater than displaytext
+
+      mi = mi + 1
+    } while ( i < length of ingredient measure list )
+    displaytext = displaytext / measurelist[mi]
+    //fraction converter
+    if ( check if displaytext is not whole number ) {
+      decimal = decimal valuessp of displaytext
+      decimal = displaytext + ('1/' + (1 / decimal))
+    }
+    */
+    document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
 
     i = i + 1;
   } while (i < recipe.ingredients.length);
