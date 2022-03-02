@@ -7,11 +7,11 @@
     "img": "shortbread.jpg",
     
       "ingredients": [
-      { "name": "Butter" , "quantity": "100", "unit": "g" },
-      { "name": "Sugar", "quantity": "40", "unit": "g" },
-      { "name": "Flour", "quantity": "150", "unit": "g" },
-      { "name": "Corn Starch", "quantity": "1", "unit": "tsp" },
-      { "name": "Baking Powder", "quantity": "0.25", "unit": "tsp"}
+      { "name": "Butter" , "quantity": "1.25", "unit": "g" },
+      { "name": "Sugar", "quantity": "0.33", "unit": "g" },
+      { "name": "Flour", "quantity": "0.75", "unit": "g" },
+      { "name": "Corn Starch", "quantity": "0.75", "unit": "tsp" },
+      { "name": "Baking Powder", "quantity": "0.75", "unit": "tsp"}
     ],
   
      "dir": [

@@ -119,12 +119,15 @@ function loop() {
       mi = mi + 1
     } while ( i < length of ingredient measure list )
     displaytext = displaytext / measurelist[mi]
-    //fraction converter
-    if ( check if displaytext is not whole number ) {
-      decimal = decimal valuessp of displaytext
-      decimal = displaytext + ('1/' + (1 / decimal))
-    }
     */
+    //fraction converter
+    if ( !!(displaytext % 1) ) {
+      var decimal = Math.round((displaytext % 1)*1000)/1000
+      switch ( decimal ) {
+        case:
+      }
+      
+    }
     document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
 
     i = i + 1;
