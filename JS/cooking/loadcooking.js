@@ -108,6 +108,9 @@ function loop() {
       var decimal = Math.round((displaytext % 1)*1000)/1000
       displaytext = displaytext - decimal
       switch ( decimal ) {
+        case 0.9:
+          decimal = '9/10'
+          break;
         case 0.75:
           decimal = '3/4'
           break;
@@ -123,9 +126,12 @@ function loop() {
         case 0.125:
           decimal = '1/8'
           break;
+        case 0.1:
+          decimal = '1/10'
+          break;
       }
       if ( !!displaytext ) {
-        displaytext = displaytext + ' ' + decimal
+        displaytext = displaytext + ' ' + '<r class="fraction">' + decimal + '</r>'
       } else {
         displaytext = decimal
       }
