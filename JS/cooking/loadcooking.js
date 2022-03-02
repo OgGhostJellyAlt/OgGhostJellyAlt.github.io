@@ -109,17 +109,6 @@ function loop() {
       select = recipe.ingredients[i].select[document.getElementById('select' + i).selectedIndex].change
     }
     var displaytext = (userinput * recipe.ingredients[i].quantity) * select
-    /*
-    //measure converter
-    var mi = 0;
-    do {
-      scroll through measure list
-      stop when touching value greater than displaytext
-
-      mi = mi + 1
-    } while ( i < length of ingredient measure list )
-    displaytext = displaytext / measurelist[mi]
-    */
     //fraction converter
     if ( !!(displaytext % 1) ) {
       var decimal = Math.round((displaytext % 1)*1000)/1000
