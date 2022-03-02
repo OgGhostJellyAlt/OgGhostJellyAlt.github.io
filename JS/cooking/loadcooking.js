@@ -123,10 +123,29 @@ function loop() {
     //fraction converter
     if ( !!(displaytext % 1) ) {
       var decimal = Math.round((displaytext % 1)*1000)/1000
+      displaytext = displaytext - decimal
       switch ( decimal ) {
-        case:
+        case 0.75:
+          decimal = '3/4'
+          break;
+        case 0.5:
+          decimal = '1/2'
+          break;
+        case 0.25:
+          decimal = '1/4'
+          break;
+        case 0.33:
+          decimal = '1/3'
+          break;
+        case 0.125:
+          decimal = '1/8'
+          break;
       }
-      
+      if ( !!displaytext ) {
+        displaytext = displaytext + ' ' + decimal
+      } else {
+        displaytext = decimal
+      }
     }
     document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
 
