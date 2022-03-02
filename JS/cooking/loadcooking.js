@@ -100,7 +100,7 @@ function load(recipe) {
 //update loop
 function loop() {
   var userinput = document.getElementById('input').value;
-  document.getElementById("size").innerHTML = userinput + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
+  document.getElementById("size").innerHTML = (userinput * 1) + " Batch = " + recipe.size * userinput + " " + recipe.sizeunitb + " " + recipe.title + " " + recipe.sizeunit;
   
   var i = 0;
   do {
