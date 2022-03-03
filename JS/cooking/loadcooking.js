@@ -1,5 +1,5 @@
 recipe = {};
-measure = {};
+var decimal;
 
 const params = new URLSearchParams(document.location.search);
 fetch("/JSON/cooking/" + params.get("recipe") + ".json")
