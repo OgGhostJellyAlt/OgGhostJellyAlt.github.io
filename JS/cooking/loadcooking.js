@@ -104,36 +104,17 @@ function loop() {
     }
     var displaytext = (userinput * recipe.ingredients[i].quantity) * select
     //fraction converter
-    if ( !!(displaytext % 1) ) {
-      var decimal = Math.round((displaytext % 1)*1000)/1000
-      displaytext = displaytext - decimal
-      switch ( decimal ) {
-        case 0.9:
-          decimal = '9/10'
-          break;
-        case 0.75:
-          decimal = '3/4'
-          break;
-        case 0.5:
-          decimal = '1/2'
-          break;
-        case 0.25:
-          decimal = '1/4'
-          break;
-        case 0.33:
-          decimal = '1/3'
-          break;
-        case 0.125:
-          decimal = '1/8'
-          break;
-        case 0.1:
-          decimal = '1/10'
-          break;
-      }
-      if ( !!displaytext ) {
-        displaytext = displaytext + ' ' + '<r class="fraction">' + decimal + '</r>'
-      } else {
-        displaytext = decimal
+    var fraction = document.getElementById('fraction').selectedIndex
+    if ( fraction == 0 ) {
+      if ( !!(displaytext % 1) ) {
+        var decimal = Math.round((displaytext % 1)*1000)/1000
+        displaytext = displaytext - decimal
+        decimal = fractionconverter(decimal)
+        if ( !!displaytext ) {
+          displaytext = displaytext + ' ' + '<r class="fraction">' + decimal + '</r>'
+        } else {
+          displaytext = decimal
+        }
       }
     }
     document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
@@ -141,4 +122,43 @@ function loop() {
     i = i + 1;
   } while (i < recipe.ingredients.length);
   window.requestAnimationFrame(loop);
+}
+
+function fractionconverter(decimal) {
+  switch ( decimal ) {
+    case 0.75:
+      decimal = '3/4'
+      break;
+    case 0.8:
+      decimal = '4/5'
+      break;
+    case 0.6:
+      decimal = '3/5'
+      break;
+    case 0.5:
+      decimal = '1/2'
+      break;
+    case 0.4:
+      decimal = '2/5'
+      break;
+    case 0.25:
+      decimal = '1/4'
+      break;
+    case 0.33:
+      decimal = '1/3'
+      break;
+    case 0.2:
+      decimal = '1/5'
+      break;
+    case 0.125:
+      decimal = '1/8'
+      break;
+    case 0.9:
+    case 0.7:
+    case 0.3:
+    case 0.1:
+      decimal = decimal * 10 + '/10'
+      break;
+  }
+  return decimal;
 }
