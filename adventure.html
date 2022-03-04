@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS/index.css">
+        <link rel="shortcut icon" href="IMG/adventure.jpg" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="JS/adventure.js"></script>
+
+        <title>
+            Adventure
+        </title>
+        
+        <style>
+            #log {
+                border: 1px solid white;
+                position: relative;
+                min-height: 150px;
+            }
+            .logtext {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            button {
+                font-family: "pixel";
+                background-color: black;
+                border-color: white;
+                border-radius: 10px;
+                color: white;
+                padding: 8px 24px;
+                display: inline-block;
+                font-size: 22px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            @font-face { font-family: pixel; src: url("FONT/pixel.otf"); }
+            html {
+            font-family: pixel
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">Text Adventure</h1>
+        <adventure id="adventure">
+            <div id="log" width="700" height="100">
+            </div><br>
+            <choice id="choice">
+                <button onclick="init();">Start Game</button>
+            </choice><br><br>
+            <t>HP:&nbsp&nbsp</t><stats id="hp"></stats><br>
+            <t>ATK:&nbsp&nbsp</t><stats id="atk"></stats><br>
+            <t>DEF:&nbsp&nbsp</t><stats id="def"></stats><br>
+        </adventure>
+    </body>
+</html>
