@@ -183,8 +183,22 @@ var choice = [
                     stats.hp -= 2
                     Msg = 'DONT MESS WITH FIRE BREATHING BEASTS -2 HP'
                 }
+                return(Msg)
             } 
         },
         { Button: 'Run', Msg: 'YOU CANT OUT RUN SOMETHING THAT CAN FLY -1 HP', Run: function() { stats.hp -= 1 } }
+    ],
+    [
+        { Main: 'A TUNNEL BLOCKS THE WAY' },
+        { Button: 'Go Inside', Run: function() { 
+                if ( stats.hp > 6 ) {
+                    stats.hp -= 3
+                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -3 HP'
+                } else {
+                    Msg = 'YOUR SMALL AND FLEXIBLY, NICE'
+                }
+                return(Msg)
+            } 
+        },
     ],
 ]
