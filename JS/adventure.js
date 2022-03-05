@@ -115,7 +115,7 @@ function ascend() {
     document.getElementById('body').appendChild(document.createElement('br'))
     document.getElementById('body').appendChild(document.createElement('br'))
     var link = document.createElement('a')
-    link.setAttribute('href','adventure?acension=2')
+    link.setAttribute('href','adventure?acension=1')
     link.setAttribute('id','portal')
     document.getElementById('body').appendChild(link)
     var img = document.createElement('img')
