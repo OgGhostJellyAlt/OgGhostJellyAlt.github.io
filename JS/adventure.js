@@ -60,6 +60,8 @@ function update() {//updates logs and buttons
     document.getElementById('choice').innerHTML = ''
     var currentchoice = Math.floor(Math.random() * choice.length)
     document.getElementById('title').innerHTML = choice[currentchoice][0].Main
+    //update choicestats
+    document.getElementById('choicestats').innerHTML = ''
     if ( !!choice[currentchoice][0].stats ) {
         document.getElementById('choicestats').innerHTML = choice[currentchoice][0].stats
     }
@@ -254,11 +256,12 @@ var choice = [
             if ( stats.atk > 12 ) {
                 stats.def = 0;
                 stats.atk = 0;
-                Msg = 'YOU KILLED AN AMAZING PERSON -99 SHAME -99 DEF -99 ATK'
+                Msg = 'YOU KILLED AN AMAZING PERSON +99 SHAME -99 DEF -99 ATK'
             } else {
                 stats.hp -= 1
                 Msg = 'YOU FORTUNATELY FAILED AT ATTACKING -1 HP'
             }
+            return(Msg)
         }
         },
         { Button: 'Crystal Ball', Run: function() {
