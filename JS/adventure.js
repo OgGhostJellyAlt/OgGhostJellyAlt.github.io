@@ -247,7 +247,16 @@ var choice = [
     ],
     [
         { Main: 'A FRIENDLY WIZARD APPEARS' },
-        { Button: 'Attack', Run: function() {}
+        { Button: 'Attack', Run: function() {
+            if ( stats.atk > 12 ) {
+                stats.def = 0;
+                stats.atk = 0;
+                Msg = 'YOU KILLED AN AMAZING PERSON -99 SHAME -99 DEF -99 ATK'
+            } else {
+                stats.hp -= 1
+                Msg = 'YOU FORTUNATELY FAILED AT ATTACKING -1 HP'
+            }
+        }
         },
         { Button: 'Crystal Ball', Run: function() {
             if ( Math.floor(Math.random() * 2) == 0 ) {
@@ -257,6 +266,7 @@ var choice = [
                 stats.hp -= 1;
                 Msg = 'THATS NOT GOOD -1 HP';
             }
+            return(Msg)
         }     
         },
         { Button: 'Run', Msg: 'WELL THAT WAS KINDA RUDE',Run: 0 }
