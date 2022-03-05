@@ -14,6 +14,8 @@ var stats = {
 
 
 function init() {//initializes
+    //init upmsg
+    document.getElementById('upmsg').innerHTML = ''
     //init log
     document.getElementById('logload').setAttribute('id','log')
     //init stats
