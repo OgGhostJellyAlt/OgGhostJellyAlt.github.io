@@ -197,8 +197,8 @@ var choice = [
         { Main: 'A TUNNEL BLOCKS THE WAY' },
         { Button: 'Go Inside', Run: function() { 
                 if ( stats.hp > 6 ) {
-                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -'+ math.round((stats.hp - 7)/2) +' DEF'
-                    stats.hp -= math.round((stats.hp - 7)/2)
+                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -'+ Math.round((stats.hp - 7)/2) +' DEF'
+                    stats.hp -= Math.round((stats.hp - 7)/2)
                 } else {
                     Msg = 'YOUR SMALL AND FLEXIBLY, NICE'
                 }
