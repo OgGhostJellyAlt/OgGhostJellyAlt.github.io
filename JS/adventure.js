@@ -1,3 +1,5 @@
+var round = 0;
+
 var log = [
     '',
     '',
@@ -15,7 +17,7 @@ var stats = {
 
 function init() {//initializes
     //init upmsg
-    document.getElementById('upmsg').innerHTML = ''
+    document.getElementById('tinytext').innerHTML = 'Turn: 1'
     //init log
     document.getElementById('logload').setAttribute('id','log')
     //init stats
@@ -51,6 +53,9 @@ function button(event) {//runs choice[][].run
 
 
 function update() {//updates logs and buttons
+    //update round
+    round += 1
+    document.getElementById('tinytext').innerHTML = 'Round: ' + round
     //update buttons
     document.getElementById('choice').innerHTML = ''
     var currentchoice = Math.floor(Math.random() * choice.length)
@@ -159,7 +164,7 @@ var choice = [
         { Button: 'Leave', Msg: 'PLAYING IT SAFE', Run: 0 }
     ],
     [
-        { Main: 'A MAGICAL POTION APPEARS ON YOUR HEAD' },
+        { Main: 'A MAGICAL POTION APPEARS OUT OF THIN AIR' },
         { Button: 'Eat', Run: function() {
                 if ( Math.floor(Math.random() * 2) == 0 ) {
                     stats.atk += 1;
@@ -192,13 +197,44 @@ var choice = [
         { Main: 'A TUNNEL BLOCKS THE WAY' },
         { Button: 'Go Inside', Run: function() { 
                 if ( stats.hp > 6 ) {
-                    stats.hp -= 3
-                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -3 HP'
+                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -'+ math.round((stats.hp - 7)/2) +' DEF'
+                    stats.hp -= math.round((stats.hp - 7)/2)
                 } else {
                     Msg = 'YOUR SMALL AND FLEXIBLY, NICE'
                 }
                 return(Msg)
             } 
         },
+    ],
+    [
+        { Main: 'A EVIL WIZARD APPEARS' },
+        { Button: 'Attack', Run: function() { 
+                if ( stats.atk > 12 ) {
+                    stats.def += 4
+                    Msg = 'NOICE, YOU BEAT GURFUMBLEBIBLE THE GREAT +4 DEF'
+                } else {
+                    stats.hp -= 4
+                    Msg = 'LOL YOU SUCK AT THIS<br>-sincerly yours, evil wizard xoxo -4 HP'
+                }
+                return(Msg)
+            }
+        },
+        { Button: 'Hug', Msg: 'THE WIZARD IS EVIL, EVIL! DID YOU NOT HEAR ME? -1 HP', Run: function() { stats.hp -= 1 } },
+        { Button: 'Run', Msg: 'YOU MADE THE WIZARD SAD +1 MEAN', Run: 0 },
+    ],
+    [
+        { Main: 'A SWORD IN A ROCK SITS THERE, ARE YOU WORTHY' },
+        { Button: 'Pick Up', Run: function() { 
+                if ( Math.floor(Math.random() * 2) == 0 ) {
+                    stats.atk += 1;
+                    Msg = 'COOL A SWORD +1 ATK';
+                } else {
+                    stats.hp -= 1;
+                    Msg = 'OUCH YOU HURT YOUR HANDS! -1 HP';
+                }
+                return(Msg)
+            }
+        },
+        { Button: 'Leave', Msg: 'YOU LEFT', Run: 0 },
     ],
 ]
