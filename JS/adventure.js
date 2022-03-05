@@ -214,7 +214,7 @@ var choice = [
                     Msg = 'NOICE, YOU BEAT GURFUMBLEBIBLE THE GREAT +4 DEF'
                 } else {
                     stats.hp -= 4
-                    Msg = 'LOL YOU SUCK AT THIS<br>-sincerly yours, evil wizard xoxo -4 HP'
+                    Msg = 'LOL YOU SUCK AT THIS -sincerly yours, evil wizard xoxo -4 HP'
                 }
                 return(Msg)
             }
