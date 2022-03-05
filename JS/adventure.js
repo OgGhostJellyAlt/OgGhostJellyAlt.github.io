@@ -10,7 +10,7 @@ var log = [
 
 var stats = {
     hp: 5,
-    atk: 1,
+    atk: 13,
     def: 0
 }
 
@@ -111,6 +111,17 @@ function update() {//updates logs and buttons
     }
 }
 
+function ascend() {
+    document.getElementById('body').appendChild(document.createElement('br'))
+    document.getElementById('body').appendChild(document.createElement('br'))
+    var link = document.createElement('a')
+    link.setAttribute('href','adventure?acension=2')
+    link.setAttribute('id','portal')
+    document.getElementById('body').appendChild(link)
+    var img = document.createElement('img')
+    img.setAttribute('src','/IMG/portal.png')
+    document.getElementById('portal').appendChild(img)
+}
 
 var choice = [
     [
@@ -217,6 +228,7 @@ var choice = [
                 if ( stats.atk > 12 ) {
                     stats.def += 4
                     Msg = 'NOICE, YOU BEAT GURFUMBLEBIBLE THE GREAT +4 DEF'
+                    ascend()
                 } else {
                     stats.hp -= 4
                     Msg = 'LOL YOU SUCK AT THIS -sincerly yours, evil wizard xoxo -4 HP'
