@@ -15,14 +15,59 @@ var stats = {
 var choice = [
     [
         { Main: 'A CHEST APPEARS' },
-        { Button: 'Open', Msg: 'COOL A SWORD +1 ATK', Run: function() { stats.atk += 1 } },
+        { Button: 'Open', Run: function() {
+                if ( Math.floor(Math.random() * 2) == 0 ) {
+                    stats.atk += 1;
+                    Msg = 'COOL A SWORD +1 ATK';
+                } else {
+                    stats.hp -= 1;
+                    Msg = 'ITS A TRAP! -1 HP';
+                }
+                return(Msg)
+            } 
+        },
         { Button: 'Leave', Msg: 'YOU LET THE CHEST DO ITS CHEST THINGS', Run: 0 }
     ],
     [
         { Main: 'AHH A GOBLIN' },
-        { Button: 'Fight', Msg: 'COOL A SWORD +1 ATK', Run: function() { stats.hp -= 1 } },
-        { Button: 'Run', Msg: 'YOU LET THE CHEST DO ITS CHEST THINGS', Run: 0 }
-    ]
+        { Button: 'Fight', Run: function() {
+                if ( stats.atk > 1 ) {
+                    stats.def += 1
+                    Msg = 'MURDER AAHAHAHAHA! +1 DEF'
+                } else {
+                    stats.hp -= 1
+                    Msg = 'YOUR TOO WEAK -1 HP'
+                }
+                return(Msg)
+            } 
+        },
+        { Button: 'Run', Msg: 'YOU FLED', Run: 0 }
+    ],
+    [
+        { Main: 'A HOT BABE APPEARS' },
+        { Button: 'Run', Msg: 'SOCIAL ANXIETY -1 HP', Run: function() { stats.hp -= 1 } },
+        { Button: 'Run', Msg: 'SOCIAL ANXIETY -1 HP', Run: function() { stats.hp -= 1 } }
+    ],
+    [
+        { Main: 'A SHIELD SWEET' },
+        { Button: 'Pick Up', Msg: 'POGGERS (who says that anymore) +1 DEF', Run: function() { stats.def += 1 } },
+        { Button: 'Leave', Msg: 'WOW SO SMART. YOU LEFT THE SHIELD, THAT COULD OF BEEN USEFUL YOU IDIOT. DID YOU ACTAULLY JUST LEAVE A VALUABLE PIECE OF LOOT BEHIND WITHOUT THINKING TWICE. WHAT A JOKE', Run: 0 }
+    ],
+    [
+        { Main: 'A CRYSTAL BALL, LAYING ON THE GROUND.. NOT WIERD AT ALL' },
+        { Button: 'Look Into The Ball', Run: function() {
+                if ( 0 < stats.def ) {
+                    stats.def -= 1
+                    stats.hp += 2
+                    Msg = 'ABRACADABRA YOUR DEFENSE IS GONE -1 DEF +2 HP'
+                } else {
+                    Msg = 'ONLY COOL PEOPLE CAN LOOK INTO THE BALL'
+                }
+                return(Msg)
+            }
+        },
+        { Button: 'Leave', Msg: 'PLAYING IT SAFE', Run: 0 }
+    ],
 ]
 
 function init() {//initializes
@@ -47,10 +92,14 @@ function init() {//initializes
 
 function button(event) {//runs choice[][].run
     if (!!event.Run) {
-        event.Run()
+        var Msg = event.Run()
     }
     log.shift()
-    log.push(event.Msg)
+    if ( !Msg ) {
+        log.push(event.Msg)
+    } else {
+        log.push(Msg)
+    }
     
     update()
 }
