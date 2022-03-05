@@ -60,6 +60,9 @@ function update() {//updates logs and buttons
     document.getElementById('choice').innerHTML = ''
     var currentchoice = Math.floor(Math.random() * choice.length)
     document.getElementById('title').innerHTML = choice[currentchoice][0].Main
+    if ( !!choice[currentchoice][0].stats ) {
+        document.getElementById('choicestats').innerHTML = choice[currentchoice][0].stats
+    }
     
     var i = 1 
     do {
@@ -124,7 +127,7 @@ var choice = [
         { Button: 'Leave', Msg: 'YOU LET THE CHEST DO ITS CHEST THINGS', Run: 0 }
     ],
     [
-        { Main: 'AHH A GOBLIN' },
+        { Main: 'AHH A GOBLIN', stats: 'GOBLIN<br>HP:2' },
         { Button: 'Fight', Run: function() {
                 if ( stats.atk > 1 ) {
                     stats.def += 1
@@ -149,7 +152,7 @@ var choice = [
         { Button: 'Leave', Msg: 'WOW SO SMART. YOU LEFT THE SHIELD, THAT COULD OF BEEN USEFUL YOU IDIOT. DID YOU ACTAULLY JUST LEAVE A VALUABLE PIECE OF LOOT BEHIND WITHOUT THINKING TWICE. WHAT A JOKE', Run: 0 }
     ],
     [
-        { Main: 'A CRYSTAL BALL, LAYING ON THE GROUND.. NOT WIERD AT ALL' },
+        { Main: 'A CRYSTAL BALL, LAYING ON THE GROUND.. NOT WIERD AT ALL', stats: 'TURN YOUR DEFENCE INTO HEALTH' },
         { Button: 'Look Into The Ball', Run: function() {
                 if ( 0 < stats.def ) {
                     Msg = 'ABRACADABRA YOUR DEFENSE IS GONE -'+ stats.def +' DEF +'+ stats.def * 2 +' HP'
@@ -179,7 +182,7 @@ var choice = [
         { Button: 'Drop And Run', Msg: 'NOT EVEN ONCE', Run: 0 }
     ],
     [
-        { Main: 'A BIG SCARY DRAGON APPEARS' },
+        { Main: 'A BIG SCARY DRAGON APPEARS', stats: 'DRAGON<br>HP:5' },
         { Button: 'Fight It', Run: function() { 
                 if ( stats.atk > 4 ) {
                     stats.def += 2
@@ -197,17 +200,17 @@ var choice = [
         { Main: 'A TUNNEL BLOCKS THE WAY' },
         { Button: 'Go Inside', Run: function() { 
                 if ( stats.hp > 6 ) {
-                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -'+ Math.round((stats.hp - 7)/2) +' DEF'
+                    Msg = 'YOUR TOO STRONG, YOU CANT FIT -'+ Math.round((stats.hp - 7)/2) +' HP'
                     stats.hp -= Math.round((stats.hp - 7)/2)
                 } else {
-                    Msg = 'YOUR SMALL AND FLEXIBLY, NICE'
+                    Msg = 'YOUR SMALL AND FLEXIBLY I MEAN FLEXIBALE- FLEXIBUL- FLA- FLEXIBLE'
                 }
                 return(Msg)
             } 
         },
     ],
     [
-        { Main: 'A EVIL WIZARD APPEARS' },
+        { Main: 'A EVIL WIZARD APPEARS', stats: 'EVIL WIZARD<br>HP:13' },
         { Button: 'Attack', Run: function() { 
                 if ( stats.atk > 12 ) {
                     stats.def += 4
