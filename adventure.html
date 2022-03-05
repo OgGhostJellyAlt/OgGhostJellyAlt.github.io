@@ -14,7 +14,7 @@
         <style>
             #log {
                 border: 1px solid white;
-                min-height: 70px;
+                min-height: 120px;
             }
             button {
                 font-family: "pixel";
@@ -37,15 +37,14 @@
     <body>
         <h1 id="title">Text Adventure</h1>
         <adventure id="adventure">
-            <div id="log" width="700" height="100">
+            <div id="logload" width="700" height="100">
 
             </div><br>
             <choice id="choice">
                 <button onclick="init();">Start Game</button>
             </choice><br><br>
-            <t>HP:&nbsp&nbsp</t><stats id="hp"></stats><br>
-            <t>ATK:&nbsp&nbsp</t><stats id="atk"></stats><br>
-            <t>DEF:&nbsp&nbsp</t><stats id="def"></stats><br>
+            <div id="stats">
+            </div>
         </adventure>
     </body>
 </html>
