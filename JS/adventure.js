@@ -278,7 +278,7 @@ var choice = [
         { Button: 'Run', Msg: 'WELL THAT WAS KINDA RUDE',Run: 0 }
     ],
     [
-        { Main: 'AN ANGEL APPEARS FROM THE HEAVENS' },
+        { Main: 'AN ANGEL APPEARS FROM THE HEAVENS', stats: 'HELPS YOU IF YOUR LOW ON HP' },
         { Button: 'Ask For Help', Run: function() {
                 if ( stats.hp < 3 ) {
                     stats.hp += 5;
