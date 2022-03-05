@@ -10,7 +10,7 @@ var log = [
 
 var stats = {
     hp: 5,
-    atk: 13,
+    atk: 1,
     def: 0
 }
 
