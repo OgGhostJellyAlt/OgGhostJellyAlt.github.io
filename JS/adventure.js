@@ -220,7 +220,15 @@ var choice = [
             }
         },
         { Button: 'Hug', Msg: 'THE WIZARD IS EVIL, EVIL! DID YOU NOT HEAR ME? -1 HP', Run: function() { stats.hp -= 1 } },
-        { Button: 'Run', Msg: 'YOU MADE THE WIZARD SAD +1 MEAN', Run: 0 },
+        { Button: 'Run', Msg: 'YOU MADE THE WIZARD SAD +1 MEAN', Run: function() {
+            if ( Math.floor(Math.random() * 2) == 0 ) {
+                Msg = 'YOU MADE THE WIZARD SAD +1 MEAN';
+            } else {
+                stats.hp -= 2;
+                Msg = 'THE EVIL WIZARD ISNT HAPPY ABOUT THAT -2 HP';
+            }
+            }
+        },
     ],
     [
         { Main: 'A SWORD IN A ROCK SITS THERE, ARE YOU WORTHY' },
@@ -236,5 +244,21 @@ var choice = [
             }
         },
         { Button: 'Leave', Msg: 'YOU LEFT', Run: 0 },
+    ],
+    [
+        { Main: 'A FRIENDLY WIZARD APPEARS' },
+        { Button: 'Attack', Run: function() {}
+        },
+        { Button: 'Crystal Ball', Run: function() {
+            if ( Math.floor(Math.random() * 2) == 0 ) {
+                stats.hp += 2;
+                Msg = 'SOMETHING GOOD HAPPENED +2 HP';
+            } else {
+                stats.hp -= 1;
+                Msg = 'THATS NOT GOOD -1 HP';
+            }
+        }     
+        },
+        { Button: 'Run', Msg: 'WELL THAT WAS KINDA RUDE',Run: 0 }
     ],
 ]
