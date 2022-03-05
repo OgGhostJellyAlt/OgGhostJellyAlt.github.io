@@ -274,4 +274,17 @@ var choice = [
         },
         { Button: 'Run', Msg: 'WELL THAT WAS KINDA RUDE',Run: 0 }
     ],
+    [
+        { Main: 'AN ANGEL APPEARS FROM THE HEAVENS' },
+        { Button: 'Ask For Help', Run: function() {
+                if ( stats.hp < 3 ) {
+                    stats.hp += 5;
+                    Msg = 'LUCKY YOU! +5 HP';
+                } else {
+                    Msg = 'THE ANGEL FLEW AWAY (i think its the body spray)';
+                }
+                return(Msg)
+            } 
+        },
+    ],
 ]
