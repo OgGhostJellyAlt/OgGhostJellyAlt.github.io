@@ -145,9 +145,9 @@ var choice = [
         { Main: 'A CRYSTAL BALL, LAYING ON THE GROUND.. NOT WIERD AT ALL' },
         { Button: 'Look Into The Ball', Run: function() {
                 if ( 0 < stats.def ) {
-                    stats.def -= 1
-                    stats.hp += 2
-                    Msg = 'ABRACADABRA YOUR DEFENSE IS GONE -1 DEF +2 HP'
+                    Msg = 'ABRACADABRA YOUR DEFENSE IS GONE -'+ stats.def +' DEF +'+ stats.def * 2 +' HP'
+                    stats.hp += stats.def * 2
+                    stats.def -= stats.def
                 } else {
                     Msg = 'ONLY COOL PEOPLE CAN LOOK INTO THE BALL'
                 }
@@ -155,5 +155,34 @@ var choice = [
             }
         },
         { Button: 'Leave', Msg: 'PLAYING IT SAFE', Run: 0 }
+    ],
+    [
+        { Main: 'A MAGICAL POTION APPEARS ON YOUR HEAD' },
+        { Button: 'Eat', Run: function() {
+                if ( Math.floor(Math.random() * 2) == 0 ) {
+                    stats.atk += 1;
+                    Msg = 'TASTES KINDA GROSS +1 ATK'
+                } else {
+                    stats.hp -= 2;
+                    Msg = 'DRUUUUGS WHOO WHOOOO -2 HP';
+                }
+                return(Msg)
+            } 
+        },
+        { Button: 'Drop And Run', Msg: 'NOT EVEN ONCE', Run: 0 }
+    ],
+    [
+        { Main: 'A BIG SCARY DRAGON APPEARS' },
+        { Button: 'Fight It', Run: function() { 
+                if ( stats.atk > 4 ) {
+                    stats.def += 2
+                    Msg = 'WOW THIS FIGHT IS REALLY STARTING TO DRA- +2 DEF'
+                } else {
+                    stats.hp -= 2
+                    Msg = 'DONT MESS WITH FIRE BREATHING BEASTS -2 HP'
+                }
+            } 
+        },
+        { Button: 'Run', Msg: 'YOU CANT OUT RUN SOMETHING THAT CAN FLY -1 HP', Run: function() { stats.hp -= 1 } }
     ],
 ]
