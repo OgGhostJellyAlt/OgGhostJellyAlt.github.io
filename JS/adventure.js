@@ -63,7 +63,6 @@ function button(event) {
             event.Interact = 'A Curse has Been Broken +1 HP'
             stats.HP = stats.HP + 1
             break;
-        
         case 3:
             if ( 2 < stats.ATK ) {
                 event.Interact = 'The Goblin Died +1 DEF'
