@@ -23,8 +23,8 @@ var choice = [
                     stats.atk += 2;
                     Msg = 'YOU ACQUIRED A SWORD +2 ATK';
                 } else {
-                    stats.hp -= 4;
-                    Msg = 'THE DRAGON HAS AWAKEN -4 HP';
+                    stats.hp -= 8;
+                    Msg = 'THE DRAGON HAS AWAKEN -8 HP';
                 }
                 return(Msg)
             } 
@@ -78,8 +78,8 @@ var choice = [
                     stats.atk += 2;
                     Msg = 'TASTES KINDA GROSS +4 ATK'
                 } else {
-                    stats.hp -= 8;
-                    Msg = 'TURNS OUT YOUR NOT SUPPOSE TO EAT ALL OF IT IN 1 SITTING -8 HP';
+                    stats.hp -= 12;
+                    Msg = 'TURNS OUT YOUR NOT SUPPOSE TO EAT ALL OF IT IN 1 SITTING -12 HP';
                 }
                 return(Msg)
             } 
@@ -123,8 +123,8 @@ var choice = [
                     Msg = 'WHAT THE HECK HOWD YOU DO THAT +16 DEF'
                     ascend()
                 } else {
-                    stats.hp -= 16
-                    Msg = 'THERES NO STOPPING THE DRAGON KING -16 HP'
+                    stats.hp -= 24
+                    Msg = 'THERES NO STOPPING THE DRAGON KING -24 HP'
                 }
                 return(Msg)
             }
@@ -139,8 +139,8 @@ var choice = [
                     stats.atk += 2;
                     Msg = 'HERE YA GO +2 ATK';
                 } else {
-                    stats.hp -= 4;
-                    Msg = 'THE SPOON IS EVIL -4 HP';
+                    stats.hp -= 8;
+                    Msg = 'THE SPOON IS EVIL -8 HP';
                 }
                 return(Msg)
             }
