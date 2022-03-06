@@ -136,6 +136,7 @@ var choice = [
                 stats.hp -= 2;
                 Msg = 'YOU MADE THE WIZARD SAD -2 HP';
             }
+            return(Msg)
             }
         },
     ],

@@ -136,6 +136,7 @@ var choice = [
                 stats.hp -= 4;
                 Msg = 'BRUH -4 HP';
             }
+            return(Msg)
             }
         },
     ],
