@@ -47,7 +47,7 @@ var choice = [
         { Button: 'Run', Msg: 'YOU FLED', Run: 0 }
     ],
     [
-        { Main: 'A HOT BABE APPEARS' },
+        { Main: 'SOMEONE APPEARS' },
         { Button: 'Run', Msg: 'SOCIAL ANXIETY -1 HP', Run: function() { stats.hp -= 1 } },
         { Button: 'Run', Msg: 'SOCIAL ANXIETY -1 HP', Run: function() { stats.hp -= 1 } }
     ],
@@ -129,7 +129,7 @@ var choice = [
             }
         },
         { Button: 'Hug', Msg: 'THE WIZARD IS EVIL, EVIL! DID YOU NOT HEAR ME? -1 HP', Run: function() { stats.hp -= 1 } },
-        { Button: 'Run', Msg: 'YOU MADE THE WIZARD SAD +1 MEAN', Run: function() {
+        { Button: 'Run', Run: function() {
             if ( Math.floor(Math.random() * 2) == 0 ) {
                 Msg = 'YOU MADE THE WIZARD SAD +1 MEAN';
             } else {

@@ -1,4 +1,4 @@
-var acensionmax = 1
+var acensionmax = 2
 
 var params = new URLSearchParams(document.location.search);
 var script = document.createElement('script')
