@@ -29,7 +29,7 @@ var choice = [
                 return(Msg)
             } 
         },
-        { Button: 'Leave', Msg: 'YOU RUN AWAY FROM THE RUSTY SWORD, GLANCING BEHIND YOU INCASE IT MAY BE FOLLOWING, YOUR SCARED, AFRAID, AND ALONE. THE SWORD WILL FIND YOU, IT ALWAYS DOES.', Run: 0 }
+        { Button: 'Run', Msg: 'YOU RUN AWAY FROM THE RUSTY SWORD, GLANCING BEHIND YOU INCASE IT MAY BE FOLLOWING, YOUR SCARED, AFRAID, AND ALONE. THE SWORD WILL FIND YOU, IT ALWAYS DOES.', Run: 0 }
     ],
     [
         { Main: 'AHH A VERY UGLY GOBLIN', stats: 'GOBLIN<br>HP:4' },
