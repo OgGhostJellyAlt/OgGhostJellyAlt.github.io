@@ -134,7 +134,7 @@ var choice = [
                 Msg = 'YOU MADE THE WIZARD SAD +1 MEAN';
             } else {
                 stats.hp -= 2;
-                Msg = 'THE EVIL WIZARD ISNT HAPPY ABOUT THAT -2 HP';
+                Msg = 'YOU MADE THE WIZARD SAD -2 HP';
             }
             }
         },
