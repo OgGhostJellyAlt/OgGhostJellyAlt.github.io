@@ -61,7 +61,7 @@ var choice = [
         { Button: 'Look Into The Ball', Run: function() {
                 if ( 0 < stats.def ) {
                     Msg = 'YOUR DEFENSE TURNED INTO HP -'+ stats.def +' DEF +'+ stats.def * 2 +' HP'
-                    stats.hp += stats.def
+                    stats.hp += stats.def * 2
                     stats.def -= stats.def
                 } else {
                     Msg = 'YOU NEED MORE DEFENSE FOR THIS'
