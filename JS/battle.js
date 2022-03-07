@@ -1,30 +1,43 @@
-var player_class = ['Knight','Mage','Archer']
-var stats = ['ATTACK','DEFENSE']
-var max_players = 2
+var menu = {
+    select: [['Knight','Mage','Archer'],['ATTACK','DEFENSE','SPEED']],
+    max_players: 2
+}
 
 function load() {
     var i = 0
     do {
         var title = document.createElement('bigtext')
-        title.innerHTML = 'P' + ( i + 1 )
+        title.innerHTML = 'P' + ( i + 1 ) 
         document.getElementById('select').appendChild(title)
-        var div = document.createElement('div')
-        div.setAttribute('id', 'p' + i)
-        document.getElementById('select').appendChild(div)
 
-        var pi = 0
+        var playerid = 'p' + i
+        var playerdiv = document.createElement('div')
+        playerdiv.setAttribute('id',playerid)
+        document.getElementById('select').appendChild(playerdiv)
+
+        var si = 0
         do {
-            var button = document.createElement('option')
-            button.setAttribute('id', 'p' + i + 'option' + pi)
-            button.innerHTML = stats[pi]
-            document.getElementById(('p' + i) + 'select').appendChild(button)
+            var playerselectid = playerid + 'select' + si
+            var playerselect = document.createElement('select')
+            playerselect.setAttribute('id',playerselectid)
+            document.getElementById(playerid).appendChild(playerselect)
 
-            pi += 1
-        } while ( pi < 2 )
+            var oi = 0
+            do {
+                var playeroption = document.createElement('option')
+                playeroption.innerHTML = menu.select[si][oi]
+                document.getElementById(playerselectid).appendChild(playeroption)
+
+                oi += 1
+            } while ( oi < menu.select[si].length )
+
+            si += 1
+        } while ( si < menu.select.length )
+
         document.getElementById('select').appendChild(document.createElement('br'))
 
         i += 1
-    } while ( i < max_players )
+    } while ( i < menu.max_players )
 }
 
 function init() {
