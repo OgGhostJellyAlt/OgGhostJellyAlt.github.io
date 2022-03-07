@@ -20,6 +20,7 @@ function load() {
             var playerselectid = playerid + 'select' + si
             var playerselect = document.createElement('select')
             playerselect.setAttribute('id',playerselectid)
+            playerselect.setAttribute('class','select')
             document.getElementById(playerid).appendChild(playerselect)
 
             var oi = 0
