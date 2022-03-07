@@ -1,9 +1,9 @@
 class Player {
-    player_class = "default"
-    stats = 0
+    player_class = 'default'
+    player_stats = 'default'
 
-    constructor(player_class, stats) {
+    constructor(player_class, player_stats) {
         this.player_class = player_class
-        this.stats = stats
+        this.player_stats = player_stats
     }
 }
