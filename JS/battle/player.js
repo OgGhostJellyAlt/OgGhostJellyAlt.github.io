@@ -4,6 +4,7 @@ class Player {
     def = 5
     spd = 5
     special = ''
+    shield = false
 
     constructor(player_class, player_stats) {
         switch ( player_stats ) {
@@ -16,7 +17,7 @@ class Player {
             case 'DEFENSE':
                 this.def *= 1.2
             case 'SPEED':
-                this.spd *= 1.4
+                this.spd *= 2
                 break;
         }
 
