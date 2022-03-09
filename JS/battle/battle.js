@@ -79,7 +79,7 @@ function init() {
         if (!special) {
             button.setAttribute('onclick',name + '('+ i +')')
         } else {
-            button.setAttribute('onclick','SPECIAL' + '('+i+','+name+')' )
+            button.setAttribute('onclick','SPECIAL' + '('+i+','+'"'+name+'"'+')' )
         }
         button.innerHTML = name
         document.getElementById(playerid).appendChild(button)
@@ -110,6 +110,9 @@ function init() {
 function loop() {
     for (let i=0;i<menu.max_players;i++) {
         document.getElementById('hp' + i).innerHTML = 'HP: ' + players[i].hp
+        document.getElementById('atk' + i).innerHTML = 'ATK: ' + players[i].atk
+        document.getElementById('def' + i).innerHTML = 'DEF: ' + players[i].def
+        document.getElementById('spd' + i).innerHTML = 'SPD: ' + players[i].spd
         if ( players[i].hp < 1 ) {
             death()
         }
@@ -125,44 +128,62 @@ function ATTACK(me) {
         } else {
             var en = 0
         }
-
-        if ( players[en].shield == false ) {
-            divide = 1
-        } else {
-            divide = 2
-        }
-        if (!random(players[me].spd)) {
-            times = 1
-        } else {
-            times = 2
-        }
-        players[en].hp = players[en].hp - ( ( ( players[me].atk - players[en].def ) / divide ) * times )
+        players[en].hp = players[en].hp - ( ( ( players[me].atk - players[en].def ) / players[en].shield ) * (+ random(players[me].spd) + 1) )
         console.log(players)
-        turn()
+        turn(me,en)
     }
 }
 
 function DEFEND(me) {
+    if ( me == 0 ) {
+        var en = 1
+    } else {
+        var en = 0
+    }
     if ( me == current_turn ) {
-        players[me].shield = 'true'
-        turn()
+        players[me].shield = 2
+        turn(me,en)
     }
 }
 
 function SPECIAL(me,type) {
     if ( me == current_turn ) {
         if ( me == 0 ) {
-            var sender = 1
+            var en = 1
         } else {
-            var sender = 0
+            var en = 0
+        }
+
+        switch(type) {
+            case 'SHIELD':
+                if (1<players[en].def) {
+                    players[en].def -= 0.25
+                    players[me].def += 0.25
+                } else {
+                    players[en].def = 1
+                }
+                break;
+            case 'MAGIC':
+                players[en].hp = players[en].hp - players[me].atk
+                if (1<players[me].atk) {
+                    players[me].atk -= 5
+                    if (1<players[me].atk) {
+                    } else {
+                        players[me].atk = 1
+                    }
+                } else {
+                    players[me].atk = 1
+                }
+                break;
         }
         console.log(players[me])
         console.log(type)
-        turn()
+        turn(me,en)
     }
 }
 
-function turn() {
+function turn(me,en) {
+        players[en].shield = 1
         if ( current_turn < (menu.max_players-1) ) {
             current_turn += 1
         } else {

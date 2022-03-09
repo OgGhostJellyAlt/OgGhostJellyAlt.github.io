@@ -4,7 +4,7 @@ class Player {
     def = 5
     spd = 5
     special = ''
-    shield = false
+    shield = 1
 
     constructor(player_class, player_stats) {
         switch ( player_stats ) {
@@ -27,6 +27,9 @@ class Player {
                 break;
             case 'Mage':
                 this.special = 'MAGIC'
+                break;
+            case 'Archer':
+                this.spd *= 5
                 break;
         }
     }
