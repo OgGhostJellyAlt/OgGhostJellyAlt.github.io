@@ -34,9 +34,9 @@ function button(event) {//runs choice[][].run
     }
     log.shift()
     if ( !Msg ) {
-        log.push(event.Msg)
+        log.push(event.Msg + '<br>')
     } else {
-        log.push(Msg)
+        log.push(Msg + '<br>' )
     }
     
     update()
@@ -50,7 +50,8 @@ function update() {//updates logs and buttons
     //update buttons
     document.getElementById('choice').innerHTML = ''
     var currentchoice = Math.floor(Math.random() * choice.length)
-    document.getElementById('title').innerHTML = choice[currentchoice][0].Main
+    log.shift()
+    log.push(choice[currentchoice][0].Main)
     //update choicestats
     document.getElementById('choicestats').innerHTML = ''
     if ( !!choice[currentchoice][0].stats ) {

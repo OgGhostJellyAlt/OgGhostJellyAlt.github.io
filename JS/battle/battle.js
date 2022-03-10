@@ -1,13 +1,21 @@
 var menu = {
-    select: [['Knight','Mage','Archer'],['HP','ATTACK','DEFENSE','SPEED']],
+    select: [['Thief','Mage','Knight','Ninja'],['HP','ATTACK','DEFENSE','SPEED']],
     max_players: 2
 }
+
+var log = [
+    '',
+    '',
+    '',
+    ''
+]
 
 current_turn = 0
 
 var players = []
 
 function load() {
+    document.getElementById('title').innerHTML = '2P BATTLE'
     var i = 0
     do {
         var title = document.createElement('bigtext')
@@ -59,8 +67,9 @@ function init() {
     }
 
     document.getElementById('select').remove()
+    document.getElementById('battle').innerHTML = ''
+    document.getElementById('logload').setAttribute('id','log')
     document.getElementById('title').innerHTML = 'P'+(current_turn+1)+' TURN'
-    console.log(players)
 
     for (let i=0;i<menu.max_players;i++) {
         var title = document.createElement('bigtext')
@@ -85,9 +94,10 @@ function init() {
         document.getElementById(playerid).appendChild(button)
         }
         newButton('ATTACK')
-        newButton('DEFEND')
         if (!!players[i].special) {
-            newButton(players[i].special,1)
+            for (let si=0;si<players[i].special.length;si++) {
+                newButton(players[i].special[si],1)
+            }
         }
         document.getElementById(playerid).appendChild(document.createElement('br'))
 
@@ -113,36 +123,33 @@ function loop() {
         document.getElementById('atk' + i).innerHTML = 'ATK: ' + players[i].atk
         document.getElementById('def' + i).innerHTML = 'DEF: ' + players[i].def
         document.getElementById('spd' + i).innerHTML = 'SPD: ' + players[i].spd
-        if ( players[i].hp < 0.0000000000001 ) {
+        if ( players[i].hp < 0.01 ) {
             death()
+        }
+
+        document.getElementById('log').innerHTML = ''
+        for (let li=0;li<log.length;li++) {
+            var displaylog = document.createElement('t')
+            displaylog.innerHTML = log[li]
+            document.getElementById('log').appendChild(displaylog)
+            document.getElementById('log').appendChild(document.createElement('br'))
         }
     }
 
     window.requestAnimationFrame(loop);
 }
 
-function ATTACK(me) {
+function ATTACK(me,domsg) {
     if ( me == current_turn ) {
         if ( me == 0 ) {
             var en = 1
         } else {
             var en = 0
         }
-        players[en].hp = players[en].hp - ( ( ( players[me].atk - players[en].def ) / players[en].shield ) * (+ random(players[me].spd) + 1) )
-        console.log(players)
-        turn(me,en)
-    }
-}
-
-function DEFEND(me) {
-    if ( me == 0 ) {
-        var en = 1
-    } else {
-        var en = 0
-    }
-    if ( me == current_turn ) {
-        players[me].shield = 2
-        turn(me,en)
+        var dealtdmg = ( ( ( players[me].atk - players[en].def ) / players[en].shield ) * (+ random(players[me].spd) + 1) )
+        players[en].hp = players[en].hp - dealtdmg
+        var msg = 'Player '+(me+1)+' Attacked Player '+(en+1)+' And Dealt -'+dealtdmg+'hp'
+        turn(me,en,msg)
     }
 }
 
@@ -153,37 +160,73 @@ function SPECIAL(me,type) {
         } else {
             var en = 0
         }
-
+        var msg = 'ERROR: Msg not defined'
+        var msg = 'This Is A W.I.P, Some Messages Dont Work'
         switch(type) {
-            case 'SHIELD':
-                if (1<players[en].def) {
-                    players[en].def -= 0.25
-                    players[me].def += 0.25
+            //thief-mobilegamedev
+            case 'STEAL':
+                var amount = 1.25
+                players[en].hp -= amount
+                players[me].hp += amount
+                msg = 'Player '+(me+1)+' Stole +'+amount+'hp From '+'Player '+(en+1)
+                break;
+            case 'WACKY POTION':
+                var amount = 5
+                if ( random(50) ) {
+                    players[me].hp += amount
+                    msg = 'Player '+(me+1)+' Magically Gained +5hp'
                 } else {
-                    players[en].def = 1
+                    players[me].hp -= amount
+                    msg = 'Player '+(me+1)+' Magically Loss -5hp'
                 }
                 break;
+            //mage-darklord
             case 'MAGIC':
-                players[en].hp = players[en].hp - players[me].atk
-                if (1<players[me].atk) {
-                    players[me].atk -= 5
-                    if (1<players[me].atk) {
-                    } else {
-                        players[me].atk = 1
-                    }
-                } else {
-                    players[me].atk = 1
+                var amount = 0.5
+                if ( 0 < players[en].def ) {
+                    players[en].def -= amount
+                    var msg = 'Player '+(me+1)+' Drained -'+amount+'def From Player '+(en+1)
                 }
+                break;
+            case 'DARK ARTS':
+                if ( 0 < players[me].ammo ) {
+                    var dealtdmg = players[me].atk
+                    players[en].hp = players[en].hp - dealtdmg
+                    players[me].ammo -= 1
+                    var msg = 'Player '+(me+1)+' Used Dark Arts on Player '+(en+1)+' And Dealt -'+dealtdmg+'hp'
+                } else {
+                    var dealtdmg = ( ( ( players[me].atk - players[en].def ) / players[en].shield ) * (+ random(players[me].spd) + 1) )
+                    players[en].hp = players[en].hp - dealtdmg
+                    var msg = 'Player '+(me+1)+' Attacked Player '+(en+1)+' And Dealt -'+dealtdmg+'hp'
+                }
+                break;
+            //knight-paladin
+            case 'SHIELD':
+                players[me].def += 0.5
+                break;
+            case 'REST':
+                players[me].def += 0.25
+                players[me].hp += 0.5
+                break;
+            //ninja-sneakyboi
+            case 'STEALTH':
+                players[me].spd += 5
+                break;
+            case 'BREATHING TECHNIQUE':
+                if ( random(players[me].spd/3) ) {
+                    players[en].hp = 0
+                }
+                players[me].spd = 0
                 break;
         }
-        console.log(players[me])
-        console.log(type)
-        turn(me,en)
+        turn(me,en,msg)
     }
 }
 
-function turn(me,en) {
+function turn(me,en,msg) {
         players[en].shield = 1
+        log.shift()
+        log.push(msg)
         if ( current_turn < (menu.max_players-1) ) {
             current_turn += 1
         } else {
