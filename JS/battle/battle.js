@@ -118,6 +118,7 @@ function init() {
 }
 
 function loop() {
+    var isdead = false
     for (let i=0;i<menu.max_players;i++) {
         document.getElementById('hp' + i).innerHTML = 'HP: ' + players[i].hp
         document.getElementById('atk' + i).innerHTML = 'ATK: ' + players[i].atk
@@ -125,6 +126,7 @@ function loop() {
         document.getElementById('spd' + i).innerHTML = 'SPD: ' + players[i].spd
         if ( players[i].hp < 0.01 ) {
             death()
+            var isdead = true
         }
 
         document.getElementById('log').innerHTML = ''
@@ -136,7 +138,9 @@ function loop() {
         }
     }
 
-    window.requestAnimationFrame(loop);
+    if ( !isdead ) {
+        window.requestAnimationFrame(loop);
+    }
 }
 
 function ATTACK(me,domsg) {
@@ -242,6 +246,28 @@ function turn(me,en,msg) {
             current_turn = 0
         }
         document.getElementById('title').innerHTML = 'P'+(current_turn+1)+' TURN'
+}
+
+function death() {
+    document.getElementById('battle').remove()
+    document.getElementById('log').remove()
+    document.getElementById('title').innerHTML = 'P'+current_turn+' Wins'
+    var div = document.createElement('div')
+    div.setAttribute('id','end')
+    document.getElementById('body').appendChild(div)
+
+    var button = document.createElement('button')
+    button.setAttribute('onclick','location.reload();')
+    button.innerHTML = 'PLAY AGAIN'
+    document.getElementById('end').appendChild(button)
+
+    var link = document.createElement('a')
+    link.setAttribute('href','/')
+    link.setAttribute('id','returntomain')
+    document.getElementById('end').appendChild(link)
+    var button = document.createElement('button')
+    button.innerHTML = 'RETURN TO MAIN'
+    document.getElementById('returntomain').appendChild(button)
 }
 
 function random(to,max) {
