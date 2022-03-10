@@ -183,7 +183,7 @@ function SPECIAL(me,type) {
             //mage-darklord
             case 'MAGIC':
                 var amount = 0.5
-                if ( 0 < players[en].def ) {
+                if ( 3 < players[en].def ) {
                     players[en].def -= amount
                     var msg = 'Player '+(me+1)+' Drained -'+amount+'def From Player '+(en+1)
                 }
@@ -202,18 +202,27 @@ function SPECIAL(me,type) {
                 break;
             //knight-paladin
             case 'SHIELD':
-                players[me].def += 0.5
+                var amount = 0.5
+                players[me].def += amount
+                var msg = 'Player '+(me+1)+' Shield Themselves For +'+amount+'def'
                 break;
             case 'REST':
-                players[me].def += 0.25
-                players[me].hp += 0.5
+                var defamount = 0.25
+                var hpamount = 0.5
+                players[me].def += defamount
+                players[me].hp += hpamount
+                var msg = 'Player '+(me+1)+' Rested And Gained +'+defamount+'def'+' +'+hpamount+'hp'
                 break;
             //ninja-sneakyboi
             case 'STEALTH':
-                players[me].spd += 5
+                var amount = 5
+                players[me].spd += amount
+                var msg = 'Player '+(me+1)+' Hid Themselves For +'+amount+'spd'
                 break;
             case 'BREATHING TECHNIQUE':
-                if ( random(players[me].spd/3) ) {
+                var msg = 'Player '+(me+1)+' Tried to Unleash Ultimate Power and Failed'
+                if ( random(players[me].spd/2) ) {
+                    var msg = 'Player '+(me+1)+' Went Full Sicko Mode and Dealt -'+players[en].hp+'hp but Lost -'+players[me].spd+'spd'
                     players[en].hp = 0
                 }
                 players[me].spd = 0
