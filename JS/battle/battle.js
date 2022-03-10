@@ -204,7 +204,7 @@ function SPECIAL(me,type) {
             case 'SHIELD':
                 var amount = 0.5
                 players[me].def += amount
-                var msg = 'Player '+(me+1)+' Shield Themselves For +'+amount+'def'
+                var msg = 'Player '+(me+1)+' Shielded Themselves For +'+amount+'def'
                 break;
             case 'REST':
                 var defamount = 0.25
