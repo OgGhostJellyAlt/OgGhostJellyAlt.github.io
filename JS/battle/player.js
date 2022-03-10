@@ -12,7 +12,7 @@ class Player {
                 this.hp *= 1.2
                 break;
             case 'ATTACK':
-                this.atk *= 1.5
+                this.atk *= 1.2
                 break;
             case 'DEFENSE':
                 this.def *= 1.2
@@ -24,6 +24,7 @@ class Player {
         switch ( player_class ) {
             case 'Knight':
                 this.special = 'SHIELD'
+                this.def /= 1.1
                 break;
             case 'Mage':
                 this.special = 'MAGIC'
@@ -32,5 +33,9 @@ class Player {
                 this.spd *= 5
                 break;
         }
+        this.hp = (Math.round(this.hp*100)/100)
+        this.atk = (Math.round(this.atk*100)/100)
+        this.def = (Math.round(this.def*100)/100)
+        this.spd = (Math.round(this.spd*100)/100)
     }
 }

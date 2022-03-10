@@ -113,7 +113,7 @@ function loop() {
         document.getElementById('atk' + i).innerHTML = 'ATK: ' + players[i].atk
         document.getElementById('def' + i).innerHTML = 'DEF: ' + players[i].def
         document.getElementById('spd' + i).innerHTML = 'SPD: ' + players[i].spd
-        if ( players[i].hp < 1 ) {
+        if ( players[i].hp < 0.0000000000001 ) {
             death()
         }
     }
