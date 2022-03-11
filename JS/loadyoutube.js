@@ -1,9 +1,5 @@
 var videos = {}
 var channel = {}
-var mode   = process.env.NODE_ENV;
-var apiKey = process.env.YTAPI; // '42348901293989849243'
-console.log('mode:'+mode+' key:'+apiKey)
-
 
 fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=3")
   .then(response => response.json())
