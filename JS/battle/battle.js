@@ -207,6 +207,8 @@ function SPECIAL(me,type) {
                 if ( 3 < players[en].def ) {
                     players[en].def -= amount
                     var msg = 'Player '+(me+1)+' Drained -'+amount+'def From Player '+(en+1)
+                } else {
+                    var msg = 'Player '+(en+1)+"'s Defense Cant Go Any Lower"
                 }
                 break;
             case 'DARK ARTS':
@@ -289,9 +291,14 @@ function turn(me,en,msg) {
 }
 
 function death() {
+    if ( current_turn < (menu.max_players-1) ) {
+        current_turn += 1
+    } else {
+        current_turn = 0
+    }
     document.getElementById('battle').remove()
     document.getElementById('log').remove()
-    document.getElementById('title').innerHTML = 'P'+current_turn+' Wins'
+    document.getElementById('title').innerHTML = 'P'+(current_turn+1)+' Wins'
     var div = document.createElement('div')
     div.setAttribute('id','end')
     document.getElementById('body').appendChild(div)
