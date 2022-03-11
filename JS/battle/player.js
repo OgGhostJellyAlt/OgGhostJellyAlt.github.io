@@ -5,8 +5,10 @@ class Player {
     spd = 5
     special = []
     shield = 1
+    class = ''
 
     constructor(player_class, player_stats) {
+        this.class = player_class
         switch ( player_stats ) {
             case 'HP':
                 this.hp *= 1.3

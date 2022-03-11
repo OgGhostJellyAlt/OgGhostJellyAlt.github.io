@@ -91,7 +91,7 @@ function init() {
 
     for (let i=0;i<menu.max_players;i++) {
         var title = document.createElement('bigtext')
-        title.innerHTML = 'P' + ( i + 1 ) 
+        title.innerHTML = players[i].class.toUpperCase()
         document.getElementById('battle').appendChild(title)
         document.getElementById('battle').appendChild(document.createElement('br'))
 
