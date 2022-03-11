@@ -6,6 +6,7 @@ class Player {
     special = []
     shield = 1
     class = ''
+    spkwithtree = false
 
     constructor(player_class, player_stats) {
         this.class = player_class
@@ -49,6 +50,16 @@ class Player {
                 this.special.push('STEALTH')
                 this.special.push('BREATHING TECHNIQUE')
                 this.spd *= 5
+                break;
+            case 'Nymph':
+            case 'Spirit Of Nature':
+                this.special.push('THORNS')
+                this.special.push('SPEAK WITH THE TREES')
+                this.spkwithtree = false
+                this.ammo = 3
+                this.atk /= 1.2
+                this.def *= 1.2
+                this.hp *= 1.3
                 break;
         }
         this.hp = (Math.round(this.hp*100)/100)

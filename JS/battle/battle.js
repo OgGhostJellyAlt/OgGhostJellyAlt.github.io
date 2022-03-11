@@ -1,6 +1,6 @@
 var menu = {
-    select: [['Thief','Mage','Knight','Ninja'],['HP','ATTACK','DEFENSE','SPEED']],
-    fanyname: ['Mobile Game Dev','Dark Lord','Paladin','Sneaky Boi'],
+    select: [['Thief','Mage','Knight','Ninja','Nymph'],['HP','ATTACK','DEFENSE','SPEED']],
+    fanyname: ['Mobile Game Dev','Dark Lord','Paladin','Sneaky Boi','Spirit Of Nature'],
     max_players: 2
 }
 
@@ -182,8 +182,7 @@ function SPECIAL(me,type) {
         } else {
             var en = 0
         }
-        var msg = 'ERROR: Msg not defined'
-        var msg = 'This Is A W.I.P, Some Messages Dont Work'
+        var msg = 'ERROR: MSG NOT DEFINED'
         switch(type) {
             //thief-mobilegamedev
             case 'STEAL':
@@ -249,6 +248,17 @@ function SPECIAL(me,type) {
                 }
                 players[me].spd = 0
                 break;
+            //nymph
+            case 'THORNS':
+                var amount = 0.5
+                players[me].atk += amount
+                var msg = 'Player'+(me+1)+' Grows Thorns +'+amount+'atk'
+                break;
+            case 'SPEAK WITH THE TREES':
+                players[me].ammo = 3
+                players[me].spkwithtree = [true,me,en]
+                var msg = 'Player'+(me+1)+' Is Draining Player'+(en+1)
+                break;
         }
         turn(me,en,msg)
     }
@@ -258,6 +268,18 @@ function turn(me,en,msg) {
         players[en].shield = 1
         log.shift()
         log.push(msg)
+        for (let i=0;i<menu.max_players;i++) {
+            if (players[i].spkwithtree[0]) {
+                players[i].ammo -= 1
+                log.shift()
+                var amount = 1.1
+                players[players[i].spkwithtree[2]].hp -= amount
+                log.push('Player '+(players[i].spkwithtree[1]+1)+' Drained Player '+(players[i].spkwithtree[2]+1)+' For -'+amount+'hp')
+                if (players[i].ammo<1) {
+                    players[i].spkwithtree[0] = false
+                }
+            }
+        }
         if ( current_turn < (menu.max_players-1) ) {
             current_turn += 1
         } else {
