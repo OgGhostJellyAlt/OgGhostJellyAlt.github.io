@@ -1,5 +1,6 @@
 var videos = {}
 var channel = {}
+console.log(process.env)
 
 fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCCJ403rxQUp_0b124E49pbdsetulNTfRE&channelId=UCD1IYOrmoXBFBArQ4lSxUYQ&part=snippet,id&order=date&maxResults=3")
   .then(response => response.json())
