@@ -23,11 +23,13 @@ class Player {
 
         switch ( player_class ) {
             case 'Thief':
+            case 'Mobile Game Dev':
                 this.special.push('STEAL')
                 this.special.push('WACKY POTION')
                 this.hp /= 1.3
                 break;
             case 'Mage':
+            case 'Dark Lord':
                 this.special.push('MAGIC')
                 this.special.push('DARK ARTS')
                 this.ammo = 1
@@ -35,11 +37,13 @@ class Player {
                 this.hp /= 1.1
                 break;
             case 'Knight':
+            case 'Paladin':
                 this.special.push('SHIELD')
                 this.special.push('REST')
                 this.atk /= 1.1
                 break;
             case 'Ninja':
+            case 'Sneaky Boi':
                 this.special.push('STEALTH')
                 this.special.push('BREATHING TECHNIQUE')
                 this.spd *= 5

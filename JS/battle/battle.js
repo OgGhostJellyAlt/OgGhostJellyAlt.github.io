@@ -1,5 +1,6 @@
 var menu = {
     select: [['Thief','Mage','Knight','Ninja'],['HP','ATTACK','DEFENSE','SPEED']],
+    fanyname: ['Mobile Game Dev','Dark Lord','Paladin','Sneaky Boi'],
     max_players: 2
 }
 
@@ -38,6 +39,7 @@ function load() {
             var oi = 0
             do {
                 var playeroption = document.createElement('option')
+                playeroption.setAttribute('id','p'+i+'o'+oi)
                 playeroption.innerHTML = menu.select[si][oi]
                 document.getElementById(playerselectid).appendChild(playeroption)
 
@@ -57,6 +59,22 @@ function load() {
     start.setAttribute('onclick','init()')
     start.innerHTML = 'START'
     document.getElementById('select').appendChild(start)
+
+    document.getElementById('checkbox').addEventListener('change', function() {
+        if (this.checked) {
+            for ( let i = 0; i < menu.max_players; i++ ) {
+                for ( let oi = 0; oi < menu.select[0].length; oi++ ) {
+                    document.getElementById('p'+i+'o'+oi).innerHTML = menu.fanyname[oi]
+                }
+            }
+        } else {
+            for ( let i = 0; i < menu.max_players; i++ ) {
+                for ( let oi = 0; oi < menu.select[0].length; oi++ ) {
+                    document.getElementById('p'+i+'o'+oi).innerHTML = menu.select[0][oi]
+                }
+            }
+        }
+    });
 }
 
 function init() {
