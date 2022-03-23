@@ -1,10 +1,12 @@
 {
 "type": [
+  { "id":"general", "display":"General" },
   { "id":"dessert", "display":"Desserts" },
   { "id":"drink", "display":"Drinks" }
 ],
 
 "recipe": [
+    { "display": "Bread" , "codename": "bread" , "type": "general" },
     { "display": "Pancakes!"  , "codename": "pancakes" , "type": "dessert" },
     { "display": "Shortbread" , "codename": "shortbread" , "type": "dessert" },
     { "display": "Bread Pudding" , "codename": "breadpudding" , "type": "dessert" },
