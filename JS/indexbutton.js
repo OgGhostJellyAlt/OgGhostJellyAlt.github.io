@@ -1,3 +1,7 @@
+var num = Math.floor(Math.random() * 100)
+if (0 < num && num < ( 0.1 + 1 )) {
+  window.alert('You Caught a Shiny Pokemon!')
+}
 function linkl() {
     var y = document.getElementById("buttonlinkl");
     var x = document.getElementById("linkl");
