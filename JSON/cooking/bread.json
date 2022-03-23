@@ -1,0 +1,23 @@
+{
+    "size": "1",
+    "sizeunit": "",
+    "sizeunitb": "",
+    "title": "Bread",
+    "desc": "bread. plain white",
+    "img": "pancakes.jpeg",
+  
+    "ingredients": [
+      { "name": "Flour" , "quantity": "400", "unit": "g" },
+      { "name": "Water", "quantity": "265", "unit": "g" },
+      { "name": "Salt", "quantity": "8", "unit": "g" },
+      { "name": "Sugar", "quantity": "12", "unit": "g" },
+      { "name": "Oil", "quantity": "24", "unit": "g"},
+      { "name": "Yeast", "quantity": "1", "unit": "tsp"}
+    ],
+  
+    "dir": [
+     { "desc": "Pour Ingredients Into A Machine", "footer":"" },
+     { "desc": "Set for Medium Heat and Let It do It's Thang", "footer":"" },
+     { "desc": "Boom Boring Bread for Boring People", "footer":"" }
+    ]
+  }
