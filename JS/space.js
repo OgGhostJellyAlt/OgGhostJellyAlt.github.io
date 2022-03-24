@@ -26,7 +26,7 @@ function loop() {
         resodisplay.setAttribute('src','/IMG/' + reso[Object.keys(reso)[i]].img)
         document.getElementById('reso').appendChild(resodisplay)
         var resodisplay = document.createElement('ore')
-        resodisplay.innerHTML = reso[Object.keys(reso)[i]].amount
+        resodisplay.innerHTML = ' ' + reso[Object.keys(reso)[i]].amount
         document.getElementById('reso').appendChild(resodisplay)
         document.getElementById('reso').appendChild(document.createElement('br'))
     }
