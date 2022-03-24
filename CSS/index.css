@@ -1,7 +1,6 @@
 html {
 color: white;
 background-color: black;
-font-family: "pixel";
 font-size: 28px;
 margin-left: 18%;
 margin-right: 14%;
@@ -57,4 +56,9 @@ img {
 iframe {
   margin-right: 10%;
   margin-top: 2%;
+}
+
+@font-face { font-family: pixel; src: url("FONT/pixel.otf"); }
+html {
+  font-family: pixel
 }
