@@ -18,7 +18,7 @@ var planet = [0,
 ]
 var reso = {
     coal : {  amount:0, img:'coal.jpeg' },
-    iron : {  amount:0, img:'coal.jpeg' },
+    iron : {  amount:0, img:'iron.jpeg' },
 }
 
 function init() {
