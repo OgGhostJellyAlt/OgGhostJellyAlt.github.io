@@ -1,19 +1,33 @@
 var minespeed = 1
 var planet = [0,
-    { name: 'Earth', reso: 100, resomax: 100, img:'earth.png' }
+    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
+            if (planetresource<251) {
+                return('iron')
+            }
+            if (planetresource<501) {
+                return('coal')
+            }
+            if (planetresource<751) {
+                return('iron')
+            }
+            if (planetresource<1001) {
+                return('coal')
+            }
+        }
+    }
 ]
 var reso = {
     coal : {  amount:0, img:'coal.jpeg' },
+    iron : {  amount:0, img:'coal.jpeg' },
 }
 
 function init() {
-    console.log('bruh')
     document.getElementById('play').remove()
 
     document.getElementById('title').setAttribute('align','')
 
     var button = document.createElement('button')
-    button.innerHTML = 'Mine Resources'
+    button.innerHTML = 'Mine'
     button.setAttribute('onclick','mine()')
     document.getElementById('game').appendChild(button)
     document.getElementById('game').appendChild(document.createElement('br'))
@@ -54,9 +68,9 @@ function loop() {
 }
 
 function mine() {
-    if ( planet[[planet[0]+1]].reso > 0 ) {
-        reso[Object.keys(reso)[planet[0]]].amount += minespeed
-        planet[[planet[0]+1]].reso -= minespeed
+    if ( planet[0+1].reso > 0 ) {
+        reso[planet[0+1].resotype(planet[0+1].reso)].amount += minespeed
+        planet[0+1].reso -= minespeed
     }
 }
 //reso[Object.keys(reso)[i]]
