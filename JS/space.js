@@ -29,6 +29,7 @@ var planet = [0,
         }
     }
 ]
+//ë
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
     coal : {  amount:0, img:'coal.jpeg', show:true },
