@@ -1,4 +1,8 @@
 var minespeed = 1
+var shopitems = [
+    { name: 'Buy super crazy book of dad jokes', cost: { amount: 50, resotype: 'rock', }, desc: 'ew' },
+    { name: 'buy big funny illegal bomb go boom', cost: { amount: 25, resotype: 'iron', }, desc: 'hehe boomy' }
+]
 var planet = [0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
             if (planetresource<501) {
@@ -57,6 +61,18 @@ function init() {
     div.setAttribute('id','resodisplay')
     document.getElementById('game').appendChild(div)
 
+    document.getElementById('game').appendChild(document.createElement('br'))
+    document.getElementById('game').appendChild(document.createElement('br'))
+    //temporary
+    var temptext = document.createElement('t')
+    temptext.innerHTML = 'shop is in progress :/'
+    document.getElementById('game').appendChild(temptext)
+    //temporary
+
+    var div = document.createElement('div')
+    div.setAttribute('id','shop')
+    document.getElementById('game').appendChild(div)
+
     window.requestAnimationFrame(loop)
 }
 
@@ -74,6 +90,24 @@ function loop() {
             document.getElementById('resodisplay').appendChild(resodisplay)
             document.getElementById('resodisplay').appendChild(document.createElement('br'))
         }
+    }
+    document.getElementById('shop').innerHTML = ''
+    for (let i=0;i<shopitems.length;i++) {
+        var shopdisplay = document.getElementById('shop')
+
+        var shopnamedisplay = document.createElement('shop')
+        shopnamedisplay.innerHTML = shopitems[i].name+'&nbsp&nbsp&nbsp&nbsp'
+        shopdisplay.appendChild(shopnamedisplay)
+
+        var shopimgdisplay = document.createElement('img')
+        shopimgdisplay.setAttribute('src','/IMG/'+reso[shopitems[i].cost.resotype].img)
+        shopdisplay.appendChild(shopimgdisplay)
+
+        var shopcostdisplay = document.createElement('shop')
+        shopcostdisplay.innerHTML = ' '+shopitems[i].cost.amount
+        shopdisplay.appendChild(shopcostdisplay)
+
+        shopdisplay.appendChild(document.createElement('br'))
     }
 
     window.requestAnimationFrame(loop)
