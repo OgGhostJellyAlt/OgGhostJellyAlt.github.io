@@ -16,6 +16,15 @@ var planet = [0,
             }
         }
     },
+    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', resotype: function(planetresource) {
+            if (planetresource<51) {
+                return('green')
+            }
+            if (planetresource<501) {
+                return('coal')
+            }
+        }
+    },
     { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', resotype: function(planetresource) {
             if (planetresource<501) {
                 return('platinum')
@@ -29,11 +38,11 @@ var planet = [0,
         }
     }
 ]
-//ë
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
     coal : {  amount:0, img:'coal.jpeg', show:true },
     iron : {  amount:0, img:'iron.jpeg', show:true },
+    green : {  amount:0, img:'platinum.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
 
