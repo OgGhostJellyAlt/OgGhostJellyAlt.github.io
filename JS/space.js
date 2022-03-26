@@ -1,7 +1,10 @@
 var minespeed = 1
 var shopitems = [
-    { name: 'Buy super crazy book of dad jokes', cost: { amount: 50, resotype: 'rock', }, desc: 'ew' },
-    { name: 'buy big funny illegal bomb go boom', cost: { amount: 25, resotype: 'iron', }, desc: 'hehe boomy' }
+    { name: 'Buy super crazy book of dad jokes', cost: { amount: 50, resotype: 'rock', }, desc: 'ew', run: function() {
+            minespeed += 1
+            console.log(minespeed)
+        } 
+    },
 ]
 var planet = [0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
@@ -82,6 +85,7 @@ function init() {
     var div = document.createElement('div')
     div.setAttribute('id','shop')
     document.getElementById('game').appendChild(div)
+    loadshop()
 
     window.requestAnimationFrame(loop)
 }
@@ -101,9 +105,40 @@ function loop() {
             document.getElementById('resodisplay').appendChild(document.createElement('br'))
         }
     }
+
+    window.requestAnimationFrame(loop)
+}
+
+function mine() {
+    if ( planet[0+1].reso > 0 ) {
+        reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += minespeed
+        planet[[planet[0]+1]].reso -= minespeed
+    }
+}
+
+function buy(i) {
+    if (reso[shopitems[i].cost.resotype].amount>(shopitems[i].cost.amount-1)) {
+        reso[shopitems[i].cost.resotype].amount -= shopitems[i].cost.amount
+        shopitems[i].run()
+        shopitems.splice(i, 1)
+        loadshop()
+    }
+}
+
+function loadshop() {
     document.getElementById('shop').innerHTML = ''
     for (let i=0;i<shopitems.length;i++) {
-        var shopdisplay = document.getElementById('shop')
+        if (i>4) break;
+
+        var shopdiv = document.createElement('div')
+        shopdiv.setAttribute('id','shop'+i)
+        shopdiv.setAttribute('class','shop')
+        shopdiv.addEventListener('click', function() {
+                buy(i)
+            }
+        )
+        document.getElementById('shop').appendChild(shopdiv)
+        var shopdisplay = document.getElementById('shop'+i)
 
         var shopnamedisplay = document.createElement('shop')
         shopnamedisplay.innerHTML = shopitems[i].name+'&nbsp&nbsp&nbsp&nbsp'
@@ -119,14 +154,4 @@ function loop() {
 
         shopdisplay.appendChild(document.createElement('br'))
     }
-
-    window.requestAnimationFrame(loop)
 }
-
-function mine() {
-    if ( planet[0+1].reso > 0 ) {
-        reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += minespeed
-        planet[[planet[0]+1]].reso -= minespeed
-    }
-}
-//reso[Object.keys(reso)[i]]
