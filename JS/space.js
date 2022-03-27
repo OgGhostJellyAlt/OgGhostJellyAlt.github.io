@@ -1,10 +1,6 @@
-/*
--todo list-
-1. shop items can have multiple ores as price
-*/
 var minespeed = 1
 var shopitems = [
-    { name: 'Pickaxes', cost: [{ amount: 50, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
+    { name: 'Pickaxes', cost: [{ amount: 10, resotype: 'rock', },{ amount: 40, resotype: 'coal', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
             minespeed += 1
             console.log(minespeed)
         } 
@@ -133,8 +129,19 @@ function mine() {
 }
 
 function buy(i) {
-    if (reso[shopitems[i].cost.resotype].amount>(shopitems[i].cost.amount-1)) {
-        reso[shopitems[i].cost.resotype].amount -= shopitems[i].cost.amount
+    for (let ci=0;ci<shopitems[i].cost.length;ci++) {
+        var currentshop = shopitems[i].cost[ci]
+        if (reso[currentshop.resotype].amount>currentshop.amount-1) {
+            var shopbool = true
+        } else {
+            var shopbool = false
+        }
+    }
+    if (shopbool) {
+        for (let ci=0;ci<shopitems[i].cost.length;ci++) {
+            var currentshop = shopitems[i].cost[ci]
+            reso[currentshop.resotype].amount -= currentshop.amount
+        }
         shopitems[i].run()
         shopitems.splice(i, 1)
         loadshop()
@@ -152,7 +159,7 @@ if (reso[shopitems[i].cost.resotype].amount>(shopitems[i].cost.amount-1)) {
 function loadshop() {
     document.getElementById('shop').innerHTML = ''
     for (let i=0;i<shopitems.length;i++) {
-        if (i>4) break;
+        if (i>2) break;
 
         var shopdiv = document.createElement('div')
         shopdiv.setAttribute('id','shop'+i)
