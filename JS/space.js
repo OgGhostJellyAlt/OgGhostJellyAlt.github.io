@@ -111,8 +111,10 @@ function loop() {
 
 function mine() {
     if ( planet[0+1].reso > 0 ) {
-        reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += minespeed
-        planet[[planet[0]+1]].reso -= minespeed
+        for (let i=0;i<minespeed;i++) {
+            reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += 1
+            planet[[planet[0]+1]].reso -= 1
+        }
     }
 }
 
