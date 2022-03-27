@@ -1,10 +1,25 @@
+/*
+-todo list-
+1. shop items can have multiple ores as price
+2. shop desc
+*/
 var minespeed = 1
 var shopitems = [
-    { name: 'Buy super crazy book of dad jokes', cost: { amount: 50, resotype: 'rock', }, desc: 'ew', run: function() {
+    { name: 'Pickaxes +1 CPM', cost: { amount: 50, resotype: 'rock', }, desc: 'ew', run: function() {
             minespeed += 1
             console.log(minespeed)
         } 
     },
+    { name: 'Spicky boi Pickaxes +2 CPM', cost: { amount: 100, resotype: 'rock', }, desc: 'ew', run: function() {
+            minespeed += 2
+            console.log(minespeed)
+        } 
+    },
+    { name: 'Mechanical Pickaxes +2.5 CPM', cost: { amount: 100, resotype: 'coal', }, desc: 'ew', run: function() {
+        minespeed += 2.5
+        console.log(minespeed)
+    } 
+},
 ]
 var planet = [0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
@@ -110,8 +125,8 @@ function loop() {
 }
 
 function mine() {
-    if ( planet[0+1].reso > 0 ) {
-        for (let i=0;i<minespeed;i++) {
+    for (let i=0;i<minespeed;i++) {
+        if ( planet[0+1].reso > 0 ) {
             reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += 1
             planet[[planet[0]+1]].reso -= 1
         }
