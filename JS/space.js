@@ -1,3 +1,5 @@
+/*
+*/
 var minespeed = 1
 var shopitems = [
     { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
@@ -12,17 +14,18 @@ var shopitems = [
             minespeed += 4
         } 
     },
-    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
+    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
             planet[0] += 1
+            reso.green.show = true
         } 
     },
 ]
-var planet = [0,
+var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
-            if (planetresource<501) {
+            if (planetresource<301) {
                 return('iron')
             }
-            if (planetresource<551) {
+            if (planetresource<451) {
                 return('coal')
             }
             if (planetresource<1001) {
@@ -53,10 +56,10 @@ var planet = [0,
     }
 ]
 var reso = {
-    rock : {  amount:0, img:'rock.jpeg', show:true },
-    coal : {  amount:0, img:'coal.jpeg', show:true },
-    iron : {  amount:0, img:'iron.jpeg', show:true },
-    green : {  amount:0, img:'platinum.jpeg', show:false },
+    rock : {  amount:999999, img:'rock.jpeg', show:true },
+    coal : {  amount:999999, img:'coal.jpeg', show:true },
+    iron : {  amount:999999, img:'iron.jpeg', show:true },
+    green : {  amount:0, img:'green.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
 
@@ -102,8 +105,8 @@ function init() {
 }
 
 function loop() {
-    document.getElementById('reso').innerHTML = planet[[planet[0]+1]].name+': '+planet[[planet[0]+1]].reso+'/'+planet[[planet[0]+1]].resomax
-    document.getElementById('planet').setAttribute('src','/IMG/'+planet[[planet[0]+1]].img)
+    document.getElementById('reso').innerHTML = planet[planet[0]+2].name+': '+planet[planet[0]+2].reso+'/'+planet[planet[0]+2].resomax
+    document.getElementById('planet').setAttribute('src','/IMG/'+planet[planet[0]+2].img)
     document.getElementById('resodisplay').innerHTML = ''
     for (let i=0;i<Object.keys(reso).length;i++) {
         if (reso[Object.keys(reso)[i]].show) {
@@ -122,10 +125,11 @@ function loop() {
 
 function mine() {
     for (let i=0;i<minespeed;i++) {
-        if ( planet[0+1].reso > 0 ) {
-            reso[planet[[planet[0]+1]].resotype(planet[[planet[0]+1]].reso)].amount += 1
-            planet[[planet[0]+1]].reso -= 1
+        if ( planet[planet[0]+2].reso > 0 ) {
+            reso[planet[planet[0]+2].resotype(planet[planet[0]+2].reso)].amount += 1
+            planet[planet[0]+2].reso -= 1
         }
+        
     }
 }
 
