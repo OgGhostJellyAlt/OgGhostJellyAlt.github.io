@@ -1,21 +1,20 @@
 /*
 -todo list-
 1. shop items can have multiple ores as price
-2. shop desc
 */
 var minespeed = 1
 var shopitems = [
-    { name: 'Pickaxes +1 CPM', cost: { amount: 50, resotype: 'rock', }, desc: 'ew', run: function() {
+    { name: 'Pickaxes', cost: [{ amount: 50, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
             minespeed += 1
             console.log(minespeed)
         } 
     },
-    { name: 'Spicky boi Pickaxes +2 CPM', cost: { amount: 100, resotype: 'rock', }, desc: 'ew', run: function() {
+    { name: 'Spicky boi Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
             minespeed += 2
             console.log(minespeed)
         } 
     },
-    { name: 'Mechanical Pickaxes +2.5 CPM', cost: { amount: 100, resotype: 'coal', }, desc: 'ew', run: function() {
+    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +2.5 CPM', run: function() {
         minespeed += 2.5
         console.log(minespeed)
     } 
@@ -141,6 +140,14 @@ function buy(i) {
         loadshop()
     }
 }
+/*
+if (reso[shopitems[i].cost.resotype].amount>(shopitems[i].cost.amount-1)) {
+    reso[shopitems[i].cost.resotype].amount -= shopitems[i].cost.amount
+    shopitems[i].run()
+    shopitems.splice(i, 1)
+    loadshop()
+}
+*/
 
 function loadshop() {
     document.getElementById('shop').innerHTML = ''
@@ -161,13 +168,21 @@ function loadshop() {
         shopnamedisplay.innerHTML = shopitems[i].name+'&nbsp&nbsp&nbsp&nbsp'
         shopdisplay.appendChild(shopnamedisplay)
 
-        var shopimgdisplay = document.createElement('img')
-        shopimgdisplay.setAttribute('src','/IMG/'+reso[shopitems[i].cost.resotype].img)
-        shopdisplay.appendChild(shopimgdisplay)
+        for (let ci=0;ci<shopitems[i].cost.length;ci++) {
+            var shopimgdisplay = document.createElement('img')
+            shopimgdisplay.setAttribute('src','/IMG/'+reso[shopitems[i].cost[ci].resotype].img)
+            shopdisplay.appendChild(shopimgdisplay)
 
-        var shopcostdisplay = document.createElement('shop')
-        shopcostdisplay.innerHTML = ' '+shopitems[i].cost.amount
-        shopdisplay.appendChild(shopcostdisplay)
+            var shopcostdisplay = document.createElement('shop')
+            shopcostdisplay.innerHTML = ' '+shopitems[i].cost[ci].amount+' '
+            shopdisplay.appendChild(shopcostdisplay)
+        }
+
+        shopdisplay.appendChild(document.createElement('br'))
+
+        var shopdescdisplay = document.createElement('shop')
+        shopdescdisplay.innerHTML = shopitems[i].desc
+        shopdisplay.appendChild(shopdescdisplay)
 
         shopdisplay.appendChild(document.createElement('br'))
     }
