@@ -56,9 +56,9 @@ var planet = [0,0,
     }
 ]
 var reso = {
-    rock : {  amount:999999, img:'rock.jpeg', show:true },
-    coal : {  amount:999999, img:'coal.jpeg', show:true },
-    iron : {  amount:999999, img:'iron.jpeg', show:true },
+    rock : {  amount:0, img:'rock.jpeg', show:true },
+    coal : {  amount:0, img:'coal.jpeg', show:true },
+    iron : {  amount:0, img:'iron.jpeg', show:true },
     green : {  amount:0, img:'green.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
