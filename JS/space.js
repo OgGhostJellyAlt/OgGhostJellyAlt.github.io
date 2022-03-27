@@ -1,27 +1,28 @@
 var minespeed = 1
 var shopitems = [
-    { name: 'Pickaxes', cost: [{ amount: 10, resotype: 'rock', },{ amount: 40, resotype: 'coal', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
+    { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
             minespeed += 1
-            console.log(minespeed)
         } 
     },
-    { name: 'Spicky boi Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
+    { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
             minespeed += 2
-            console.log(minespeed)
         } 
     },
-    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +2.5 CPM', run: function() {
-        minespeed += 2.5
-        console.log(minespeed)
-    } 
-},
+    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
+            minespeed += 4
+        } 
+    },
+    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
+            planet[0] += 1
+        } 
+    },
 ]
 var planet = [0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
             if (planetresource<501) {
                 return('iron')
             }
-            if (planetresource<751) {
+            if (planetresource<551) {
                 return('coal')
             }
             if (planetresource<1001) {
