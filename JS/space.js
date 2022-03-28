@@ -74,7 +74,13 @@ for (let i=0;i<Object.keys(planet).length-2;i++) {
     var preimg = document.createElement('img')
     preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img)
     preimg.style.display='none'
-    document.getElementById('body').appendChild(preimg)
+    document.getElementById('preload').appendChild(preimg)
+}
+for (let i=0;i<Object.keys(reso).length;i++) {
+    var preimg = document.createElement('img')
+    preimg.setAttribute('src','/IMG/'+reso[Object.keys(reso)[i]].img)
+    preimg.style.display='none'
+    document.getElementById('preload').appendChild(preimg)
 }
 
 function init() {
