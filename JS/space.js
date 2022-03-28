@@ -7,21 +7,21 @@ var stat = {
 var shopitems = [
     { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
             stat.CPM += 1
-        } 
+        }
     },
     { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
             stat.CPM += 2
-        } 
+        }
     },
     { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
             stat.CPM += 4
-        } 
+        }
     },
     { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET', run: function() {
             planet[0] += 1
             planet[1] += 1
             reso.green.show = true
-        } 
+        }
     },
 ]
 var planet = [0,0,
