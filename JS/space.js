@@ -1,4 +1,6 @@
 /*
+planet travel
+planet desc
 */
 var minespeed = 1
 var shopitems = [
@@ -90,16 +92,27 @@ function init() {
 
     document.getElementById('game').appendChild(document.createElement('br'))
     document.getElementById('game').appendChild(document.createElement('br'))
-    //temporary
-    var temptext = document.createElement('t')
-    temptext.innerHTML = 'shop is in progress :/'
-    document.getElementById('game').appendChild(temptext)
-    //temporary
 
     var div = document.createElement('div')
     div.setAttribute('id','shop')
     document.getElementById('game').appendChild(div)
     loadshop()
+
+    for (let i=0;i<2;i++) {
+        var arrow = document.createElement('img')
+        if (i==0) {
+            arrow.setAttribute('src','/IMG/lspace.png')
+            arrow.setAttribute('align','left')
+            arrow.setAttribute('onclick','console.log("l")')
+        } else {
+            arrow.setAttribute('src','/IMG/rspace.png')
+            arrow.setAttribute('align','right')
+            arrow.setAttribute('onclick','console.log("r")')
+        }
+        arrow.setAttribute('class','arrow')
+        arrow.setAttribute('style','width:50px;height:50px')
+        document.getElementById('game').appendChild(arrow)
+    }
 
     window.requestAnimationFrame(loop)
 }
