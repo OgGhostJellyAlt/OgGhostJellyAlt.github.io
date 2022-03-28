@@ -67,6 +67,15 @@ var reso = {
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
 
+function preloadImage(url) {
+    var img=new Image();
+    img.src=url;
+}
+
+for (let i=0;i<Object.keys(planet).length-2;i++) {
+    preloadImage('/IMG/'+planet[Object.keys(planet)[i+2]].img)
+}
+
 function init() {
     document.getElementById('play').remove()
 
