@@ -69,6 +69,7 @@ var reso = {
 
 var div = document.createElement('div')
 div.setAttribute('id','preload')
+div.style.display='none'
 document.getElementById('body').appendChild(div)
 for (let i=0;i<Object.keys(planet).length-2;i++) {
     var preimg = document.createElement('img')
