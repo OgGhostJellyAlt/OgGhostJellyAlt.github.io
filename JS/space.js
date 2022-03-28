@@ -1,5 +1,4 @@
 /*
-planet travel
 planet desc
 */
 var minespeed = 1
@@ -18,12 +17,13 @@ var shopitems = [
     },
     { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
             planet[0] += 1
+            planet[1] += 1
             reso.green.show = true
         } 
     },
 ]
 var planet = [0,0,
-    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', resotype: function(planetresource) {
+    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY', resotype: function(planetresource) {
             if (planetresource<301) {
                 return('iron')
             }
@@ -35,7 +35,7 @@ var planet = [0,0,
             }
         }
     },
-    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', resotype: function(planetresource) {
+    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK', resotype: function(planetresource) {
             if (planetresource<51) {
                 return('green')
             }
@@ -44,7 +44,7 @@ var planet = [0,0,
             }
         }
     },
-    { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', resotype: function(planetresource) {
+    { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES', resotype: function(planetresource) {
             if (planetresource<501) {
                 return('platinum')
             }
@@ -58,9 +58,9 @@ var planet = [0,0,
     }
 ]
 var reso = {
-    rock : {  amount:0, img:'rock.jpeg', show:true },
-    coal : {  amount:0, img:'coal.jpeg', show:true },
-    iron : {  amount:0, img:'iron.jpeg', show:true },
+    rock : {  amount:1000, img:'rock.jpeg', show:true },
+    coal : {  amount:1000, img:'coal.jpeg', show:true },
+    iron : {  amount:100, img:'iron.jpeg', show:true },
     green : {  amount:0, img:'green.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
@@ -98,17 +98,23 @@ function init() {
     document.getElementById('game').appendChild(div)
     loadshop()
 
+    var planetdesc = document.createElement('t')
+    planetdesc.setAttribute('id','planetdesc')
+    planetdesc.setAttribute('style','display: flex;justify-content:center;align-items:center;')
+    document.getElementById('game').appendChild(planetdesc)
+
     for (let i=0;i<2;i++) {
         var arrow = document.createElement('img')
         if (i==0) {
             arrow.setAttribute('src','/IMG/lspace.png')
             arrow.setAttribute('align','left')
-            arrow.setAttribute('onclick','console.log("l")')
+            arrow.setAttribute('onclick','arrow("l")')
         } else {
             arrow.setAttribute('src','/IMG/rspace.png')
             arrow.setAttribute('align','right')
-            arrow.setAttribute('onclick','console.log("r")')
+            arrow.setAttribute('onclick','arrow("r")')
         }
+
         arrow.setAttribute('class','arrow')
         arrow.setAttribute('style','width:50px;height:50px')
         document.getElementById('game').appendChild(arrow)
@@ -120,6 +126,7 @@ function init() {
 function loop() {
     document.getElementById('reso').innerHTML = planet[planet[0]+2].name+': '+planet[planet[0]+2].reso+'/'+planet[planet[0]+2].resomax
     document.getElementById('planet').setAttribute('src','/IMG/'+planet[planet[0]+2].img)
+    document.getElementById('planetdesc').innerHTML = planet[planet[0]+2].desc
     document.getElementById('resodisplay').innerHTML = ''
     for (let i=0;i<Object.keys(reso).length;i++) {
         if (reso[Object.keys(reso)[i]].show) {
@@ -210,5 +217,20 @@ function loadshop() {
         shopdisplay.appendChild(shopdescdisplay)
 
         shopdisplay.appendChild(document.createElement('br'))
+    }
+}
+
+function arrow(d) {
+    switch (d) {
+        case "r":
+            if (planet[0]<planet[1]) {
+                planet[0]+=1
+            }
+            break;
+        case "l":
+            if (planet[0]>0) {
+                planet[0]-=1
+            }
+            break;
     }
 }
