@@ -24,7 +24,7 @@ var shopitems = [
         } 
     },
 ]
-var planet = [0,2,
+var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY', resotype: function(planetresource) {
             if (planetresource<201) {
                 return('iron')
