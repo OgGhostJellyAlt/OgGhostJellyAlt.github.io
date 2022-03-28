@@ -1,5 +1,6 @@
 /*
 fix planets
+fix green dupe
 */
 var stat = {
     CPM: 1
@@ -21,6 +22,7 @@ var shopitems = [
             planet[0] += 1
             planet[1] += 1
             reso.green.show = true
+            document.getElementById('replenish').style.display = ''
         }
     },
 ]
@@ -38,7 +40,7 @@ var planet = [0,0,
         }
     },
     { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK', resotype: function(planetresource) {
-            if (planetresource<51) {
+            if (planetresource<11) {
                 return('green')
             }
             if (planetresource<501) {
@@ -91,6 +93,13 @@ function init() {
     var button = document.createElement('button')
     button.innerHTML = 'Mine'
     button.setAttribute('onclick','mine()')
+    document.getElementById('game').appendChild(button)
+
+    var button = document.createElement('button')
+    button.innerHTML = 'REPLENISH'
+    button.setAttribute('onclick','replenish()')
+    button.setAttribute('id','replenish')
+    button.style.display = 'none'
     document.getElementById('game').appendChild(button)
     document.getElementById('game').appendChild(document.createElement('br'))
 
@@ -204,14 +213,6 @@ function buy(i) {
         loadshop()
     }
 }
-/*
-if (reso[shopitems[i].cost.resotype].amount>(shopitems[i].cost.amount-1)) {
-    reso[shopitems[i].cost.resotype].amount -= shopitems[i].cost.amount
-    shopitems[i].run()
-    shopitems.splice(i, 1)
-    loadshop()
-}
-*/
 
 function loadshop() {
     document.getElementById('shop').innerHTML = ''
@@ -264,5 +265,14 @@ function arrow(d) {
                 planet[0]-=1
             }
             break;
+    }
+}
+
+function replenish() {
+    if (planet[planet[0]+2].reso<1) {
+        if (reso.green.amount>0) {
+            reso.green.amount -= 1
+            planet[planet[0]+2].reso = planet[planet[0]+2].resomax
+        }
     }
 }
