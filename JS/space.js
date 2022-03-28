@@ -24,7 +24,7 @@ var shopitems = [
         } 
     },
 ]
-var planet = [0,0,
+var planet = [0,2,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY', resotype: function(planetresource) {
             if (planetresource<201) {
                 return('iron')
@@ -67,13 +67,13 @@ var reso = {
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
 }
 
-function preloadImage(url) {
-    var img=new Image();
-    img.src=url;
-}
-
+var div = document.createElement('div')
+div.setAttribute('id','preload')
+document.getElementById('body').appendChild(div)
 for (let i=0;i<Object.keys(planet).length-2;i++) {
-    preloadImage('/IMG/'+planet[Object.keys(planet)[i+2]].img)
+    var preimg = document.createElement('img')
+    preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img)
+    document.getElementById('body').appendChild(preimg)
 }
 
 function init() {
