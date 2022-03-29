@@ -1,7 +1,26 @@
 /*
 fix planets
 fix green dupe
+
+//get localstorage script
+function localstorageobject(v) {
+        for (let i=0;i<v.length;i++) {
+            localStorage.getItem(Object.keys(v)[i])
+        }
+    }
+    function localstoragearray(v,e) {
+        for (let i=0;i<v.length;i++) {
+            localStorage.getItem(v[i+e])
+        }
+    }
+    localStorage.getItem('replenishdisplay')
+    localstorageobject(stat)
+    localstorageobject(reso)
+    localstorageobject(shopitems)
+    localstorageobject(planet,2)
+}
 */
+var replenishdisplay = false
 var stat = {
     CPM: 1
 }
@@ -22,7 +41,7 @@ var shopitems = [
             planet[0] += 1
             planet[1] += 1
             reso.green.show = true
-            document.getElementById('replenish').style.display = ''
+            replenishdisplay = true
         }
     },
 ]
@@ -71,7 +90,7 @@ var reso = {
 
 var div = document.createElement('div')
 div.setAttribute('id','preload')
-document.getElementById('body').appendChild(div)
+document.querySelector('html').appendChild(div)
 for (let i=0;i<Object.keys(planet).length-2;i++) {
     var preimg = document.createElement('img')
     preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img)
@@ -113,18 +132,29 @@ function init() {
     imgplanet.setAttribute('style','height: 200px;width: 200px;')
     document.getElementById('game').appendChild(imgplanet)
 
+    document.getElementById('game').appendChild(document.createElement('br'))
+    var divtitle = document.createElement('bigtext')
+    divtitle.innerHTML = 'Resources'
+    document.getElementById('game').appendChild(divtitle)
     var div = document.createElement('div')
     div.setAttribute('id','resodisplay')
     document.getElementById('game').appendChild(div)
 
     document.getElementById('game').appendChild(document.createElement('br'))
 
+    var divtitle = document.createElement('bigtext')
+    divtitle.innerHTML = 'Stats'
+    document.getElementById('game').appendChild(divtitle)
     var div = document.createElement('div')
     div.setAttribute('id','statdisplay')
     document.getElementById('game').appendChild(div)
 
     document.getElementById('game').appendChild(document.createElement('br'))
 
+    var divtitle = document.createElement('bigtext')
+    divtitle.innerHTML = 'Shop'
+    document.getElementById('game').appendChild(divtitle)
+    divtitle.setAttribute('style','align:center;')
     var div = document.createElement('div')
     div.setAttribute('id','shop')
     document.getElementById('game').appendChild(div)
@@ -143,10 +173,12 @@ function init() {
             arrow.setAttribute('src','/IMG/lspace.png')
             arrow.setAttribute('align','left')
             arrow.setAttribute('onclick','arrow("l")')
+            arrow.setAttribute('id','l')
         } else {
             arrow.setAttribute('src','/IMG/rspace.png')
             arrow.setAttribute('align','right')
             arrow.setAttribute('onclick','arrow("r")')
+            arrow.setAttribute('id','r')
         }
 
         arrow.setAttribute('class','arrow')
@@ -179,6 +211,23 @@ function loop() {
         statdisplay.innerHTML = Object.keys(stat)[i]+': '+stat[Object.keys(stat)[i]]
         document.getElementById('statdisplay').appendChild(statdisplay)
         document.getElementById('statdisplay').appendChild(document.createElement('br'))
+    }
+
+    if (planet[0]<planet[1]) {
+        document.getElementById('r').style.display = ''
+    } else {
+        document.getElementById('r').style.display = 'none'
+    }
+    if (planet[0]>0) {
+        document.getElementById('l').style.display = ''
+    } else {
+        document.getElementById('l').style.display = 'none'
+    }
+
+    if (planet[0]==1 || replenishdisplay==false) {
+        document.getElementById('replenish').style.display = 'none'
+    } else {
+        document.getElementById('replenish').style.display = ''
     }
 
     window.requestAnimationFrame(loop)
