@@ -63,11 +63,15 @@
             bigtext {
                 font-size: 35px;
             }
+            #planet:hover {
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <h1 id="title">Space v1.1</h1>
-            <button onclick="init()" id="play">Play</button>
+            <button onclick="init()" id="New">New Game</button>
+            <button onclick="load()" id="Load" style="display: none;">Load Game</button>
         <div id="game">
         </div>
     </body>

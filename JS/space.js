@@ -1,24 +1,5 @@
+console.log(localStorage)
 /*
-fix planets
-fix green dupe
-
-//get localstorage script
-function localstorageobject(v) {
-        for (let i=0;i<v.length;i++) {
-            localStorage.getItem(Object.keys(v)[i])
-        }
-    }
-    function localstoragearray(v,e) {
-        for (let i=0;i<v.length;i++) {
-            localStorage.getItem(v[i+e])
-        }
-    }
-    localStorage.getItem('replenishdisplay')
-    localstorageobject(stat)
-    localstorageobject(reso)
-    localstorageobject(shopitems)
-    localstorageobject(planet,2)
-}
 */
 var replenishdisplay = false
 var stat = {
@@ -45,7 +26,7 @@ var shopitems = [
         }
     },
 ]
-var planet = [0,0,
+var planet = [0,1,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY', resotype: function(planetresource) {
             if (planetresource<201) {
                 return('iron')
@@ -105,14 +86,10 @@ for (let i=0;i<Object.keys(reso).length;i++) {
 }
 
 function init() {
-    document.getElementById('play').remove()
+    document.getElementById('New').remove()
+    document.getElementById('Load').remove()
 
     document.getElementById('title').setAttribute('align','')
-
-    var button = document.createElement('button')
-    button.innerHTML = 'Mine'
-    button.setAttribute('onclick','mine()')
-    document.getElementById('game').appendChild(button)
 
     var button = document.createElement('button')
     button.innerHTML = 'REPLENISH'
@@ -129,10 +106,32 @@ function init() {
 
     var imgplanet = document.createElement('img')
     imgplanet.setAttribute('id','planet')
+    imgplanet.setAttribute('onclick','mine();save()')
     imgplanet.setAttribute('style','height: 200px;width: 200px;')
     document.getElementById('game').appendChild(imgplanet)
 
     document.getElementById('game').appendChild(document.createElement('br'))
+
+    for (let i=0;i<2;i++) {
+        var arrow = document.createElement('img')
+        if (i==0) {
+            arrow.setAttribute('src','/IMG/lspace.png')
+            arrow.setAttribute('onclick','arrow("l")')
+            arrow.setAttribute('id','l')
+        } else {
+            arrow.setAttribute('src','/IMG/rspace.png')
+            arrow.setAttribute('onclick','arrow("r")')
+            arrow.setAttribute('id','r')
+        }
+
+        arrow.setAttribute('class','arrow')
+        arrow.setAttribute('style','width:50px;height:50px')
+        document.getElementById('game').appendChild(arrow)
+    }
+
+    document.getElementById('game').appendChild(document.createElement('br'))
+    document.getElementById('game').appendChild(document.createElement('br'))
+
     var divtitle = document.createElement('bigtext')
     divtitle.innerHTML = 'Resources'
     document.getElementById('game').appendChild(divtitle)
@@ -166,25 +165,6 @@ function init() {
     planetdesc.setAttribute('id','planetdesc')
     planetdesc.setAttribute('style','display: flex;justify-content:center;align-items:center;')
     document.getElementById('game').appendChild(planetdesc)
-
-    for (let i=0;i<2;i++) {
-        var arrow = document.createElement('img')
-        if (i==0) {
-            arrow.setAttribute('src','/IMG/lspace.png')
-            arrow.setAttribute('align','left')
-            arrow.setAttribute('onclick','arrow("l")')
-            arrow.setAttribute('id','l')
-        } else {
-            arrow.setAttribute('src','/IMG/rspace.png')
-            arrow.setAttribute('align','right')
-            arrow.setAttribute('onclick','arrow("r")')
-            arrow.setAttribute('id','r')
-        }
-
-        arrow.setAttribute('class','arrow')
-        arrow.setAttribute('style','width:50px;height:50px')
-        document.getElementById('game').appendChild(arrow)
-    }
 
     window.requestAnimationFrame(loop)
 }
@@ -324,4 +304,38 @@ function replenish() {
             planet[planet[0]+2].reso = planet[planet[0]+2].resomax
         }
     }
+}
+
+function load() {
+    if (!!localStorage) {
+        function localstorageobject(v) {
+        localStorage.getItem(Object.keys(v),JSON.stringify(v[Object.keys(v)]))
+        }
+        function localstoragearray(va,e) {
+            var name = va
+            var v = this[va]
+            this[name] = JSON.parse(localStorage.getItem(name))
+            console.log(this[name])
+        }
+        localStorage.getItem('replenishdisplay',replenishdisplay)
+        localstorageobject(stat)
+        localstorageobject(reso)
+        localstoragearray('shopitems',0)
+        localstoragearray('planet',2)
+        init()
+    }
+}
+
+function save() {
+    localStorage.clear()
+    function localstorageitems(va) {
+        var name = va
+        var v = this[va]
+        localStorage.setItem(name,JSON.stringify(v))
+    }
+    localStorage.setItem('replenishdisplay',replenishdisplay)
+    localstorageitems('stat')
+    localstorageitems('reso')
+    localstorageitems('shopitems')
+    localstorageitems('planet')
 }
