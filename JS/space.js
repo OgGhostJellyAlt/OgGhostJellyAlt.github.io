@@ -1,4 +1,4 @@
-var replenishdisplay = false
+var currentsave = false
 var stat = {
     CPM: 1
 }
@@ -13,22 +13,39 @@ var shopitems = [
             stat.CPM += 2
         }, 
     },
-    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
-            stat.CPM += 4
-        }, 
-    },
     { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET', run: function() {
-            planet[0] += 1
-            planet[1] = 1
+            planet[0] = 1
+            planet[1] += 1
             reso.green.show = true
             replenishdisplay = true
         },
     },
-    { name: 'Hyper Rocket', cost: [{ amount: 300, resotype: 'rock', },{ amount: 300, resotype: 'coal', },{ amount: 300, resotype: 'iron', }], desc: 'its better cause its hyper NEXT PLANET', run: function() {
-            planet[0] += 1
-            planet[1] = 2
-            reso.green.show = true
+    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
+            stat.CPM += 4
+        }, 
+    },
+    { name: 'Hyper Rocket', cost: [{ amount: 50, resotype: 'rock', },{ amount: 300, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'its better cause its hyper NEXT PLANET', run: function() {
+            planet[0] = 2
+            planet[1] += 1
+            reso.platinum.show = true
+            reso.molten.show = true
             replenishdisplay = true
+        },
+    },
+    { name: 'Rock Statue', cost: [{ amount: 1000, resotype: 'rock'}], desc: 'a statue in my likeness. wonder why its finger is in its nose? +4 CPM', run: function() {
+            stat.CPM += 4
+        },
+    },
+    { name: 'Rock Statues', cost: [{ amount: 1500, resotype: 'rock'}], desc: 'woah its plural now. howd he come up with it? +6 CPM', run: function() {
+            stat.CPM += 6
+        },
+    },
+    { name: 'Iron Picks', cost: [{ amount: 1800, resotype: 'iron'},{ amount: 900, resotype: 'platinum'}], desc: 'at least its better than rock right? +9 CPM', run: function() {
+            stat.CPM += 9
+        },
+    },
+    { name: 'Melting Rocket', cost: [{ amount: 3000, resotype: 'molten'},{ amount: 900, resotype: 'platinum'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
+            stat.CPM += 9
         },
     },
 ]
@@ -53,10 +70,13 @@ var planetore = [
         }
     },
     function(planetresource) {
-        if (planetresource<501) {
+        if (planetresource<3001) {
+            return('molten')
+        }
+        if (planetresource<4001) {
             return('platinum')
         }
-        if (planetresource<1001) {
+        if (planetresource<5801) {
             return('iron')
         }
         if (planetresource<8001) {
@@ -75,6 +95,7 @@ var reso = {
     iron : {  amount:0, img:'iron.jpeg', show:true },
     green : {  amount:0, img:'green.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
+    molten : {  amount:0, img:'molten.jpeg', show:false },
 }
 
 var div = document.createElement('div')
@@ -102,13 +123,6 @@ function init() {
     var button = document.createElement('button')
     button.innerHTML = 'Save'
     button.setAttribute('onclick','save()')
-    document.getElementById('game').appendChild(button)
-
-    var button = document.createElement('button')
-    button.innerHTML = 'REPLENISH'
-    button.setAttribute('onclick','replenish()')
-    button.setAttribute('id','replenish')
-    button.style.display = 'none'
     document.getElementById('game').appendChild(button)
     document.getElementById('game').appendChild(document.createElement('br'))
 
@@ -217,12 +231,6 @@ function loop() {
         document.getElementById('l').style.display = 'none'
     }
 
-    if (planet[0]==1 || replenishdisplay==false) {
-        document.getElementById('replenish').style.display = 'none'
-    } else {
-        document.getElementById('replenish').style.display = ''
-    }
-
     window.requestAnimationFrame(loop)
 }
 
@@ -320,17 +328,7 @@ function arrow(d) {
     }
 }
 
-function replenish() {
-    if (planet[planet[0]+2].reso<1) {
-        if (reso.green.amount>0) {
-            reso.green.amount -= 1
-            planet[planet[0]+2].reso = planet[planet[0]+2].resomax
-        }
-    }
-}
-
 var savedvars = [
-    'replenishdisplay',
     'stat',
     'reso',
     'shopitemsbought',
@@ -358,7 +356,12 @@ function save() {
     if (!localStorage.length) {
         savegame()
     } else {
-        if (confirm("Are You Sure You Want to Overwrite A Previous Save?")) {
+        if (!currentsave) {
+            if (confirm("Are You Sure You Want to Overwrite A Previous Save?")) {
+                savegame()
+                currentsave = true
+            }
+        } else {
             savegame()
         }
     }
