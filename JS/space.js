@@ -19,7 +19,14 @@ var shopitems = [
     },
     { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET', run: function() {
             planet[0] += 1
-            planet[1] += 1
+            planet[1] = 1
+            reso.green.show = true
+            replenishdisplay = true
+        },
+    },
+    { name: 'Hyper Rocket', cost: [{ amount: 300, resotype: 'rock', },{ amount: 300, resotype: 'coal', },{ amount: 300, resotype: 'iron', }], desc: 'its better cause its hyper NEXT PLANET', run: function() {
+            planet[0] += 1
+            planet[1] = 2
             reso.green.show = true
             replenishdisplay = true
         },
@@ -52,7 +59,7 @@ var planetore = [
         if (planetresource<1001) {
             return('iron')
         }
-        if (planetresource<1201) {
+        if (planetresource<8001) {
             return('rock')
         }
     },
@@ -60,7 +67,7 @@ var planetore = [
 var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
     { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
-    { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
+    { name: 'Terra', reso: 8000, resomax: 8000, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
