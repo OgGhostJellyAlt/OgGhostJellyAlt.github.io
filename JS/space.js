@@ -2,61 +2,65 @@ var replenishdisplay = false
 var stat = {
     CPM: 1
 }
+var shopitemsrun = [
+    function() {
+        stat.CPM += 1
+    },
+    function() {
+        stat.CPM += 2
+    },
+    function() {
+        stat.CPM += 4
+    },
+    function() {
+        planet[0] += 1
+        planet[1] += 1
+        reso.green.show = true
+        replenishdisplay = true
+    },
+]
 var shopitems = [
-    { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
-            stat.CPM += 1
+    { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM' },
+    { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM' },
+    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM' },
+    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET' },
+]
+var planetore = [
+    function(planetresource) {
+        if (planetresource<201) {
+            return('iron')
+        }
+        if (planetresource<451) {
+            return('coal')
+        }
+        if (planetresource<1001) {
+            return('rock')
         }
     },
-    { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
-            stat.CPM += 2
+    function(planetresource) {
+        if (planetresource<11) {
+            return('green')
+        }
+        if (planetresource<501) {
+            return('coal')
         }
     },
-    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
-            stat.CPM += 4
+    function(planetresource) {
+        if (planetresource<501) {
+            return('platinum')
         }
-    },
-    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET', run: function() {
-            planet[0] += 1
-            planet[1] += 1
-            reso.green.show = true
-            replenishdisplay = true
+        if (planetresource<1001) {
+            return('iron')
+        }
+        if (planetresource<1201) {
+            return('rock')
         }
     },
 ]
-var planet = [0,1,
-    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY', resotype: function(planetresource) {
-            if (planetresource<201) {
-                return('iron')
-            }
-            if (planetresource<451) {
-                return('coal')
-            }
-            if (planetresource<1001) {
-                return('rock')
-            }
-        }
-    },
-    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK', resotype: function(planetresource) {
-            if (planetresource<11) {
-                return('green')
-            }
-            if (planetresource<501) {
-                return('coal')
-            }
-        }
-    },
-    { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES', resotype: function(planetresource) {
-            if (planetresource<501) {
-                return('platinum')
-            }
-            if (planetresource<1001) {
-                return('iron')
-            }
-            if (planetresource<1201) {
-                return('rock')
-            }
-        }
-    }
+var planet = [0,0,
+    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
+    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
+    { name: 'Terra', reso: 1200, resomax: 1200, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -89,6 +93,12 @@ function init() {
     document.getElementById('title').setAttribute('align','')
 
     var button = document.createElement('button')
+    button.innerHTML = 'Save'
+    button.setAttribute('onclick','save()')
+    button.style.display = 'none'
+    document.getElementById('game').appendChild(button)
+
+    var button = document.createElement('button')
     button.innerHTML = 'REPLENISH'
     button.setAttribute('onclick','replenish()')
     button.setAttribute('id','replenish')
@@ -103,7 +113,7 @@ function init() {
 
     var imgplanet = document.createElement('img')
     imgplanet.setAttribute('id','planet')
-    imgplanet.setAttribute('onclick','mine();save()')
+    imgplanet.setAttribute('onclick','mine()')
     imgplanet.setAttribute('style','height: 200px;width: 200px;')
     document.getElementById('game').appendChild(imgplanet)
 
@@ -213,7 +223,7 @@ function loop() {
 function mine() {
     for (let i=0;i<stat.CPM;i++) {
         if ( planet[planet[0]+2].reso > 0 ) {
-            reso[planet[planet[0]+2].resotype(planet[planet[0]+2].reso)].amount += 1
+            reso[planetore[planet[0]](planet[planet[0]+2].reso)].amount += 1
             planet[planet[0]+2].reso -= 1
         }
         
@@ -234,8 +244,9 @@ function buy(i) {
             var currentshop = shopitems[i].cost[ci]
             reso[currentshop.resotype].amount -= currentshop.amount
         }
-        shopitems[i].run()
+        shopitemsrun[i]()
         shopitems.splice(i, 1)
+        shopitemsrun.splice(i, 1)
         loadshop()
     }
 }
