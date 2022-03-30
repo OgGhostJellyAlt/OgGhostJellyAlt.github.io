@@ -1,6 +1,3 @@
-console.log(localStorage)
-/*
-*/
 var replenishdisplay = false
 var stat = {
     CPM: 1
@@ -306,36 +303,24 @@ function replenish() {
     }
 }
 
+var savedvars = [
+    'replenishdisplay',
+    'stat',
+    'reso',
+    'shopitems',
+    'planet',
+]
 function load() {
     if (!!localStorage) {
-        function localstorageobject(v) {
-        localStorage.getItem(Object.keys(v),JSON.stringify(v[Object.keys(v)]))
+        for (let i=0;i<savedvars.length;i++) {
+            this[savedvars[i]] = JSON.parse(localStorage.getItem(savedvars[i]))
         }
-        function localstoragearray(va,e) {
-            var name = va
-            var v = this[va]
-            this[name] = JSON.parse(localStorage.getItem(name))
-            console.log(this[name])
-        }
-        localStorage.getItem('replenishdisplay',replenishdisplay)
-        localstorageobject(stat)
-        localstorageobject(reso)
-        localstoragearray('shopitems',0)
-        localstoragearray('planet',2)
         init()
     }
 }
-
 function save() {
     localStorage.clear()
-    function localstorageitems(va) {
-        var name = va
-        var v = this[va]
-        localStorage.setItem(name,JSON.stringify(v))
+    for (let i=0;i<savedvars.length;i++) {
+        localStorage.setItem(savedvars[i],JSON.stringify(this[savedvars[i]]))
     }
-    localStorage.setItem('replenishdisplay',replenishdisplay)
-    localstorageitems('stat')
-    localstorageitems('reso')
-    localstorageitems('shopitems')
-    localstorageitems('planet')
 }
