@@ -2,28 +2,28 @@ var replenishdisplay = false
 var stat = {
     CPM: 1
 }
-var shopitemsrun = [
-    function() {
-        stat.CPM += 1
-    },
-    function() {
-        stat.CPM += 2
-    },
-    function() {
-        stat.CPM += 4
-    },
-    function() {
-        planet[0] += 1
-        planet[1] += 1
-        reso.green.show = true
-        replenishdisplay = true
-    },
+var shopitemsbought = [
 ]
 var shopitems = [
-    { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM' },
-    { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM' },
-    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM' },
-    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET' },
+    { name: 'Pickaxes', cost: [{ amount: 100, resotype: 'rock', }], desc: 'its a pickaxe.. pretty uuuh pretty neat. +1 CPM', run: function() {
+            stat.CPM += 1
+        },  
+    },
+    { name: 'Spicky boi Pickaxes', cost: [{ amount: 200, resotype: 'rock', }], desc: 'extra spiike. you could cut through armor with these +2 CPM', run: function() {
+            stat.CPM += 2
+        }, 
+    },
+    { name: 'Mechanical Pickaxes', cost: [{ amount: 100, resotype: 'rock', },{ amount: 300, resotype: 'coal', }], desc: 'mechanical pickaxes. so powerful it smashes your face +4 CPM', run: function() {
+            stat.CPM += 4
+        }, 
+    },
+    { name: 'Rocket', cost: [{ amount: 100, resotype: 'rock', },{ amount: 100, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'lets get the heck outta here NEXT PLANET', run: function() {
+            planet[0] += 1
+            planet[1] += 1
+            reso.green.show = true
+            replenishdisplay = true
+        },
+    },
 ]
 var planetore = [
     function(planetresource) {
@@ -95,7 +95,6 @@ function init() {
     var button = document.createElement('button')
     button.innerHTML = 'Save'
     button.setAttribute('onclick','save()')
-    button.style.display = 'none'
     document.getElementById('game').appendChild(button)
 
     var button = document.createElement('button')
@@ -244,49 +243,58 @@ function buy(i) {
             var currentshop = shopitems[i].cost[ci]
             reso[currentshop.resotype].amount -= currentshop.amount
         }
-        shopitemsrun[i]()
-        shopitems.splice(i, 1)
-        shopitemsrun.splice(i, 1)
+        shopitems[i].run()
+        shopitemsbought.push(i)
         loadshop()
     }
 }
 
 function loadshop() {
     document.getElementById('shop').innerHTML = ''
+    var imax = 3
     for (let i=0;i<shopitems.length;i++) {
-        if (i>2) break;
-
-        var shopdiv = document.createElement('div')
-        shopdiv.setAttribute('id','shop'+i)
-        shopdiv.setAttribute('class','shop')
-        shopdiv.addEventListener('click', function() {
-                buy(i)
+        if (i>imax-1) break;
+        var shopbool = true
+        for (let si=0;si<shopitemsbought.length;si++) {
+            if (i==shopitemsbought[si]) {
+                shopbool = false
+                imax += 1
+                break;
             }
-        )
-        document.getElementById('shop').appendChild(shopdiv)
-        var shopdisplay = document.getElementById('shop'+i)
-
-        var shopnamedisplay = document.createElement('shop')
-        shopnamedisplay.innerHTML = shopitems[i].name+'&nbsp&nbsp&nbsp&nbsp'
-        shopdisplay.appendChild(shopnamedisplay)
-
-        for (let ci=0;ci<shopitems[i].cost.length;ci++) {
-            var shopimgdisplay = document.createElement('img')
-            shopimgdisplay.setAttribute('src','/IMG/'+reso[shopitems[i].cost[ci].resotype].img)
-            shopdisplay.appendChild(shopimgdisplay)
-
-            var shopcostdisplay = document.createElement('shop')
-            shopcostdisplay.innerHTML = ' '+shopitems[i].cost[ci].amount+' '
-            shopdisplay.appendChild(shopcostdisplay)
         }
+        if (shopbool) {
+            var shopdiv = document.createElement('div')
+            shopdiv.setAttribute('id','shop'+i)
+            shopdiv.setAttribute('class','shop')
+            shopdiv.addEventListener('click', function() {
+                    buy(i)
+                }
+            )
+            document.getElementById('shop').appendChild(shopdiv)
+            var shopdisplay = document.getElementById('shop'+i)
 
-        shopdisplay.appendChild(document.createElement('br'))
+            var shopnamedisplay = document.createElement('shop')
+            shopnamedisplay.innerHTML = shopitems[i].name+'&nbsp&nbsp&nbsp&nbsp'
+            shopdisplay.appendChild(shopnamedisplay)
 
-        var shopdescdisplay = document.createElement('shop')
-        shopdescdisplay.innerHTML = shopitems[i].desc
-        shopdisplay.appendChild(shopdescdisplay)
+            for (let ci=0;ci<shopitems[i].cost.length;ci++) {
+                var shopimgdisplay = document.createElement('img')
+                shopimgdisplay.setAttribute('src','/IMG/'+reso[shopitems[i].cost[ci].resotype].img)
+                shopdisplay.appendChild(shopimgdisplay)
 
-        shopdisplay.appendChild(document.createElement('br'))
+                var shopcostdisplay = document.createElement('shop')
+                shopcostdisplay.innerHTML = ' '+shopitems[i].cost[ci].amount+' '
+                shopdisplay.appendChild(shopcostdisplay)
+            }
+
+            shopdisplay.appendChild(document.createElement('br'))
+
+            var shopdescdisplay = document.createElement('shop')
+            shopdescdisplay.innerHTML = shopitems[i].desc
+            shopdisplay.appendChild(shopdescdisplay)
+
+            shopdisplay.appendChild(document.createElement('br'))
+        }
     }
 }
 
@@ -318,7 +326,7 @@ var savedvars = [
     'replenishdisplay',
     'stat',
     'reso',
-    'shopitems',
+    'shopitemsbought',
     'planet',
 ]
 function load() {
