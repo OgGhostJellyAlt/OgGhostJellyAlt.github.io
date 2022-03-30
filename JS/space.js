@@ -337,16 +337,29 @@ var savedvars = [
     'planet',
 ]
 function load() {
-    if (!!localStorage) {
+    if (!!localStorage.length) {
         for (let i=0;i<savedvars.length;i++) {
             this[savedvars[i]] = JSON.parse(localStorage.getItem(savedvars[i]))
         }
         init()
+    } else {
+        window.alert('Save Not Found :/')
     }
+    
 }
 function save() {
-    localStorage.clear()
-    for (let i=0;i<savedvars.length;i++) {
-        localStorage.setItem(savedvars[i],JSON.stringify(this[savedvars[i]]))
+    function savegame() {
+        localStorage.clear()
+        for (let i=0;i<savedvars.length;i++) {
+            localStorage.setItem(savedvars[i],JSON.stringify(this[savedvars[i]]))
+        }
+        window.alert('Saved Succesfully')
+    }
+    if (!localStorage.length) {
+        savegame()
+    } else {
+        if (confirm("Are You Sure You Want to Overwrite A Previous Save?")) {
+            savegame()
+        }
     }
 }
