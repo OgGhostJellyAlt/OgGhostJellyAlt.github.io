@@ -45,7 +45,8 @@ var shopitems = [
         },
     },
     { name: 'Melting Rocket', cost: [{ amount: 3000, resotype: 'molten'},{ amount: 900, resotype: 'platinum'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
-            stat.CPM += 9
+            planet[0] = 3
+            planet[1] += 1
         },
     },
 ]
@@ -251,6 +252,7 @@ function buy(i) {
             var shopbool = true
         } else {
             var shopbool = false
+            break;
         }
     }
     if (shopbool) {
