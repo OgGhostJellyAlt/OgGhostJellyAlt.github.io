@@ -47,10 +47,30 @@ var shopitems = [
     { name: 'Melting Rocket', cost: [{ amount: 2250, resotype: 'molten'},{ amount: 1800, resotype: 'platinum'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
             planet[0] = 3
             planet[1] += 1
+            reso.ice.show = true
+        },
+    },
+    { name: 'Super Coolers', cost: [{ amount: 4050, resotype: 'ice'}], desc: 'is-s it j-just me or is-s it k-kinda cold in h-here +13 CPM', run: function() {
+            stat.CPM += 13
+        },
+    },
+    { name: 'Hyper Super Coolers', cost: [{ amount: 6000, resotype: 'ice'}], desc: 'so whats next. hyper super mega coolers? +20 CPM', run: function() {
+            stat.CPM += 20
+        },
+    },
+    { name: 'Hyper Super Coolers', cost: [{ amount: 9000, resotype: 'ice'}], desc: 'seriously -_- +30 CPM', run: function() {
+            stat.CPM += 30
+        },
+    },
+    { name: 'Frozen Rocket', cost: [{ amount: 9000, resotype: 'iron'},{ amount: 2500, resotype: 'platinum'},{ amount: 1000, resotype: 'molten'},{ amount: 1000, resotype: 'ice'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
+            planet[0] = 4
+            planet[1] += 1
+            reso.ice.show = true
         },
     },
 ]
 var planetore = [
+    //earth
     function(planetresource) {
         if (planetresource<201) {
             return('iron')
@@ -62,6 +82,7 @@ var planetore = [
             return('rock')
         }
     },
+    //gren
     function(planetresource) {
         if (planetresource<11) {
             return('green')
@@ -70,6 +91,7 @@ var planetore = [
             return('coal')
         }
     },
+    //terra
     function(planetresource) {
         if (planetresource<2251) {
             return('molten')
@@ -84,6 +106,7 @@ var planetore = [
             return('rock')
         }
     },
+    //firent
     function(planetresource) {
         if (planetresource<1001) {
             return('molten')
@@ -91,11 +114,17 @@ var planetore = [
         if (planetresource<3501) {
             return('platinum')
         }
-        if (planetresource<5501) {
+        if (planetresource<12501) {
             return('iron')
         }
-        if (planetresource<8001) {
-            return('rock')
+        if (planetresource<32551) {
+            return('ice')
+        }
+    },
+    //comet
+    function(planetresource) {
+        if (planetresource<90001) {
+            return('molten')
         }
     },
 ]
@@ -103,7 +132,8 @@ var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
     { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
     { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
-    { name: 'Fire\'nt', reso: 76000, resomax: 76000, img:'firent.png', desc:/*'A FROZEN WASTELAND...'*/'UNFINISHED' },
+    { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
+    { name: 'Comet', reso: 90000, resomax: 90000, img:'comet.png', desc:'AAAH IM MELTING' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
