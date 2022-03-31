@@ -24,7 +24,7 @@ var shopitems = [
             stat.CPM += 4
         }, 
     },
-    { name: 'Hyper Rocket', cost: [{ amount: 50, resotype: 'rock', },{ amount: 300, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'its better cause its hyper NEXT PLANET', run: function() {
+    { name: 'Hyper Rocket', cost: [{ amount: 50, resotype: 'rock', },{ amount: 340, resotype: 'coal', },{ amount: 100, resotype: 'iron', }], desc: 'its better cause its hyper NEXT PLANET', run: function() {
             planet[0] = 2
             planet[1] += 1
             reso.platinum.show = true
@@ -36,15 +36,15 @@ var shopitems = [
             stat.CPM += 4
         },
     },
-    { name: 'Rock Statues', cost: [{ amount: 1500, resotype: 'rock'}], desc: 'woah its plural now. howd he come up with it? +6 CPM', run: function() {
+    { name: 'Reinforced Statue', cost: [{ amount: 1500, resotype: 'rock'}], desc: 'how is this suppose to help with mining? +6 CPM', run: function() {
             stat.CPM += 6
         },
     },
-    { name: 'Iron Picks', cost: [{ amount: 1800, resotype: 'iron'},{ amount: 900, resotype: 'platinum'}], desc: 'at least its better than rock right? +9 CPM', run: function() {
+    { name: 'Iron Picks', cost: [{ amount: 2000, resotype: 'iron'},{ amount: 700, resotype: 'platinum'}], desc: 'at least its better than rock right? +9 CPM', run: function() {
             stat.CPM += 9
         },
     },
-    { name: 'Melting Rocket', cost: [{ amount: 3000, resotype: 'molten'},{ amount: 900, resotype: 'platinum'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
+    { name: 'Melting Rocket', cost: [{ amount: 2250, resotype: 'molten'},{ amount: 1800, resotype: 'platinum'}], desc: 'uuh guys im not so sure about this NEXT PLANET', run: function() {
             planet[0] = 3
             planet[1] += 1
         },
@@ -71,13 +71,27 @@ var planetore = [
         }
     },
     function(planetresource) {
-        if (planetresource<3001) {
+        if (planetresource<2251) {
             return('molten')
         }
-        if (planetresource<4001) {
+        if (planetresource<4751) {
             return('platinum')
         }
-        if (planetresource<5801) {
+        if (planetresource<6751) {
+            return('iron')
+        }
+        if (planetresource<9251) {
+            return('rock')
+        }
+    },
+    function(planetresource) {
+        if (planetresource<1001) {
+            return('molten')
+        }
+        if (planetresource<3501) {
+            return('platinum')
+        }
+        if (planetresource<5501) {
             return('iron')
         }
         if (planetresource<8001) {
@@ -88,7 +102,8 @@ var planetore = [
 var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
     { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
-    { name: 'Terra', reso: 8000, resomax: 8000, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
+    { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
+    { name: 'Fire\'nt', reso: 76000, resomax: 76000, img:'firent.png', desc:/*'A FROZEN WASTELAND...'*/'UNFINISHED' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -97,6 +112,7 @@ var reso = {
     green : {  amount:0, img:'green.jpeg', show:false },
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
     molten : {  amount:0, img:'molten.jpeg', show:false },
+    ice : {  amount:0, img:'ice.jpeg', show:false },
 }
 
 var div = document.createElement('div')
@@ -337,6 +353,7 @@ var savedvars = [
     'planet',
 ]
 function load() {
+    currentsave = true
     if (!!localStorage.length) {
         for (let i=0;i<savedvars.length;i++) {
             this[savedvars[i]] = JSON.parse(localStorage.getItem(savedvars[i]))
