@@ -68,6 +68,24 @@ var shopitems = [
             reso.ice.show = true
         },
     },
+    { name: 'Frozen Coolers', cost: [{ amount: 13500, resotype: 'ice'}], desc: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAH +45 CPM', run: function() {
+            stat.CPM += 45
+        },
+    },
+    { name: 'Molten Coolers', cost: [{ amount: 20250, resotype: 'molten'}], desc: 'not sure thats how it works... +65 CPM', run: function() {
+            stat.CPM += 65
+        },
+    },
+    { name: 'Drills', cost: [{ amount: 30000, resotype: 'platinum'}], desc: 'a big change compared to pickaxes +100 CPM', run: function() {
+            stat.CPM += 100
+        },
+    },
+    { name: 'Reinforced Rocket', cost: [{ amount: 45000, resotype: 'iron'}], desc: 'woah thats.. really reinforced NEXT PLANET', run: function() {
+            stat.CPM += 100
+            planet[0] = 5
+            planet[1] += 1
+        },
+    },
 ]
 var planetore = [
     //earth
@@ -123,8 +141,17 @@ var planetore = [
     },
     //comet
     function(planetresource) {
-        if (planetresource<90001) {
+        if (planetresource<45001) {
+            return('iron')
+        }
+        if (planetresource<75001) {
+            return('platinum')
+        }
+        if (planetresource<95251) {
             return('molten')
+        }
+        if (planetresource<108751) {
+            return('ice')
         }
     },
 ]
@@ -133,7 +160,8 @@ var planet = [0,0,
     { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
     { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
     { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
-    { name: 'Comet', reso: 90000, resomax: 90000, img:'comet.png', desc:'AAAH IM MELTING' },
+    { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
+    { name: 'UNFINISHED', reso: '?', resomax: '?', img:'', desc:'?' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
