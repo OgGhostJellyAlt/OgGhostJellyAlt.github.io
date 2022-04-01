@@ -88,6 +88,23 @@ var shopitems = [
             reso.WTH.show = true
         },
     },
+    { name: 'Molten Drills', cost: [{ amount: 60000, resotype: 'molten'}], desc: 'MWAHAHAHA DESTROY THE UNIVERSE +200 CPM', run: function() {
+            stat.CPM += 200
+        },
+    },
+    { name: 'Reinforced Drills', cost: [{ amount: 90000, resotype: 'platinum'}], desc: 'ULTIMATE POWER +300 CPM', run: function() {
+            stat.CPM += 300
+        },
+    },
+    { name: 'Glowing Power Cores', cost: [{ amount: 135000, resotype: 'glowingrock'}], desc: 'ULTIMATE POWER +450 CPM', run: function() {
+            stat.CPM += 450
+        },
+    },
+    { name: 'WTH Rocket', cost: [{ amount: 202500, resotype: 'WTH'}], desc: 'WTH? NEXT PLANET', run: function() {
+            planet[0] = 6
+            planet[1] += 1
+        },
+    },
 ]
 var planetore = [
     //earth
@@ -158,8 +175,17 @@ var planetore = [
     },
     //ëarth
     function(planetresource) {
-        if (planetresource<400001) {
+        if (planetresource<202501) {
+            return('WTH')
+        }
+        if (planetresource<337501) {
+            return('glowingrock')
+        }
+        if (planetresource<427501) {
             return('platinum')
+        }
+        if (planetresource<487501) {
+            return('molten')
         }
     }
 ]
@@ -169,7 +195,8 @@ var planet = [0,0,
     { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
     { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
     { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
-    { name: 'Ëarth', reso: 400000, resomax: 400000, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
+    { name: 'Ëarth', reso: 487500, resomax: 487500, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
+    { name: '?', reso: '?', resomax: '?', img:'', desc:'?' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
