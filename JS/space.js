@@ -66,6 +66,7 @@ var shopitems = [
             planet[0] = 4
             planet[1] += 1
             reso.ice.show = true
+            reso.glowingrock.show = true
         },
     },
     { name: 'Frozen Coolers', cost: [{ amount: 13500, resotype: 'ice'}], desc: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAH +45 CPM', run: function() {
@@ -80,10 +81,11 @@ var shopitems = [
             stat.CPM += 100
         },
     },
-    { name: 'Reinforced Rocket', cost: [{ amount: 45000, resotype: 'iron'}], desc: 'woah thats.. really reinforced NEXT PLANET', run: function() {
+    { name: 'Glowing Rocket', cost: [{ amount: 45000, resotype: 'glowingrock'}], desc: 'oooh shiny NEXT PLANET', run: function() {
             stat.CPM += 100
             planet[0] = 5
             planet[1] += 1
+            reso.WTH.show = true
         },
     },
 ]
@@ -142,7 +144,7 @@ var planetore = [
     //comet
     function(planetresource) {
         if (planetresource<45001) {
-            return('iron')
+            return('glowingrock')
         }
         if (planetresource<75001) {
             return('platinum')
@@ -154,6 +156,12 @@ var planetore = [
             return('ice')
         }
     },
+    //ëarth
+    function(planetresource) {
+        if (planetresource<400001) {
+            return('platinum')
+        }
+    }
 ]
 var planet = [0,0,
     { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
@@ -161,7 +169,7 @@ var planet = [0,0,
     { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
     { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
     { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
-    { name: 'UNFINISHED', reso: '?', resomax: '?', img:'', desc:'?' },
+    { name: 'Ëarth', reso: 400000, resomax: 400000, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -171,6 +179,8 @@ var reso = {
     platinum : {  amount:0, img:'platinum.jpeg', show:false },
     molten : {  amount:0, img:'molten.jpeg', show:false },
     ice : {  amount:0, img:'ice.jpeg', show:false },
+    glowingrock : {  amount:0, img:'glowingrock.jpeg', show:false },
+    WTH : {  amount:0, img:'wth.jpeg', show:false },
 }
 
 var div = document.createElement('div')
