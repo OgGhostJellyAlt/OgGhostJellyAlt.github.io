@@ -1,4 +1,3 @@
-var currentsave = false
 var stat = {
     CPM: 1
 }
@@ -441,6 +440,7 @@ function arrow(d) {
     }
 }
 
+var currentsave = false
 var savedvars = [
     'stat',
     'reso',
