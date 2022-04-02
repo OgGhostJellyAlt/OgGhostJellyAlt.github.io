@@ -186,6 +186,12 @@ var planetore = [
         if (planetresource<487501) {
             return('molten')
         }
+    },
+    //?
+    function(planetresource) {
+        if (planetresource<'?') {
+            return('?')
+        }
     }
 ]
 var planet = [0,0,
