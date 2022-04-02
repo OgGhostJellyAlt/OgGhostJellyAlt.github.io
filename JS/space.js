@@ -104,6 +104,23 @@ var shopitems = [
             planet[1] += 1
         },
     },
+    { name: '...', cost: [{ amount: 202500, resotype: 'molten'}], desc: '...', run: function() {
+            stat.CPM += 675
+        },
+    },
+    { name: '...', cost: [{ amount: 303750, resotype: 'platinum'}], desc: '...', run: function() {
+            stat.CPM += 1010
+        },
+    },
+    { name: '...', cost: [{ amount: 455250, resotype: 'glowingrock'}], desc: '...', run: function() {
+            stat.CPM += 1515
+        },
+    },
+    { name: '...', cost: [{ amount: 682500, resotype: 'WTH'}], desc: '...', run: function() {
+            planet[0] = 7
+            planet[1] += 1
+        },
+    },
 ]
 var planetore = [
     //earth
@@ -187,10 +204,19 @@ var planetore = [
             return('molten')
         }
     },
-    //?
+    //glorpnup
     function(planetresource) {
-        if (planetresource<'?') {
-            return('?')
+        if (planetresource<682501) {
+            return('WTH')
+        }
+        if (planetresource<1137751) {
+            return('glowingrock')
+        }
+        if (planetresource<1441501) {
+            return('platinum')
+        }
+        if (planetresource<1644001) {
+            return('molten')
         }
     }
 ]
@@ -201,7 +227,8 @@ var planet = [0,0,
     { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
     { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
     { name: 'Ëarth', reso: 487500, resomax: 487500, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
-    { name: '?', reso: '?', resomax: '?', img:'', desc:'?' },
+    { name: 'Glorpnup', reso: 1644000, resomax: 1644000, img:'glorpnup.png', desc:'AN UNNATURAL GOLDEN FORCE FIELD SURROUNDS IT. IT WAS MADE BY SOMETHING...' },
+    { name: '?', reso: '?', resomax: '?', img:'.png', desc:'?' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -213,6 +240,7 @@ var reso = {
     ice : {  amount:0, img:'ice.jpeg', show:false },
     glowingrock : {  amount:0, img:'glowingrock.jpeg', show:false },
     WTH : {  amount:0, img:'wth.jpeg', show:false },
+    soulessence : {  amount:0, img:'soulessence.jpeg', show:false },
 }
 
 var div = document.createElement('div')
