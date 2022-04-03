@@ -104,19 +104,19 @@ var shopitems = [
             planet[1] += 1
         },
     },
-    { name: '...', cost: [{ amount: 202500, resotype: 'molten'}], desc: '...', run: function() {
+    { name: 'Hyper Molten Drills', cost: [{ amount: 202500, resotype: 'molten'}], desc: 'AAAAAAAAAAAAAH MY HANDS ARE ON FIRE +675 CPM', run: function() {
             stat.CPM += 675
         },
     },
-    { name: '...', cost: [{ amount: 303750, resotype: 'platinum'}], desc: '...', run: function() {
+    { name: 'Hyper Reinforced Drills', cost: [{ amount: 303750, resotype: 'platinum'}], desc: 'ONE OF THESE COULD INSTANTLY DESTROY AN EARTH SIZED PLANET +1010 CPM', run: function() {
             stat.CPM += 1010
         },
     },
-    { name: '...', cost: [{ amount: 455250, resotype: 'glowingrock'}], desc: '...', run: function() {
+    { name: 'Enhanced Power Cores', cost: [{ amount: 455250, resotype: 'glowingrock'}], desc: 'SUPER ULTIMATE POWER!!!!!!! +1515 CPM', run: function() {
             stat.CPM += 1515
         },
     },
-    { name: '...', cost: [{ amount: 682500, resotype: 'WTH'}], desc: '...', run: function() {
+    { name: 'WTH is Happening Rocket?', cost: [{ amount: 682500, resotype: 'WTH'}], desc: 'WTH IS GOING ON! NEXT PLANET', run: function() {
             planet[0] = 7
             planet[1] += 1
         },
