@@ -119,6 +119,23 @@ var shopitems = [
     { name: 'WTH is Happening Rocket?', cost: [{ amount: 682500, resotype: 'WTH'}], desc: 'WTH IS GOING ON! NEXT PLANET', run: function() {
             planet[0] = 7
             planet[1] += 1
+            reso.soulessence.show = true
+        },
+    },
+    { name: 'i cant do this anymore', cost: [{ amount: 682500, resotype: 'platinum'}], desc: 'i cant +2275 CPM', run: function() {
+            stat.CPM += 2275
+        },
+    },
+    { name: 'making up a bunch of random upgrade names', cost: [{ amount: 1023750, resotype: 'glowingrock'}], desc: 'and dumb planet names... +3410 CPM', run: function() {
+            stat.CPM += 3410
+        },
+    },
+    { name: 'is there really a point in all this', cost: [{ amount: 1535250, resotype: 'WTH'}], desc: 'does it matter if you get a highscore or get another upgrade? +5115 CPM', run: function() {
+            stat.CPM += 5115
+        },
+    },
+    { name: 'OH WAIT NVM I GOT ANOTHER UPGRADE', cost: [{ amount: 2302500, resotype: 'soulessence'}], desc: 'WOOO LAST UPGRADE FINISH GAME', run: function() {
+            win()
         },
     },
 ]
@@ -218,6 +235,21 @@ var planetore = [
         if (planetresource<1644001) {
             return('molten')
         }
+    },
+    //void
+    function(planetresource) {
+        if (planetresource<2302501) {
+            return('soulessence')
+        }
+        if (planetresource<3837751) {
+            return('WTH')
+        }
+        if (planetresource<4861501) {
+            return('glowingrock')
+        }
+        if (planetresource<5544001) {
+            return('platinum')
+        }
     }
 ]
 var planet = [0,0,
@@ -228,7 +260,7 @@ var planet = [0,0,
     { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
     { name: 'Ëarth', reso: 487500, resomax: 487500, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
     { name: 'Glorpnup', reso: 1644000, resomax: 1644000, img:'glorpnup.png', desc:'AN UNNATURAL GOLDEN FORCE FIELD SURROUNDS IT. IT WAS MADE BY SOMETHING...' },
-    { name: '?', reso: '?', resomax: '?', img:'.png', desc:'?' },
+    { name: 'VOID', reso: 5544000, resomax: 5544000, img:'void.png', desc:'???' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -513,4 +545,9 @@ function save() {
             savegame()
         }
     }
+}
+
+function win() {
+    document.getElementById('game').remove()
+    document.getElementById('title').innerHTML = 'Thanks For Playing :)'
 }
