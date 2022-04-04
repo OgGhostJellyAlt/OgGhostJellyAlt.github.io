@@ -253,14 +253,14 @@ var planetore = [
     }
 ]
 var planet = [0,0,
-    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth.png', desc:'FIRST PLANET. CASUALS ONLY' },
-    { name: 'Grën', reso: 500, resomax: 500, img:'gren.png', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
-    { name: 'Terra', reso: 9250, resomax: 9250, img:'terra.png', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
-    { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent.png', desc:'A FROZEN WASTELAND...' },
-    { name: 'Comet', reso: 108750, resomax: 108750, img:'comet.png', desc:'AAAH IM MELTING' },
-    { name: 'Ëarth', reso: 487500, resomax: 487500, img:'earthwierd.png', desc:'WHERE DID EVERYONE GO?' },
-    { name: 'Glorpnup', reso: 1644000, resomax: 1644000, img:'glorpnup.png', desc:'AN UNNATURAL GOLDEN FORCE FIELD SURROUNDS IT. IT WAS MADE BY SOMETHING...' },
-    { name: 'VOID', reso: 5544000, resomax: 5544000, img:'void.png', desc:'???' },
+    { name: 'Earth', reso: 1000, resomax: 1000, img:'earth', desc:'FIRST PLANET. CASUALS ONLY' },
+    { name: 'Grën', reso: 500, resomax: 500, img:'gren', desc:'DEADLY NATURE COVERS THE PLANET, THE TREES ARE FIGHTING BACK' },
+    { name: 'Terra', reso: 9250, resomax: 9250, img:'terra', desc:'BONE BREAKING GRAVITY BUT RICH WITH RARE ORES' },
+    { name: 'Fire\'nt', reso: 32550, resomax: 32550, img:'firent', desc:'A FROZEN WASTELAND...' },
+    { name: 'Comet', reso: 108750, resomax: 108750, img:'comet', desc:'AAAH IM MELTING' },
+    { name: 'Ëarth', reso: 487500, resomax: 487500, img:'earthwierd', desc:'WHERE DID EVERYONE GO?' },
+    { name: 'Glorpnup', reso: 1644000, resomax: 1644000, img:'glorpnup', desc:'AN UNNATURAL GOLDEN FORCE FIELD SURROUNDS IT. IT WAS MADE BY SOMETHING...' },
+    { name: 'VOID', reso: 5544000, resomax: 5544000, img:'void', desc:'???' },
 ]
 var reso = {
     rock : {  amount:0, img:'rock.jpeg', show:true },
@@ -280,7 +280,13 @@ div.setAttribute('id','preload')
 document.querySelector('html').appendChild(div)
 for (let i=0;i<Object.keys(planet).length-2;i++) {
     var preimg = document.createElement('img')
-    preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img)
+    preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img+'.png')
+    preimg.style.display='none'
+    document.getElementById('preload').appendChild(preimg)
+}
+for (let i=0;i<Object.keys(planet).length-2;i++) {
+    var preimg = document.createElement('img')
+    preimg.setAttribute('src','/IMG/'+planet[Object.keys(planet)[i+2]].img+'broken'+'.png')
     preimg.style.display='none'
     document.getElementById('preload').appendChild(preimg)
 }
@@ -375,7 +381,12 @@ function init() {
 
 function loop() {
     document.getElementById('reso').innerHTML = planet[planet[0]+2].name+': '+planet[planet[0]+2].reso+'/'+planet[planet[0]+2].resomax
-    document.getElementById('planet').setAttribute('src','/IMG/'+planet[planet[0]+2].img)
+    if (planet[planet[0]+2].reso>0) {
+        planetimg = planet[planet[0]+2].img+'.png'
+    } else {
+        planetimg = planet[planet[0]+2].img+'broken'+'.png'
+    }
+    document.getElementById('planet').setAttribute('src','/IMG/'+planetimg)
     document.getElementById('planetdesc').innerHTML = planet[planet[0]+2].desc
     document.getElementById('resodisplay').innerHTML = ''
     for (let i=0;i<Object.keys(reso).length;i++) {
