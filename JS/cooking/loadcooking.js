@@ -29,21 +29,28 @@ function load(recipe) {
   //load recipe
   var i = 0
   do {
-    let name = document.createElement('r');
-    name.innerHTML = recipe.ingredients[i].name + " - "
-    name.setAttribute('class','two')
-    document.getElementById("recipe").appendChild(name);
+    if (!!recipe.ingredients[i].quantity || !!recipe.ingredients[i].unit) {
+      let name = document.createElement('r');
+      name.innerHTML = recipe.ingredients[i].name + " - "
+      name.setAttribute('class','two')
+      document.getElementById("recipe").appendChild(name);
 
-    let quantity = document.createElement('r');
-    quantity.setAttribute('id', recipe.ingredients[i].name)
-    quantity.innerHTML = recipe.ingredients[i].quantity
-    quantity.setAttribute('class','two')
-    document.getElementById("recipe").appendChild(quantity);
+      let quantity = document.createElement('r');
+      quantity.setAttribute('id', recipe.ingredients[i].name)
+      quantity.innerHTML = recipe.ingredients[i].quantity
+      quantity.setAttribute('class','two')
+      document.getElementById("recipe").appendChild(quantity);
 
-    let unit = document.createElement('r');
-    unit.innerHTML = recipe.ingredients[i].unit
-    unit.setAttribute('class','two')
-    document.getElementById("recipe").appendChild(unit);
+      let unit = document.createElement('r');
+      unit.innerHTML = recipe.ingredients[i].unit
+      unit.setAttribute('class','two')
+      document.getElementById("recipe").appendChild(unit);
+    } else {
+      let name = document.createElement('b');
+      name.setAttribute('class','two')
+      name.innerHTML = recipe.ingredients[i].name
+      document.getElementById("recipe").appendChild(name);
+    }
 
     if ( !!recipe.ingredients[i].select ) {
       var whitespace = document.createElement('whitespace')
@@ -117,7 +124,9 @@ function loop() {
         }
       }
     }
-    document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
+    if (document.getElementById(recipe.ingredients[i].name)) {
+      document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
+    }
 
     i = i + 1;
   } while (i < recipe.ingredients.length);
@@ -128,6 +137,9 @@ function fractionconverter(decimal) {
   switch ( decimal ) {
     case 0.75:
       decimal = '3/4'
+      break;
+    case 0.875:
+      decimal = '7/8'
       break;
     case 0.8:
       decimal = '4/5'

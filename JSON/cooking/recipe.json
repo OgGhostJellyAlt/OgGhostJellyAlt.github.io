@@ -11,6 +11,7 @@
     { "display": "Shortbread" , "codename": "shortbread" , "type": "dessert" },
     { "display": "Bread Pudding" , "codename": "breadpudding" , "type": "dessert" },
     { "display": "Chocolate Chip Cookies" , "codename": "chococookies" , "type": "dessert" },
+    { "display": "Carrot Cake" , "codename": "carrotcake" , "type": "dessert" },
     { "display": "Hot Cocoa" , "codename": "hotcoco" , "type": "drink" }
   ]
 }
