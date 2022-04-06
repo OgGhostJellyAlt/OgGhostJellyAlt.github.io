@@ -11,6 +11,19 @@ fetch("/JSON/cooking/" + params.get("recipe") + ".json")
 });
 
 function load(recipe) {
+  //load metadata
+  var metatitle = document.createElement('meta');
+  metatitle.setAttribute('property','og:title');
+  metatitle.setAttribute('content',recipe.title);
+  var metadesc = document.createElement('meta');
+  metadesc.setAttribute('property','og:description');
+  metadesc.setAttribute('content',recipe.desc);
+  var metaimg = document.createElement('meta');
+  metaimg.setAttribute('property','og:image');
+  metaimg.setAttribute('content','/IMG/'+recipe.img);
+  document.getElementById('head').appendChild(metatitle)
+  document.getElementById('head').appendChild(metadesc)
+  document.getElementById('head').appendChild(metaimg)
   //load template
   document.getElementById("title").innerHTML = recipe.title;
   document.getElementById("desc").innerHTML = recipe.desc;
