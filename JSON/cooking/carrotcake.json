@@ -20,7 +20,7 @@
         { "name": "Frosting" },
         { "name": "Sugar", "quantity": "1", "unit": " cup" },
         { "name": "Butter", "quantity": "0.5", "unit": " cup" },
-        { "name": "Sour Cream", "quantity": "0.5", "unit": " cup" },
+        { "name": "Sour Cream", "quantity": "0.5", "unit": " cup (might need more)" },
         { "name": "Vanilla", "quantity": "1", "unit": "tsp" }
       ],
 
