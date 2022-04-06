@@ -8,7 +8,7 @@
   
     "ingredients": [
       { "name": "Milk" , "quantity": "270", "unit": "g" },
-      { "name": "Vanilla (extract)", "quantity": "0.125", "unit": "tsp (1/8)" },
+      { "name": "Vanilla (extract)", "quantity": "0.125", "unit": "tsp" },
       { "name": "Cocoa", "quantity": "2", "unit": "tsp" },
       { "name": "Creamer", "quantity": "1", "unit": "tsp" },
       { "name": "Sugar", "quantity": "1.25", "unit": "tsp", "select": [

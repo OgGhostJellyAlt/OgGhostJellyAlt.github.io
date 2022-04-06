@@ -135,41 +135,44 @@ function loop() {
 
 function fractionconverter(decimal) {
   switch ( decimal ) {
-    case 0.75:
-      decimal = '3/4'
-      break;
-    case 0.875:
-      decimal = '7/8'
-      break;
-    case 0.8:
-      decimal = '4/5'
-      break;
-    case 0.6:
-      decimal = '3/5'
-      break;
     case 0.5:
       decimal = '1/2'
       break;
-    case 0.4:
-      decimal = '2/5'
-      break;
-    case 0.25:
-      decimal = '1/4'
-      break;
+    case 0.66:
     case 0.33:
-      decimal = '1/3'
+      decimal = decimal / 0.33 + '/3'
       break;
-    case 0.2:
-      decimal = '1/5'
+    case 0.9375:
+    case 0.8125:
+    case 0.6875:
+    case 0.5625:
+    case 0.4375:
+    case 0.3125:
+    case 0.1875:
+    case 0.0625:
+      decimal = decimal / 0.0625 + '/16'
       break;
+    case 0.875:
+    case 0.625:
+    case 0.375:
     case 0.125:
-      decimal = '1/8'
+      decimal = decimal / 0.125 + '/8'
+      break;
+    case 0.75:
+    case 0.25:
+      decimal = decimal / 0.25 + '/4'
+      break;
+    case 0.8:
+    case 0.6:
+    case 0.4:
+    case 0.2:
+      decimal = decimal / 2 + '/5'
       break;
     case 0.9:
     case 0.7:
     case 0.3:
     case 0.1:
-      decimal = decimal * 10 + '/10'
+      decimal = (decimal*10) + '/10'
       break;
   }
   return decimal;
