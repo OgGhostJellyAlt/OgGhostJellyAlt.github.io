@@ -20,16 +20,22 @@
         { "name": "Frosting", "txtype": "b" },
         { "name": "Sugar", "quantity": "1", "unit": " cup" },
         { "name": "Butter", "quantity": "0.5", "unit": " cup" },
-        { "name": "Sour Cream", "quantity": "0.5", "unit": " cup (might need more)" },
+        { "name": "Sour Cream", "quantity": "1", "unit": " cup" },
         { "name": "Vanilla", "quantity": "1", "unit": "tsp" }
       ],
 
     "dir": [
-    { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
-    { "desc": "Mix Thouroughly", "footer":"" },
-    { "desc": "Cut a Circular Piece of Parchment Paper and<br>&nbsp&nbsp&nbsp&nbspStick it to the Bottom of a Pan", "footer":"" },
-    { "desc": "Butter the Pan, or Oil it", "footer":"" },
-    { "desc": "Pour Cake Gloop Into the Pan", "footer":"" },
-    { "desc": "Cook For 45min At 175 °C", "footer":"" }
+    { "desc": "Cake", "txtype":["b","y","y"] },
+    { "desc": "Pour Ingredients Into A Bowl"},
+    { "desc": "Mix Thouroughly" },
+    { "desc": "Cut a Circular Piece of Parchment Paper and<br>&nbsp&nbsp&nbsp&nbspStick it to the Bottom of a Pan" },
+    { "desc": "Butter the Pan, or Oil it" },
+    { "desc": "Pour Cake Gloop Into the Pan" },
+    { "desc": "Cook For 45min At 175 °C" },
+    { "desc": "Frosting", "txtype":["b","y","y"] },
+    { "desc": "Pour Ingredients Into a Bowl" },
+    { "desc": "Mix Thouroughly" },
+    { "desc": "Refridgerate (OPTIONAL)" },
+    { "desc": "EAT!" }
     ]
 }

@@ -41,7 +41,7 @@ function load(recipe) {
       document.getElementById("recipe").appendChild(name);
 
       let quantity = document.createElement(txtype);
-      quantity.setAttribute('id', recipe.ingredients[i].name)
+      quantity.setAttribute('id', 'ingredient'+i)
       quantity.innerHTML = recipe.ingredients[i].quantity
       quantity.setAttribute('class','two')
       document.getElementById("recipe").appendChild(quantity);
@@ -84,16 +84,24 @@ function load(recipe) {
     i = i + 1
   } while (i < recipe.ingredients.length)
   //load dir
-  var i = 0;
-  do {
+  var di = 0;
+  for (let i=0;i<recipe.dir.length;i++) {
     if (!recipe.dir[i].txtype) {
       var txtype = 'p'
     } else {
-      var txtype = recipe.dir[i].txtype
+      var txtype = recipe.dir[i].txtype[0]
     }
     let direction = document.createElement(txtype);
     direction.setAttribute('class','three text');
-    direction.innerHTML = i + 1 + '. ' + recipe.dir[i].desc
+    if (!recipe.dir[i].txtype) {
+      direction.innerHTML = di + 1 + '. ' + recipe.dir[i].desc
+    } else {
+      if (!recipe.dir[i].txtype[1]) {
+        direction.innerHTML = di + 1 + '. ' + recipe.dir[i].desc
+      } else {
+        direction.innerHTML = recipe.dir[i].desc
+      }
+    }
     document.getElementById('dir').appendChild(direction)
 
     if (!!recipe.dir[i].footer) {
@@ -102,8 +110,15 @@ function load(recipe) {
       footer.innerHTML = recipe.dir[i].footer
       document.getElementById('dir').appendChild(footer)
     }
-    i = i + 1;
-  } while (i < recipe.dir.length);
+
+    if (!recipe.dir[i].txtype) {
+      di+=1
+    } else {
+      if (!recipe.dir[i].txtype[1]) {
+        di+=1
+      }
+    }
+  }
   //start loop
   window.requestAnimationFrame(loop);
 }
@@ -133,8 +148,8 @@ function loop() {
         }
       }
     }
-    if (document.getElementById(recipe.ingredients[i].name)) {
-      document.getElementById(recipe.ingredients[i].name).innerHTML = displaytext;
+    if (document.getElementById('ingredient'+i)) {
+      document.getElementById('ingredient'+i).innerHTML = displaytext;
     }
 
     i = i + 1;
