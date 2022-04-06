@@ -7,7 +7,7 @@
     "img": "carrotcake.jpeg",
 
     "ingredients": [
-        { "name": "Cake" },
+        { "name": "Cake", "txtype": "b" },
         { "name": "Flour" , "quantity": "1.75", "unit": " cups" },
         { "name": "Baking Powder", "quantity": "1.5", "unit": "tsp" },
         { "name": "Baking Soda", "quantity": "1", "unit": "tsp" },
@@ -17,7 +17,7 @@
         { "name": "Sugar", "quantity": "1", "unit": " cup" },
         { "name": "Carrot (shredded)", "quantity": "2", "unit": " cup" },
         { "name": "Vanilla", "quantity": "1", "unit": "tsp" },
-        { "name": "Frosting" },
+        { "name": "Frosting", "txtype": "b" },
         { "name": "Sugar", "quantity": "1", "unit": " cup" },
         { "name": "Butter", "quantity": "0.5", "unit": " cup" },
         { "name": "Sour Cream", "quantity": "0.5", "unit": " cup (might need more)" },

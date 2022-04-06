@@ -29,24 +29,29 @@ function load(recipe) {
   //load recipe
   var i = 0
   do {
+    if (!recipe.ingredients[i].txtype) {
+      var txtype = 'r'
+    } else {
+      var txtype = recipe.ingredients[i].txtype
+    }
     if (!!recipe.ingredients[i].quantity || !!recipe.ingredients[i].unit) {
-      let name = document.createElement('r');
+      let name = document.createElement(txtype);
       name.innerHTML = recipe.ingredients[i].name + " - "
       name.setAttribute('class','two')
       document.getElementById("recipe").appendChild(name);
 
-      let quantity = document.createElement('r');
+      let quantity = document.createElement(txtype);
       quantity.setAttribute('id', recipe.ingredients[i].name)
       quantity.innerHTML = recipe.ingredients[i].quantity
       quantity.setAttribute('class','two')
       document.getElementById("recipe").appendChild(quantity);
 
-      let unit = document.createElement('r');
+      let unit = document.createElement(txtype);
       unit.innerHTML = recipe.ingredients[i].unit
       unit.setAttribute('class','two')
       document.getElementById("recipe").appendChild(unit);
     } else {
-      let name = document.createElement('b');
+      let name = document.createElement(txtype);
       name.setAttribute('class','two')
       name.innerHTML = recipe.ingredients[i].name
       document.getElementById("recipe").appendChild(name);
@@ -81,15 +86,19 @@ function load(recipe) {
   //load dir
   var i = 0;
   do {
-    let direction = document.createElement("p");
+    if (!recipe.dir[i].txtype) {
+      var txtype = 'p'
+    } else {
+      var txtype = recipe.dir[i].txtype
+    }
+    let direction = document.createElement(txtype);
     direction.setAttribute('class','three text');
-    let footer = document.createElement("p");
-    footer.setAttribute('class','three footer');
-
     direction.innerHTML = i + 1 + '. ' + recipe.dir[i].desc
     document.getElementById('dir').appendChild(direction)
 
     if (!!recipe.dir[i].footer) {
+      let footer = document.createElement(txtype);
+      footer.setAttribute('class','three footer');
       footer.innerHTML = recipe.dir[i].footer
       document.getElementById('dir').appendChild(footer)
     }
