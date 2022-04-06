@@ -27,7 +27,9 @@
     "dir": [
     { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
     { "desc": "Mix Thouroughly", "footer":"" },
-    { "desc": "Pour Into Pan", "footer":"" },
+    { "desc": "Cut a Circular Piece of Parchment Paper and<br>&nbsp&nbsp&nbsp&nbspStick it to the Bottom of a Pan", "footer":"" },
+    { "desc": "Butter the Pan, or Oil it", "footer":"" },
+    { "desc": "Pour Cake Gloop Into the Pan", "footer":"" },
     { "desc": "Cook For 45min At 175 °C", "footer":"" }
     ]
 }
