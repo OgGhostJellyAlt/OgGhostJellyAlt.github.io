@@ -1,12 +1,12 @@
 html {
-color: white;
-background-color: black;
-font-size: 28px;
-margin-left: 18%;
-margin-right: 14%;
-position: relative;
-animation-name: drop;
-animation-duration: 1s;
+  color: white;
+  background-color: black;
+  font-size: 28px;
+  margin-left: 18%;
+  margin-right: 14%;
+  position: relative;
+  animation-name: drop;
+  animation-duration: 1s;
 }
 
 a.link {
@@ -25,37 +25,9 @@ a {
   text-decoration: none;
 }
 
-img {
-  height: 100px;
-  width: 100px;
-  border-radius: 10%;
-}
-
-.button {
-  font-family: "pixel";
-  background-color: black;
-  border-radius: 25px;
-  border-color: darkred;
-  color: red;
-  padding: 10px 27px;
-  display: inline-block;
-  font-size: 25px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.l {
-  display: none;
-}
-
 @keyframes drop {
   0%   {left:0px; top:-700px; opacity: 0;}
   100%  {left:0px; top:0px; opacity: 1;}
-}
-
-iframe {
-  margin-right: 10%;
-  margin-top: 2%;
 }
 
 @font-face { font-family: pixel; src: url("FONT/pixel.otf"); }
