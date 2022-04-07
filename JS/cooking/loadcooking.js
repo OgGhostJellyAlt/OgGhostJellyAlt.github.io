@@ -86,6 +86,11 @@ function load(recipe) {
   //load dir
   var di = 0;
   for (let i=0;i<recipe.dir.length;i++) {
+    if (!!recipe.dir[i].txtype) {
+      if (!!recipe.dir[i].txtype[3]) {
+        di = recipe.dir[i].txtype[3]-1
+      }
+    }
     if (!recipe.dir[i].txtype) {
       var txtype = 'p'
     } else {

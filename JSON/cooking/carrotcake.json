@@ -32,7 +32,7 @@
     { "desc": "Butter the Pan, or Oil it" },
     { "desc": "Pour Cake Gloop Into the Pan" },
     { "desc": "Cook For 45min At 175 °C" },
-    { "desc": "Frosting", "txtype":["b","y","y"] },
+    { "desc": "Frosting", "txtype":["b","y","y",1] },
     { "desc": "Pour Ingredients Into a Bowl" },
     { "desc": "Mix Thouroughly" },
     { "desc": "Refridgerate (OPTIONAL)" },
