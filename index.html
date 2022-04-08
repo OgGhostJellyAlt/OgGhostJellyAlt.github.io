@@ -9,7 +9,28 @@
         <meta property="og:description" content="Check Out My Hangout">
         <meta property="og:image" content="/IMG/pfp.png">
 
-        <script src="JS/indexbutton.js"></script>
+        <script>
+            var tags = [
+                'me',
+                'game',
+                'fun',
+                'all',
+            ]
+            function hideall() {
+              for (let i=0;i<tags.length;i++) {
+                for (let ci=0;ci<document.getElementsByClassName(tags[i]).length;ci++) {
+                  document.getElementsByClassName(tags[i])[ci].style.display = 'none'
+                }
+              }
+            }
+            function filter(r) {
+              hideall()
+              for (let i=0;i<document.getElementsByClassName(r).length;i++) {
+                element = document.getElementsByClassName(r)[i]
+                element.style.display = ''
+              }
+            }
+        </script>
 
         <title>
             GhostJelly Hangout
@@ -22,10 +43,8 @@
             }
             
             .link {
-                width: 40px;
-                height: 30px;
-                position: relative;
-                left: 125px;
+                width: 30px;
+                height: 22.5px;
             }
             img {
                 scale: 100%;
@@ -43,9 +62,30 @@
     </head>
 
     <body>
-        <br><h1 style="display: inline;">
+        <br><h1 style="text-align: center;">
             WELCOME TO &nbspMY HANGOUT
         </h1>
+
+        <center>
+        <h2>Websites</h2><hr>
+        <button onclick="filter('all')">All</button>
+        <button onclick="filter('game')">Games</button>
+        <button onclick="filter('fun')">Fun</button>
+        <button onclick="filter('me')">Me</button>
+        <br><br>
+        <div style="width:540px;height:240px;overflow:auto;"><br>
+            <a href="battle"><img class="img all game" src="IMG/battle.png"></a>
+            <a href="adventure?acension=0"><img class="img all game" src="IMG/adventure.png"></a>
+            <a href="space"><img class="img all game" src="IMG/space.png"></a>
+            <a href="cooking"><img class="img all me" src="IMG/cooking.jpg"></a>
+            <a href="blog"><img class="img all me" src="IMG/blog.png"></a>
+            <a href="youtube"><img class="img all me" src="IMG/pfp.png"></a>
+            <a href="game"><img class="img all game" src="IMG/game.png"></a>
+            <a href="boom"><img class="img all fun" src="IMG/boom.jpg"></a>
+            <a href="spaghetti"><img class="img all fun" src="IMG/spaghetti1.jpeg"></a>
+            <a href=""><img class="img all" src=""></a>
+        </div><hr>
+        </center>
         <div id="link" style="display: inline;">
             <a href="https://www.youtube.com/channel/UCD1IYOrmoXBFBArQ4lSxUYQ"><img class="link" src="IMG/youtube.png"></a>
             <a href="https://github.com/OgGhostJelly"><img class="link" src="IMG/github.png"></a>
@@ -53,25 +93,5 @@
             <a href="https://scratch.mit.edu/users/OgGhostJelly/"><img class="link" src="IMG/scratch.png"></a>
             <a href="https://coderserif.github.io/"><img class="link" src="IMG/serif.png"></a>
         </div>
-
-        <h2>Websites</h2><hr>
-        <div style="width:100%;height:240px;overflow:auto;">
-            <a href="battle"><img class="img" src="IMG/battle.png"></a>
-            <a href="adventure?acension=0"><img class="img" src="IMG/adventure.png"></a>
-            <a href="space"><img class="img" src="IMG/space.png"></a>
-            <a href="cooking"><img class="img" src="IMG/cooking.jpg"></a>
-            <a href="blog"><img class="img" src="IMG/blog.png"></a><br><br>
-            <a href="youtube"><img class="img" src="IMG/pfp.png"></a>
-            <a href="game"><img class="img" src="IMG/game.png"></a>
-            <a href="boom"><img class="img" src="IMG/boom.jpg"></a>
-            <a href="spaghetti"><img class="img" src="IMG/spaghetti1.jpeg"></a>
-            <a href=""><img class="img" src=""></a><br><br>
-            <a href=""><img class="img" src=""></a>
-            <a href=""><img class="img" src=""></a>
-            <a href=""><img class="img" src=""></a>
-            <a href=""><img class="img" src=""></a>
-            <a href=""><img class="img" src=""></a>
-        </div><hr>
-        <h6>you can steal this code if you want (just like I stole serif's code)</h6>
     </body>
 </html>
