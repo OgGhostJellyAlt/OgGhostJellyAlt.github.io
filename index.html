@@ -46,18 +46,24 @@
                 width: 30px;
                 height: 22.5px;
             }
-            img {
-                scale: 100%;
-                transition: scale 0.5s;
-            }
             .img {
                 width: 100px;
                 height: 100px;
                 border-radius: 10%;
             }
+            img {
+                scale: 100%;
+                transition: scale 0.5s;
+            }
             img:hover { 
                 scale: 115%;
-            } 
+            }
+            img:active {
+                transform: scaleX(0.95) scaleY(0.95)
+            }
+            button:active {
+                transform: scaleX(0.95) scaleY(0.95)
+            }
         </style>
     </head>
 
