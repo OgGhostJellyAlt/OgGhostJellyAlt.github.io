@@ -31,6 +31,7 @@
     { "desc": "Cut a Circular Piece of Parchment Paper and<br>&nbsp&nbsp&nbsp&nbspStick it to the Bottom of a Pan" },
     { "desc": "Butter the Pan, or Oil it" },
     { "desc": "Pour Cake Gloop Into the Pan" },
+    { "desc": "Preheat the Pan on 175 °C" },
     { "desc": "Cook For 45min At 175 °C" },
     { "desc": "Frosting", "txtype":["b","y","y",1] },
     { "desc": "Pour Ingredients Into a Bowl" },
