@@ -15,7 +15,16 @@
                 'game',
                 'fun',
                 'all',
+
+                'recipie',
+                'cooking',
+                'space',
+                'battle',
+                'adventure', 
+                'text',
+                'blog',
             ]
+
             function hideall() {
               for (let i=0;i<tags.length;i++) {
                 for (let ci=0;ci<document.getElementsByClassName(tags[i]).length;ci++) {
@@ -23,12 +32,30 @@
                 }
               }
             }
-            function filter(r) {
-              hideall()
+            function filter(r,h) {
+            if (!h) {
+                hideall()
+            }
               for (let i=0;i<document.getElementsByClassName(r).length;i++) {
                 element = document.getElementsByClassName(r)[i]
                 element.style.display = ''
               }
+            }
+
+            function search() {
+                hideall()
+                var input = document.getElementById('search').value.toLowerCase()
+                var searchtags = []
+                for (let i=0;i<tags.length;i++) {
+                    searchtagsitem = ''
+                    for (let si=0;si<input.length;si++) {
+                        searchtagsitem = searchtagsitem + tags[i].charAt(si)
+                    }
+                    if (input==searchtagsitem) {
+                        filter(tags[i],true)
+                    }
+                }
+                
             }
         </script>
 
@@ -100,13 +127,14 @@
         <button onclick="filter('game')">Games</button>
         <button onclick="filter('fun')">Fun</button>
         <button onclick="filter('me')">Me</button>
+        <br><input type="search" id="search"><whitespace>&nbsp</whitespace><button onclick="search()">Search</button>
         <br><br>
         <div style="width:540px;height:240px;overflow:auto;"><br>
-            <a href="battle"><img class="img all game" src="IMG/battle.png"></a>
-            <a href="adventure?acension=0"><img class="img all game" src="IMG/adventure.png"></a>
-            <a href="space"><img class="img all game" src="IMG/space.png"></a>
-            <a href="cooking"><img class="img all me" src="IMG/cooking.jpg"></a>
-            <a href="blog"><img class="img all me" src="IMG/blog.png"></a>
+            <a href="battle"><img class="img all game battle" src="IMG/battle.png"></a>
+            <a href="adventure?acension=0"><img class="img all game adventure text" src="IMG/adventure.png"></a>
+            <a href="space"><img class="img all game space" src="IMG/space.png"></a>
+            <a href="cooking"><img class="img all me recipie cooking" src="IMG/cooking.jpg"></a>
+            <a href="blog"><img class="img all me blog" src="IMG/blog.png"></a>
             <a href="youtube"><img class="img all me" src="IMG/pfp.png"></a>
             <a href="game"><img class="img all game" src="IMG/game.png"></a>
             <a href="boom"><img class="img all fun" src="IMG/boom.jpg"></a>

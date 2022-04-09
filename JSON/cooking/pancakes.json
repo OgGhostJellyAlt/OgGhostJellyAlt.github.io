@@ -4,7 +4,7 @@
   "sizeunitb": "",
   "title": "Pancakes",
   "desc": "classical english pancakes or crepes depending on where your from.",
-  "img": "pancakes.jpeg",
+  "img": "pancakes.jpg",
 
   "ingredients": [
     { "name": "Flour" , "quantity": "100", "unit": "g" },

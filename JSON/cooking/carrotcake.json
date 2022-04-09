@@ -4,7 +4,7 @@
     "sizeunitb": "",
     "title": "Carrot Cake",
     "desc": "not my recipe but it tastes so good i had to add it here.",
-    "img": "carrotcake.jpeg",
+    "img": "carrotcake.jpg",
 
     "ingredients": [
         { "name": "Cake", "txtype": "b" },
@@ -20,7 +20,8 @@
         { "name": "Frosting", "txtype": "b" },
         { "name": "Sugar", "quantity": "1", "unit": " cup" },
         { "name": "Butter", "quantity": "0.5", "unit": " cup" },
-        { "name": "Sour Cream", "quantity": "1", "unit": " cup" },
+        { "name": "Cream Cheese", "quantity": "1", "unit": " cup" },
+        { "name": "Sour Cream", "quantity": "NaN", "unit": " cup" },
         { "name": "Vanilla", "quantity": "1", "unit": "tsp" }
       ],
 
