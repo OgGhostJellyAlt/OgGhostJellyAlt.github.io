@@ -45,7 +45,6 @@
             function search() {
                 hideall()
                 var input = document.getElementById('search').value.toLowerCase()
-                var searchtags = []
                 for (let i=0;i<tags.length;i++) {
                     if (input==tags[i].slice(0,input.length)) {
                         filter(tags[i],true)
