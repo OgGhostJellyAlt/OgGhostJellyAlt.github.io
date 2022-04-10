@@ -12,7 +12,7 @@
         <script>
             var tags = [
                 'me',
-                'game',
+                'games',
                 'fun',
                 'all',
 
@@ -49,9 +49,14 @@
                     if (input==tags[i].slice(0,input.length)) {
                         filter(tags[i],true)
                     }
-                }
-                
+                } 
             }
+            document.addEventListener('keypress',function() {
+                    if (window.event.charCode==124) {
+                        document.getElementById('title').innerHTML = 'WELCOME TO THE PLAYGROUND'
+                    }
+                }
+            )
         </script>
 
         <title>
@@ -68,7 +73,7 @@
                 width: 30px;
                 height: 22.5px;
                 position: relative;
-                left: 1000px;
+                left: 90%;
                 bottom: 90px;
             }
             .img {
@@ -102,11 +107,18 @@
             button:active {
                 transform: scaleX(0.95) scaleY(0.95)
             }
+
+            @media only screen and (orientation:portrait) {
+                body {
+                    height: 100vw;
+                    transform: rotate(90deg);
+                }
+            }
         </style>
     </head>
 
-    <body>
-        <br><h1 style="text-align: center;">
+    <body id="body">
+        <br><h1 id="title" style="text-align: center;">
             WELCOME TO &nbspMY HANGOUT
         </h1><hr>
         <div id="link" style="display: inline;">
@@ -119,19 +131,19 @@
 
         <center>
         <button onclick="filter('all')">All</button>
-        <button onclick="filter('game')">Games</button>
+        <button onclick="filter('games')">Games</button>
         <button onclick="filter('fun')">Fun</button>
         <button onclick="filter('me')">Me</button>
         <br><input type="search" id="search"><whitespace>&nbsp</whitespace><button onclick="search()">Search</button>
         <br><br>
         <div style="width:540px;height:240px;overflow:auto;"><br>
-            <a href="battle"><img class="img all game battle" src="IMG/battle.png"></a>
-            <a href="adventure?acension=0"><img class="img all game adventure text" src="IMG/adventure.png"></a>
-            <a href="space"><img class="img all game space" src="IMG/space.png"></a>
+            <a href="battle"><img class="img all games battle" src="IMG/battle.png"></a>
+            <a href="adventure?acension=0"><img class="img all games adventure text" src="IMG/adventure.png"></a>
+            <a href="space"><img class="img all games space" src="IMG/space.png"></a>
             <a href="cooking"><img class="img all me recipie cooking" src="IMG/cooking.jpg"></a>
             <a href="blog"><img class="img all me blog" src="IMG/blog.png"></a>
             <a href="youtube"><img class="img all me" src="IMG/pfp.png"></a>
-            <a href="game"><img class="img all game" src="IMG/game.png"></a>
+            <a href="game"><img class="img all games" src="IMG/game.png"></a>
             <a href="boom"><img class="img all fun" src="IMG/boom.jpg"></a>
             <a href="spaghetti"><img class="img all fun" src="IMG/spaghetti1.jpeg"></a>
             <a href=""><img class="img all" src=""></a>
