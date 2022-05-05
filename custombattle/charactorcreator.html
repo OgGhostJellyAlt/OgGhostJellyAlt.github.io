@@ -33,6 +33,11 @@
             .move {
                 min-width: 100px;
             }
+            #import {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            }
         </style>
     </head>
     <body>
@@ -47,7 +52,11 @@
         <edittitle>Moves</edittitle>
         <div id="editmove">
         </div>
-        <br><br><a id="save"><button>SAVE</button></a>
+        <br><br>
+        <button><label for="import">IMPORT</label></button>
+        <input type="file" accept=".json" id="import">
+        
+        <a id="save"><button>SAVE</button></a>
     </body>
     <script src="/JS/custombattle/charactorcreator.js"></script>
 </html>
