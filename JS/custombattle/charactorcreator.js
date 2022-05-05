@@ -7,7 +7,7 @@ var player = {
         ATK: { amount: 0, },
         SPD: { amount: 0, },
     },
-    move: [
+    moves: [
         { name: '', DMG: 0, effect:'NONE', },
         { name: '', DMG: 0, effect:'NONE', },
         { name: '', DMG: 0, effect:'NONE', },
@@ -21,11 +21,11 @@ var stats = {
     ATK: { cost: 0.2, },
     SPD: { cost: 0.1, },
 }
-var effects = [
-    { name: 'NONE', cost: 0, },
-    { name: 'BURN', cost: 5, },
-    { name: 'POISON', cost: 5, },
-]
+var effects = {
+    NONE: { cost: 0, },
+    BURN: { cost: 5, },
+    POISON: { cost: 5, },
+}
 document.getElementById('name').value = player.name
 document.getElementById('level').innerHTML = 'Level: '+player.level
 document.getElementById('power').innerHTML = 'POWer: '+player.power
@@ -52,7 +52,7 @@ for (let i=0;i<Object.keys(player.stats).length;i++) {
 
     document.getElementById('editstat').appendChild(button)
 }
-for (let i=0;i<player.move.length;i++) {
+for (let i=0;i<player.moves.length;i++) {
     button = document.createElement('button')
     button.setAttribute('class','move')
     button.setAttribute('id','movebutton'+i)
@@ -63,8 +63,8 @@ for (let i=0;i<player.move.length;i++) {
             document.getElementById("move"+i).setAttribute("style","display: none;")
         }
     }.bind(i))
-    if (player.move[i].name) {
-        button.innerHTML = player.move[i].name
+    if (player.moves[i].name) {
+        button.innerHTML = player.moves[i].name
     } else {
         button.innerHTML = '...'
     }
@@ -80,12 +80,12 @@ for (let i=0;i<player.move.length;i++) {
     div.appendChild(displayname)
 
     button = document.createElement('input')
-    button.value = player.move[i].name
+    button.value = player.moves[i].name
     button.setAttribute('id','name'+i)
     button.setAttribute('placeholder','please enter the move name...')
     button.setAttribute('maxlength','20')
     button.addEventListener('change',function(){
-        player.move[i].name = document.getElementById('name'+i).value
+        player.moves[i].name = document.getElementById('name'+i).value
         if (document.getElementById('name'+i).value) {
             document.getElementById('movebutton'+i).innerHTML = document.getElementById('name'+i).value
         } else {
@@ -102,7 +102,7 @@ for (let i=0;i<player.move.length;i++) {
     div.appendChild(symbol)
 
     display = document.createElement('move'+i)
-    display.innerHTML = '&nbspDMG: '+player.move[i].DMG+'&nbsp'
+    display.innerHTML = '&nbspDMG: '+player.moves[i].DMG+'&nbsp'
     div.appendChild(display)
 
     symbol = document.createElement('button')
@@ -115,22 +115,27 @@ for (let i=0;i<player.move.length;i++) {
     div.appendChild(display)
     div.appendChild(document.createElement('br'))
 
-    for (let ei=0;ei<effects.length;ei++) {
+    for (let ei=0;ei<Object.keys(effects).length;ei++) {
         button = document.createElement('button')
         button.setAttribute('id','effect'+i+'-'+ei)
-        if(player.move[i].effect==effects[ei].name) {
+        if(player.moves[i].effect==Object.keys(effects)[ei]) {
             button.setAttribute('class','selected')
         }
-        if(effects[ei].cost) {
-            button.innerHTML = effects[ei].name+' Cost: '+effects[ei].cost
+        if(effects[Object.keys(effects)[ei]].cost) {
+            button.innerHTML = Object.keys(effects)[ei]+' Cost: '+effects[Object.keys(effects)[ei]].cost
         } else {
-            button.innerHTML = effects[ei].name
+            button.innerHTML = Object.keys(effects)[ei]
         }
         button.addEventListener('click',function(){
-            document.getElementsByClassName('selected')[0].setAttribute('class','')
-            document.getElementById('effect'+i+'-'+ei).setAttribute('class','selected')
+            if((player.power+=effects[player.moves[i].effect].cost)>effects[Object.keys(effects)[ei]].cost-1) {
+                document.getElementsByClassName('selected')[0].setAttribute('class','')
+                document.getElementById('effect'+i+'-'+ei).setAttribute('class','selected')
 
-            //add epic gamer code here
+                player.moves[i].effect = Object.keys(effects)[ei]
+                player.power -= effects[player.moves[i].effect].cost
+
+                document.getElementById('power').innerHTML = 'POWer: '+(Math.round(player.power*10)/10)
+            }
         }.bind(i,ei))
         div.appendChild(button)
     }
@@ -154,16 +159,16 @@ function stat(me,math) {
 }
 function moves(me,math) {
     if(math=='-') {
-        if(player.move[me].DMG>0) {
-            player.move[me].DMG -= 1
+        if(player.moves[me].DMG>0) {
+            player.moves[me].DMG -= 1
             player.power += 1
         }
     } else {
         if((Math.round(player.power*10)/10)>0) {
-            player.move[me].DMG += 1
+            player.moves[me].DMG += 1
             player.power -= 1
         }
     }
-    document.getElementsByTagName('move'+me)[0].innerHTML = '&nbspDMG: '+player.move[me].DMG+'&nbsp'
+    document.getElementsByTagName('move'+me)[0].innerHTML = '&nbspDMG: '+player.moves[me].DMG+'&nbsp'
     document.getElementById('power').innerHTML = 'POWer: '+(Math.round(player.power*10)/10)
 }
