@@ -26,7 +26,17 @@ var effects = {
     BURN: { cost: 5, },
     POISON: { cost: 5, },
 }
+
+var data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(
+    player
+));
+var save = document.getElementById('save');
+save.setAttribute("href",data);
+save.setAttribute("download", "BattleCharacterSheet.json");
 document.getElementById('name').value = player.name
+document.getElementById('name').addEventListener('change',function(){
+    player.name = document.getElementById('name').value
+})
 document.getElementById('level').innerHTML = 'Level: '+player.level
 document.getElementById('power').innerHTML = 'POWer: '+player.power
 for (let i=0;i<Object.keys(player.stats).length;i++) {
