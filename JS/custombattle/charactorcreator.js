@@ -1,3 +1,4 @@
+//seperate playervar from gamevar
 var name = ''
 var level = 1
 var power = level * 12
@@ -7,10 +8,16 @@ var stats = {
     SPD: { amount: 0, cost: 0.1 },
 }
 var move = [
-    { name: '', DMG: 0, effect:'none', },
-    { name: '', DMG: 0, effect:'none', },
-    { name: '', DMG: 0, effect:'none', },
-    { name: '', DMG: 0, effect:'none', },
+    { name: '', DMG: 0, effect:'NONE', },
+    { name: '', DMG: 0, effect:'NONE', },
+    { name: '', DMG: 0, effect:'NONE', },
+    { name: '', DMG: 0, effect:'NONE', },
+]
+
+var effects = [
+    { name: 'NONE', cost: 5, },
+    { name: 'BURN', cost: 5, },
+    { name: 'POISON', cost: 5, },
 ]
 document.getElementById('name').value = name
 document.getElementById('level').innerHTML = 'Level: '+level
@@ -106,8 +113,17 @@ for (let i=0;i<move.length;i++) {
     div.appendChild(display)
 
     select = document.createElement('select')
-    div.appendChild(select)
 
+    for(let ei=0;ei<effects.length;ei++) {
+        button = document.createElement('option')
+        button.innerHTML = effects[ei].name
+        if (effects[ei].name==move[i].effect) {
+            button.setAttribute('selected','')
+        }
+        select.appendChild(button)
+    }
+
+    div.appendChild(select)
 
     document.getElementById('editmove').appendChild(div)
 }
@@ -138,6 +154,6 @@ function moves(me,math) {
             power -= 1
         }
     }
-    document.getElementsByTagName('move'+me)[0].innerHTML = '&nbspDMG: '+move[me].DMG+' &nbsp'
+    document.getElementsByTagName('move'+me)[0].innerHTML = '&nbspDMG: '+move[me].DMG+'&nbsp'
     document.getElementById('power').innerHTML = 'POWer: '+(Math.round(power*10)/10)
 }
