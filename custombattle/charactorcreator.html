@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+        <link rel="shortcut icon" href="/IMG/custombattle.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:title" content="Custom Battle">
+        <meta property="og:description" content="make your own characters, and beat your friends up with them!">
+        <meta property="og:image" content="/IMG/custombattle.png">
+
+        <title>
+            Custom Battle
+        </title>
+        
+        <style>
+            @font-face { font-family: pixel; src: url("/FONT/pixel.otf"); }
+            html {
+            font-family: pixel
+            }
+            button {
+                color: white;
+                background-color: black;
+                border-radius: 10px;
+                border-color: whitesmoke;
+            }
+            edittitle {
+                font-size: 40px;
+            }
+            .move {
+                min-width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/custombattle"><img style="width: 50px;height: 50px;" src="/IMG/lspace.png"></a>
+        <h1 id="title" style="display: inline;">&nbspCharacter Creator</h1><br>
+        <h3 id="level"></h3>
+        <h3 id="power"></h3>
+        <name>Name: </name><input id="name" placeholder="please enter your name..."><br><br>
+        <edittitle>Stats</edittitle>
+        <div id="editstat">
+        </div><br>
+        <edittitle>Moves</edittitle>
+        <div id="editmove">
+        </div>
+    </body>
+    <script src="/JS/custombattle/charactorcreator.js"></script>
+</html>
