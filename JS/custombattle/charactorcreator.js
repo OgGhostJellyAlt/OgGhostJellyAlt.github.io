@@ -22,7 +22,7 @@ var stats = {
     SPD: { cost: 0.1, },
 }
 var effects = [
-    { name: 'NONE', cost: 5, },
+    { name: 'NONE', cost: 0, },
     { name: 'BURN', cost: 5, },
     { name: 'POISON', cost: 5, },
 ]
@@ -115,22 +115,25 @@ for (let i=0;i<player.move.length;i++) {
     div.appendChild(display)
     div.appendChild(document.createElement('br'))
 
-    display = document.createElement('effect')
-    display.innerHTML = 'Inflicted Effect: '
-    div.appendChild(display)
-
-    select = document.createElement('select')
-
-    for(let ei=0;ei<effects.length;ei++) {
-        button = document.createElement('option')
-        button.innerHTML = effects[ei].name
-        if (effects[ei].name==player.move[i].effect) {
-            button.setAttribute('selected','')
+    for (let ei=0;ei<effects.length;ei++) {
+        button = document.createElement('button')
+        button.setAttribute('id','effect'+i+'-'+ei)
+        if(player.move[i].effect==effects[ei].name) {
+            button.setAttribute('class','selected')
         }
-        select.appendChild(button)
-    }
+        if(effects[ei].cost) {
+            button.innerHTML = effects[ei].name+' Cost: '+effects[ei].cost
+        } else {
+            button.innerHTML = effects[ei].name
+        }
+        button.addEventListener('click',function(){
+            document.getElementsByClassName('selected')[0].setAttribute('class','')
+            document.getElementById('effect'+i+'-'+ei).setAttribute('class','selected')
 
-    div.appendChild(select)
+            //add epic gamer code here
+        }.bind(i,ei))
+        div.appendChild(button)
+    }
 
     document.getElementById('editmove').appendChild(div)
 }
