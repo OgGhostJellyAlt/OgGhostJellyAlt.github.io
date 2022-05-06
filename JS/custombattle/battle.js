@@ -83,7 +83,51 @@ function init() {
 
         game.appendChild(statdisplay)
 
-        //display moves
+        var buttons = [
+            { name: 'Fight', run: function(){
+                console.log('Fight')
+            }, HTML: function(){
+                html = document.createElement('h1')
+                html.innerHTML = 'Fight'
+                return html.outerHTML
+            } },
+
+            { name: 'Items', run: function(){
+                console.log('Item')
+            }, HTML: function(){
+                html = document.createElement('h1')
+                html.innerHTML = 'Item'
+                return html.outerHTML
+            } },
+
+            { name:'Run', run: function(){
+                console.log('Run')
+            }, HTML: function(){return ''} },
+        ]
+        for (let bi=0;bi<buttons.length;bi++) {
+            button = document.createElement('button')
+            button.innerHTML = buttons[bi].name
+            button.addEventListener('click',function(){
+                me = document.getElementById(i+'-'+buttons[bi].name)
+                mestyle = me.style.display
+                for (let bbi=0;bbi<buttons.length;bbi++) {
+                    document.getElementById(i+'-'+buttons[bbi].name).style.display = 'none'
+                }
+                if(mestyle=='none'){me.style.display = 'block'}else{me.style.display = 'none'}
+
+                buttons[bi].run()
+            }.bind(i,bi))
+            game.appendChild(button)
+        }
+
+        for (let bi=0;bi<buttons.length;bi++) {
+            div = document.createElement('div')
+            div.setAttribute('id',i+'-'+buttons[bi].name)
+            div.style.display = 'none'
+            div.innerHTML = buttons[bi].HTML()
+
+            game.appendChild(div)
+        }
 
         if(i!=players.length-1) {
             game.appendChild(document.createElement('hr'))
