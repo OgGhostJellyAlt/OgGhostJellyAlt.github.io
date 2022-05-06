@@ -24,17 +24,27 @@
                 border-radius: 10px;
                 border-color: whitesmoke;
             }
+            .selected {
+                background-color: green;
+            }
+            edittitle {
+                font-size: 40px;
+            }
+            .move {
+                min-width: 100px;
+            }
+            .import {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            }
         </style>
     </head>
     <body>
-        <h1 id="title">Custom Battle</h1><br>
-        <button onclick="location.href = '/custombattle/battle'">Local Battle</button>
-        <button onclick="location.href = '/custombattle/charactorcreator'">Character Creator</button>
+        <a href="/custombattle" id="back"><img style="width: 50px;height: 50px;" src="/IMG/lspace.png"></a>
+        <h1 id="title" style="display: inline;">&nbspBattle</h1><br>
+        <div id="import">
+        </div>
     </body>
-    <script>
-        let date = new Date()
-        if (date.getMonth()==6&&date.getDay()==12) {
-            document.getElementById('title').innerHTML = 'Metal Gear Revising My Life Choices'
-        }
-    </script>
+    <script src="/JS/custombattle/battle.js"></script>
 </html>

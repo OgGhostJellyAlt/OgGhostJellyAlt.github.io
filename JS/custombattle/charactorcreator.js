@@ -1,6 +1,7 @@
 var player = {
     name: '',
     level: 1,
+    xp: 0,
     power: 0,
     stats: {
         HP: { amount: 0, },
