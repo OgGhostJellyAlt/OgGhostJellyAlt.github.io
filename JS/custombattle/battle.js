@@ -54,8 +54,53 @@ function init() {
     document.getElementById('import').remove()
     document.getElementById('back').remove()
 
+    game = document.createElement('div')
+    game.setAttribute('id','game')
+
     console.log(players)
     for (let i=0;i<players.length;i++) {
-        console.log(i)
+        title = document.createElement('h2')
+        if (players[i].name) {
+            title.innerHTML = players[i].name
+        } else {
+            title.innerHTML = 'THIS IDIOT DOESNT HAVE A NAME'
+        }
+        game.appendChild(title)
+
+        statdisplay = document.createElement('div')
+        for (let si=0;si<Object.keys(stats).length;si++) {
+            statmini = document.createElement('stat')
+            statmini.innerHTML = Object.keys(stats)[si]+': '
+            statdisplay.appendChild(statmini)
+
+            statmini = document.createElement('stat')
+            statmini.innerHTML = players[i].stats[Object.keys(stats)[si]].amount
+            statmini.setAttribute('id',i+'-'+Object.keys(stats)[si])
+            statdisplay.appendChild(statmini)
+
+            statdisplay.appendChild(document.createElement('br'))
+        }
+
+        game.appendChild(statdisplay)
+
+        //display moves
+
+        if(i!=players.length-1) {
+            game.appendChild(document.createElement('hr'))
+        }
+
     }
+
+    document.getElementsByTagName('body')[0].appendChild(game)
+
+    window.requestAnimationFrame(update)
+}
+function update() {
+    for (let i=0;i<players.length;i++) {
+        for (let si=0;si<Object.keys(stats).length;si++) {
+            document.getElementById(i+'-'+Object.keys(stats)[si]).innerHTML = players[i].stats[Object.keys(stats)[si]].amount
+        }
+    }
+
+    window.requestAnimationFrame(update)
 }
