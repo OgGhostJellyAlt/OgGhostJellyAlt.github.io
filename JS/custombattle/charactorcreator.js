@@ -202,7 +202,11 @@ function loop() {
     ));
     var save = document.getElementById('save');
     save.setAttribute("href",data);
-    save.setAttribute("download",player.name+".json");
+    if(player.name){
+        save.setAttribute("download",player.name+".json");
+    } else {
+        save.setAttribute("download","idiot.json");
+    }
 
     window.requestAnimationFrame(loop)
 }

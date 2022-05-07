@@ -1,3 +1,7 @@
+//make effects work
+//healing moves
+//E
+
 var max_players = 2;
 var players = []
 var effected = []
@@ -62,10 +66,13 @@ function init() {
     console.log(players)
     for (let i=0;i<players.length;i++) {
         title = document.createElement('h2')
+        title.setAttribute('id','title'+i)
         if (players[i].name) {
             title.innerHTML = players[i].name
+            if(!players[i].stats.HP.amount){window.alert(players[i].name+' doesn\'t have any HP :/');location.href=''}
         } else {
             title.innerHTML = 'THIS IDIOT DOESNT HAVE A NAME'
+            if(!players[i].stats.HP.amount){window.alert('the no named buffoon doesn\'t have any HP :/');location.href=''}
         }
         game.appendChild(title)
 
@@ -150,6 +157,11 @@ function update() {
             document.getElementById(i+'-'+Object.keys(stats)[si]).innerHTML = players[i].stats[Object.keys(stats)[si]].amount
         }
     }
+
+    for (let i=0;i<players.length;i++) {
+        document.getElementById('title'+i).setAttribute('class','')
+    }
+    document.getElementById('title'+turn).setAttribute('class','turn')
 
     window.requestAnimationFrame(update)
 }
