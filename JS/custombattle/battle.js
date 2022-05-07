@@ -1,5 +1,7 @@
 var max_players = 2;
 var players = []
+var effected = []
+var turn = 0
 
 function pushp(p,i) {
     players[i] = p
@@ -84,24 +86,27 @@ function init() {
         game.appendChild(statdisplay)
 
         var buttons = [
-            { name: 'Fight', run: function(){
-                console.log('Fight')
-            }, HTML: function(){
-                html = document.createElement('h1')
-                html.innerHTML = 'Fight'
-                return html.outerHTML
+            { name: 'Fight', run: function(){}, HTML: function(i){
+                html = document.createElement('div')
+                
+                for (let mi=0;mi<players[i].moves.length;mi++) {
+                    if(!players[i].moves[mi].name){players[i].moves[mi].name = '...'}
+                    button = document.createElement('button')
+                    button.innerHTML = players[i].moves[mi].name
+                    button.setAttribute('onclick','fight('+i+','+mi+')')
+                    html.appendChild(button)
+                }
+                return html.innerHTML
             } },
 
-            { name: 'Items', run: function(){
-                console.log('Item')
-            }, HTML: function(){
-                html = document.createElement('h1')
-                html.innerHTML = 'Item'
+            { name: 'Items', run: function(){}, HTML: function(){
+                html = document.createElement('p')
+                html.innerHTML = 'Item\'s are coming soon...'
                 return html.outerHTML
             } },
 
             { name:'Run', run: function(){
-                console.log('Run')
+                window.alert('this feature isn\'t implemented yet')
             }, HTML: function(){return ''} },
         ]
         for (let bi=0;bi<buttons.length;bi++) {
@@ -124,7 +129,7 @@ function init() {
             div = document.createElement('div')
             div.setAttribute('id',i+'-'+buttons[bi].name)
             div.style.display = 'none'
-            div.innerHTML = buttons[bi].HTML()
+            div.innerHTML = buttons[bi].HTML(i)
 
             game.appendChild(div)
         }
@@ -148,3 +153,18 @@ function update() {
 
     window.requestAnimationFrame(update)
 }
+
+function fight(i,mi) {
+    if(turn==i) {
+        e=0;if(i>max_players-2){e=0}else{e+=1};
+        if(!(Math.random()*100<players[e].stats.SPD.amount+1)){
+            players[e].stats.HP.amount -= (players[i].moves[mi].DMG*Math.round(1+(players[e].stats.ATK.amount/100)))
+        }
+
+        //add effects code
+
+        if(turn>max_players-2){turn=0}else{turn+=1}
+    }
+}
+
+//if(turn>max_players-2){turn = 0}else{turn+=1}    enemy's turn/next turn

@@ -15,7 +15,7 @@ var player = {
         { name: '', DMG: 0, effect:'NONE', },
     ],
 }
-player.power = player.level * 12
+player.power = player.level * 30
 
 document.getElementById('import').addEventListener('change',function(event){
     var fReader = new FileReader();
@@ -50,7 +50,7 @@ function init(p) {
 
     document.getElementById('name').value = player.name
     document.getElementById('level').innerHTML = 'Level: '+player.level
-    document.getElementById('power').innerHTML = 'POWer: '+player.power
+    document.getElementById('power').innerHTML = 'POWer: '+Math.round(player.power)
     for (let i=0;i<Object.keys(player.stats).length;i++) {
         button = document.createElement('div')
         
@@ -149,7 +149,7 @@ function init(p) {
                 button.innerHTML = Object.keys(effects)[ei]
             }
             button.addEventListener('click',function(){
-                if((player.power+=effects[player.moves[i].effect].cost)>effects[Object.keys(effects)[ei]].cost-1) {
+                if((player.power+effects[player.moves[i].effect].cost)>effects[Object.keys(effects)[ei]].cost-0.01) {
                     document.getElementsByClassName('selected')[0].setAttribute('class','')
                     document.getElementById('effect'+i+'-'+ei).setAttribute('class','selected')
 
@@ -173,7 +173,7 @@ function stat(me,math) {
             player.power += stats[me].cost
         }
     } else {
-        if((Math.round(player.power*10)/10)>0) {
+        if((Math.round(player.power*10)/10)-stats[me].cost>-0.01) {
             player.stats[me].amount += 1
             player.power -= stats[me].cost
         }
@@ -188,7 +188,7 @@ function moves(me,math) {
             player.power += 1
         }
     } else {
-        if((Math.round(player.power*10)/10)>0) {
+        if((Math.round(player.power*10)/10)-1>-0.01) {
             player.moves[me].DMG += 1
             player.power -= 1
         }
@@ -202,6 +202,7 @@ function loop() {
     ));
     var save = document.getElementById('save');
     save.setAttribute("href",data);
+    save.setAttribute("download",player.name+".json");
 
     window.requestAnimationFrame(loop)
 }
