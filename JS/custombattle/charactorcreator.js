@@ -3,19 +3,21 @@ var player = {
     level: 1,
     xp: 0,
     power: 0,
+    E: 0,
     stats: {
         HP: { amount: 0, },
         ATK: { amount: 0, },
         SPD: { amount: 0, },
     },
     moves: [
-        { name: '', DMG: 0, effect:'NONE', },
-        { name: '', DMG: 0, effect:'NONE', },
-        { name: '', DMG: 0, effect:'NONE', },
-        { name: '', DMG: 0, effect:'NONE', },
+        { name: '', DMG: 0, effect:'NONE', E: 0, },
+        { name: '', DMG: 0, effect:'NONE', E: 0, },
+        { name: '', DMG: 0, effect:'NONE', E: 0, },
+        { name: '', DMG: 0, effect:'NONE', E: 0, },
     ],
 }
 player.power = player.level * 30
+player.E = player.level * 30
 
 document.getElementById('import').addEventListener('change',function(event){
     var fReader = new FileReader();
@@ -155,12 +157,22 @@ function init(p) {
 
                     player.moves[i].effect = Object.keys(effects)[ei]
                     player.power -= effects[player.moves[i].effect].cost
+                    player.moves[i].E += effects[player.moves[i].effect].cost
 
                     document.getElementById('power').innerHTML = 'POWer: '+(Math.round(player.power*10)/10)
                 }
             }.bind(i,ei))
             div.appendChild(button)
         }
+
+        /*
+        e = document.createElement('e')
+        e.innerHTML = 'E: '
+        div.appendChild(e)
+
+        e = document.createElement('e')
+        e.innerHTML = 
+        */
 
         document.getElementById('editmove').appendChild(div)
     }
@@ -185,11 +197,13 @@ function moves(me,math) {
     if(math=='-') {
         if(player.moves[me].DMG>0) {
             player.moves[me].DMG -= 1
+            player.moves[me].E -= 1
             player.power += 1
         }
     } else {
         if((Math.round(player.power*10)/10)-1>-0.01) {
             player.moves[me].DMG += 1
+            player.moves[me].E += 1
             player.power -= 1
         }
     }
