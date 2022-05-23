@@ -18,7 +18,7 @@
         { "name": "Carrot (shredded)", "quantity": "2", "unit": " cup" },
         { "name": "Vanilla", "quantity": "1", "unit": "tsp" },
         { "name": "Frosting", "txtype": "b" },
-        { "name": "Sugar", "quantity": "0.75", "unit": " cup" },
+        { "name": "Sugar", "quantity": "0.5", "unit": " cup" },
         { "name": "Butter", "quantity": "0.5", "unit": " cup" },
         { "name": "Cream Cheese", "quantity": "1", "unit": " cup" },
         { "name": "Sour Cream", "quantity": "0.5", "unit": " cup" },
