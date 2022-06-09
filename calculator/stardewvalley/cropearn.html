@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+        <link rel="shortcut icon" href="/IMG/stardewvalley.jpeg" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:title" content="Stardew Crop Earnings">
+        <meta property="og:description" content="Crop Earnings Calc for Stardew Valley">
+        <meta property="og:image" content="/IMG/stardewvalley.jpeg">
+
+        <title>
+            Crop Earnings
+        </title>
+        
+        <style>
+            @font-face { font-family: pixel; src: url("/FONT/pixel.otf"); }
+            html {
+            font-family: pixel
+            }
+            .num-input {
+                max-width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="crop">
+            <h2>Crops</h2><hr>
+            <h3 style="display: inline;">Normal </h3><input type="number" class="num-input" $=1><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+            <h3 style="display: inline;">Silver </h3><input type="number" class="num-input" $=1.25><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+            <h3 style="display: inline;">Gold </h3><input type="number" class="num-input" $=1.5><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+            <h3 style="display: inline;">Iridium </h3><input type="number" class="num-input" $=2><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+        </div><br>
+        <div id="pr-n-pro">
+            <h2>Prices/Proffesion</h2><hr>
+            <h3 style="display: inline;">Crop Seed Cost </h3><input id="csc" type="number" class="num-input"><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+            <h3 style="display: inline;">Crop Base Price </h3><input id="cbp" type="number" class="num-input"><whitespace>&nbsp&nbsp&nbsp&nbsp</whitespace>
+            <br><br>
+            <h3 style="display: inline;">Tiller Proffesion </h3><input type="checkbox">
+        </div><br><br>
+        <div id="result">
+            <h2 style="display: inline;">Recieved: </h2><h2 style="display: inline;" id="recieved"></h2><br>
+            <h2 style="display: inline;">Spent: </h2> <h2 style="display: inline;" id="spent"></h2><br>
+            <h2 style="display: inline;">Earnings: </h2><h2 style="display: inline;" id="earnt"></h2>
+        </div>
+    </body>
+    <script src="/JS/calculator/stardewvalley/cropearn.js"></script>
+</html>
