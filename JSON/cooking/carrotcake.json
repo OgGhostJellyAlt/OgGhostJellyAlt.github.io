@@ -27,7 +27,9 @@
 
     "dir": [
     { "desc": "Cake", "txtype":["b","y","y"] },
-    { "desc": "Pour Ingredients Into A Bowl"},
+    { "desc": "Pour Eggs And Vegetable Oil Into A Bowl"},
+    { "desc": "Slowly Mix In Flour"},
+    { "desc": "Pour Rest Of Ingredients Into A Bowl"},
     { "desc": "Mix Thouroughly" },
     { "desc": "Cut a Circular Piece of Parchment Paper and<br>&nbsp&nbsp&nbsp&nbspStick it to the Bottom of a Pan" },
     { "desc": "Butter the Pan, or Oil it" },
