@@ -36,7 +36,7 @@ function loop() {
     //calc recieved
     var Recieved = 0
     for(let i=0;i<Crops.length;i++){
-        Recieved += Math.floor(Crops[i].amnt * (CBP * Crops[i].quality * Bonus ))
+        Recieved += Math.floor(Crops[i].amnt * (Math.floor(CBP * Crops[i].quality) * Bonus ))
     }
     //calc Earnings
     var Earnings = Recieved - Spent
