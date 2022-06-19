@@ -21,6 +21,7 @@
     { "desc": "Pour Ingredients Into A Bowl", "footer":"" },
     { "desc": "Mix Thouroughly", "footer":"" },
     { "desc": "Pour Into Pan", "footer":"" },
-    { "desc": "Cook For 45min At 175 °C", "footer":"" }
+    { "desc": "Cook For 45min At 175 °C", "footer":"" },
+    { "desc": "Eat With Cream!", "footer":"" }
     ]
 }
