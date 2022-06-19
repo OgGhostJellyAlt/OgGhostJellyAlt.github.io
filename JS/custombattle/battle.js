@@ -1,6 +1,10 @@
+//add more effects
+//healing moves
+//E
+
 var max_players = 2;
 var players = []
-var effected = []
+var effected=[];for(let i=0;i<max_players;i++){effected.push({type:'NONE',amount:0})}
 var turn = 0
 
 function pushp(p,i) {
@@ -62,10 +66,13 @@ function init() {
     console.log(players)
     for (let i=0;i<players.length;i++) {
         title = document.createElement('h2')
+        title.setAttribute('id','title'+i)
         if (players[i].name) {
             title.innerHTML = players[i].name
+            if(!players[i].stats.HP.amount){window.alert(players[i].name+' doesn\'t have any HP :/');location.href=''}
         } else {
             title.innerHTML = 'THIS IDIOT DOESNT HAVE A NAME'
+            if(!players[i].stats.HP.amount){window.alert('the no named buffoon doesn\'t have any HP :/');location.href=''}
         }
         game.appendChild(title)
 
@@ -151,6 +158,11 @@ function update() {
         }
     }
 
+    for (let i=0;i<players.length;i++) {
+        document.getElementById('title'+i).setAttribute('class','')
+    }
+    document.getElementById('title'+turn).setAttribute('class','turn')
+
     window.requestAnimationFrame(update)
 }
 
@@ -161,7 +173,19 @@ function fight(i,mi) {
             players[e].stats.HP.amount -= (players[i].moves[mi].DMG*Math.round(1+(players[e].stats.ATK.amount/100)))
         }
 
-        //add effects code
+        if(players[i].moves[mi].effect!='NONE'){
+            effected[e].type = players[i].moves[mi].effect
+            effected[e].amount = effects[players[i].moves[mi].effect].amount
+        }
+
+        for(let ei=0;ei<effected.length;ei++) {
+            if(effected[ei].amount){
+                if(effected[ei].type!='NONE'){
+                    effects[effected[ei].type].run(i,ei)
+                    effected[ei].amount -= 1
+                }
+            } else {effected[ei].type=='NONE'}
+        }
 
         if(turn>max_players-2){turn=0}else{turn+=1}
     }
