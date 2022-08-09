@@ -18,7 +18,7 @@
       { "name": "Wholemeal" , "quantity": "30", "unit": "g" },
       { "name": "Milk Powder", "quantity": "12", "unit": "g"},
       { "name": "Ginger Powder", "quantity": "0.125", "unit": "tsp"},
-      { "name": "Yeast", "quantity": "1", "unit": "tsp"},
+      { "name": "Yeast", "quantity": "1", "unit": "tsp"}
     ],
   
     "dir": [
